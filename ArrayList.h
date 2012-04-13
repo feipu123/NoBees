@@ -6,19 +6,19 @@
 template <class E>
 class ArrayList {
     E *data;
-    int currentsize;
-    int capacity;
+    int currentSize, capacity;
 
 public:
     class ConstIterator {
-        int currentnum;
     public:
+        int position;
+        ArrayList<E> *parent;
         /**
          * Returns true if the iteration has more elements.
          * O(1)
          */
         bool hasNext() {
-            if (currentnum < this->currentsize - 1) return true;
+            if (position < parent->size - 1) return true;
             return false;
         }
 
@@ -28,19 +28,20 @@ public:
          * @throw ElementNotExist
          */
         const E& next() {
-            return this->data[++currentnum];
+            return parent->data[++position];
         }
     };
 
     class Iterator {
-        int currentnum;
+        int position;
+        ArrayList<E> *parent;
     public:
         /**
          * Returns true if the iteration has more elements.
          * O(1)
          */
         bool hasNext() {
-            if (currentnum < this->currentsize - 1) return true;
+            if (position < parent->size - 1) return true;
             return false;
         }
 
@@ -50,7 +51,7 @@ public:
          * @throw ElementNotExist
          */
         E& next() {
-            return this->data[++currentnum];
+            return parent->data[++position];
         }
 
         /**
@@ -59,10 +60,7 @@ public:
          * @throw ElementNotExist
          */
         void remove() {
-            for (int i = currentnum; i < this->currentsize - 1; ++i) {
-                this->data[i] = this->data[i + 1];
-            }
-            --this->currentsize;
+            parent->remove(position + 1);
         }
     };
 
@@ -72,7 +70,7 @@ public:
     ArrayList() {
         this->data = new E[10];
         this->capacity = 10;
-        this->currentsize = 0;
+        this->currentSize = 0;
     }
 
     /**
@@ -90,7 +88,7 @@ public:
     ArrayList(int initialCapacity) {
         this->data = new E[initialCapacity];
         this->capacity = initialCapacity;
-        this->currentsize = 0;
+        this->currentSize = 0;
     }
 
     /**
@@ -98,7 +96,7 @@ public:
      */
     ~ArrayList() {
         //capacity = 0;
-        //currentsize = 0;
+        //currentSize = 0;
         delete [] data;
     }
 
@@ -108,8 +106,8 @@ public:
     ArrayList& operator=(const ArrayList& x) {
         this->clear();
         this->ArrayList(x->capacity);
-        this->currentsize = x->currentsize;
-        for (int i = 0; i < this->currentsize; ++i) {
+        this->currentSize = x->currentSize;
+        for (int i = 0; i < this->currentSize; ++i) {
             this->data[i] = x->data[i];
         }
     }
@@ -119,8 +117,8 @@ public:
      */
     /*ArrayList(const ArrayList& x) {
         this->ArrayList(x->capacity);
-        this->currentsize = x->currentsize;
-        for (int i = 0; i < this->currentsize; ++i) {
+        this->currentSize = x->currentSize;
+        for (int i = 0; i < this->currentSize; ++i) {
             this->data[i] = x->data[i];
         }
     }*/
@@ -128,36 +126,46 @@ public:
     /**
      * Returns an iterator over the elements in this list in proper sequence.
      */
-    Iterator iterator() { }
+    Iterator iterator() {
+             Iterator tmp;
+             tmp.position = -1;
+             tmp.parent = this;
+             return tmp;
+    }
 
     /**
      * Returns an CONST iterator over the elements in this list in proper sequence.
      */
-    ConstIterator constIterator() const { }
+    ConstIterator constIterator() const {
+                  ConstIterator tmp;
+                  tmp.position = -1;
+                  tmp.parent = this;
+                  return tmp;
+    }
 
     /**
      * Appends the specified element to the end of this list.
      * O(1)
      */
     bool add(const E& e) {
-        if (currentsize == capacity) ensureCapacity(capacity << 1);
-        data[currentsize++] = e;
+        if (currentSize == capacity) ensureCapacity(capacity << 1);
+        data[currentSize++] = e;
         return true;
     }
 
     /**
      * Inserts the specified element at the specified position in this list.
-     * The range of index is [0, size].
+     * The range of index is [0, currentSize].
      * O(n)
      * @throw IndexOutOfBound
      */
     void add(int index, const E& element) {
-        if (currentsize == capacity) ensureCapacity(capacity << 1);
-        for (int i = currentsize - 1; i > index; --i) {
+        if (currentSize == capacity) ensureCapacity(capacity << 1);
+        for (int i = currentSize - 1; i > index; --i) {
             data[i] = data[i - 1];
         }
         data[index] = element;
-        ++currentsize;
+        ++currentSize;
     }
 
     /**
@@ -166,7 +174,7 @@ public:
     void clear() {
         delete []data;
         data = new E[capacity];
-        currentsize = 0;
+        currentSize = 0;
     }
 
     /**
@@ -174,7 +182,7 @@ public:
      * O(n)
      */
     bool contains(const E& e) const {
-        for (int i = 0; i < currentsize; ++i) {
+        for (int i = 0; i < currentSize; ++i) {
             if (data[i] == e) return true;
         }
         return false;
@@ -184,13 +192,13 @@ public:
      * Increases the capacity of this ArrayList instance, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument.
      */
     void ensureCapacity(int minCapacity) {
-        E tmp[currentsize];
-        for (int i = 0; i < currentsize; ++i) {
+        E tmp[currentSize];
+        for (int i = 0; i < currentSize; ++i) {
             tmp[i] = data[i];
         }
         delete []data;
         data = new E[minCapacity];
-        for (int i = 0; i < currentsize; ++i) {
+        for (int i = 0; i < currentSize; ++i) {
             data[i] = tmp[i];
         }
         capacity = minCapacity;
@@ -219,7 +227,7 @@ public:
      * O(n)
      */
     int indexOf(const E& e) const {
-        for (int i = 0; i < currentsize; ++i) {
+        for (int i = 0; i < currentSize; ++i) {
             if (data[i] == e) return i;
         }
         return -1;
@@ -229,14 +237,14 @@ public:
      * Returns true if this list contains no elements.
      * O(1)
      */
-    bool isEmpty() const { return (currentsize == 0); }
+    bool isEmpty() const { return (currentSize == 0); }
 
     /**
      * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
      * O(n)
      */
     int lastIndexOf(const E& e) const {
-        for (int i = currentsize - 1; i >= 0; --i) {
+        for (int i = currentSize - 1; i >= 0; --i) {
             if (data[i] == e) return i;
         }
     return -1;
@@ -250,10 +258,10 @@ public:
      */
     E removeIndex(int index) {
         E tmp = data[index];
-        for (int i = index; i < currentsize - 1; ++i) {
+        for (int i = index; i < currentSize - 1; ++i) {
             data[i] = data[i + 1];
         }
-        --currentsize;
+        --currentSize;
         return tmp;
     }
 
@@ -262,7 +270,7 @@ public:
      * O(n)
      */
     bool remove(const E& e) {
-        for (int i = 0; i < currentsize; ++i)
+        for (int i = 0; i < currentSize; ++i)
             if (data[i] == e) {
                 removeIndex(i);
                 return true;
@@ -276,10 +284,10 @@ public:
      * @throw IndexOutOfBound
      */
     void removeRange(int fromIndex, int toIndex) {
-        for (int i = fromIndex; i < currentsize - toIndex + fromIndex; ++i) {
+        for (int i = fromIndex; i < currentSize - toIndex + fromIndex; ++i) {
             data[i] = data[i + toIndex - fromIndex];
         }
-        currentsize -= (toIndex - fromIndex);
+        currentSize -= (toIndex - fromIndex);
     }
 
     /**
@@ -299,7 +307,7 @@ public:
      * O(1)
      */
     int size() const {
-        return currentsize;
+        return currentSize;
     }
 
     /**

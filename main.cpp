@@ -10,6 +10,7 @@ int main() {
     //freopen("in.txt", "r", stdin);
     //freopen("out.txt", "w", stdout);
     ArrayList<int> list;
+    ArrayList<int>::ConstIterator a;
     for (int i = 0; i < 22; ++i) {
         list.add(i + 1);
     }
@@ -19,9 +20,9 @@ int main() {
 
      for (int i = 0; i < 22; ++i) {
       cout << list.get(i) << endl;
-        //system("pause");
+        
      }
-
+     system("pause");
 
 
 return 0;
