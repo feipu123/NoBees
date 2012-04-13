@@ -1,0 +1,60 @@
+\hypertarget{_utility_8h}{
+\section{Utility.h File Reference}
+\label{_utility_8h}\index{Utility.h@{Utility.h}}
+}
+{\ttfamily \#include $<$string$>$}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_index_out_of_bound}{IndexOutOfBound}
+\item 
+class \hyperlink{class_element_not_exist}{ElementNotExist}
+\item 
+class \hyperlink{class_entry}{Entry$<$ K, V $>$}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class C1 , class C2 $>$ }\\void \hyperlink{_utility_8h_a13b0a04f3dbccaecb82229ae7ae2a95b}{addAll} (C1 \&a, const C2 \&b)
+\item 
+{\footnotesize template$<$class C1 , class C2 $>$ }\\bool \hyperlink{_utility_8h_a3189bb0b77aa4fe330a17c297012a087}{containsAll} (const C1 \&a, const C2 \&b)
+\item 
+{\footnotesize template$<$class C1 , class C2 $>$ }\\int \hyperlink{_utility_8h_ac048ade95a2c6052c490a9d79933d851}{compareTo} (const C1 \&a, const C2 \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file declares an \hyperlink{class_entry}{Entry} class and 2 exception classes (\hyperlink{class_index_out_of_bound}{IndexOutOfBound}, \hyperlink{class_element_not_exist}{ElementNotExist}). Some useful functions are also provided in this file. 
+
+\subsection{Function Documentation}
+\hypertarget{_utility_8h_a13b0a04f3dbccaecb82229ae7ae2a95b}{
+\index{Utility.h@{Utility.h}!addAll@{addAll}}
+\index{addAll@{addAll}!Utility.h@{Utility.h}}
+\subsubsection[{addAll}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class C1 , class C2 $>$ void addAll (
+\begin{DoxyParamCaption}
+\item[{C1 \&}]{a, }
+\item[{const C2 \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_utility_8h_a13b0a04f3dbccaecb82229ae7ae2a95b}
+Adds all elements of container b into container a \hypertarget{_utility_8h_ac048ade95a2c6052c490a9d79933d851}{
+\index{Utility.h@{Utility.h}!compareTo@{compareTo}}
+\index{compareTo@{compareTo}!Utility.h@{Utility.h}}
+\subsubsection[{compareTo}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class C1 , class C2 $>$ int compareTo (
+\begin{DoxyParamCaption}
+\item[{const C1 \&}]{a, }
+\item[{const C2 \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_utility_8h_ac048ade95a2c6052c490a9d79933d851}
+Compares lexicographical order. Utilizing this function, you can easily overload the `$<$' operator for your containers, so \hyperlink{class_tree_set}{TreeSet}$<$ ArrayList$<$int$>$ $>$ can be defined. \hypertarget{_utility_8h_a3189bb0b77aa4fe330a17c297012a087}{
+\index{Utility.h@{Utility.h}!containsAll@{containsAll}}
+\index{containsAll@{containsAll}!Utility.h@{Utility.h}}
+\subsubsection[{containsAll}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class C1 , class C2 $>$ bool containsAll (
+\begin{DoxyParamCaption}
+\item[{const C1 \&}]{a, }
+\item[{const C2 \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_utility_8h_a3189bb0b77aa4fe330a17c297012a087}
+Tests if container a contains all elements of container b 

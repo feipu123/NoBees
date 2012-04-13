@@ -1,0 +1,60 @@
+\hypertarget{class_hash_set_1_1_iterator}{
+\section{HashSet$<$ T, H $>$::Iterator Class Reference}
+\label{class_hash_set_1_1_iterator}\index{HashSet::Iterator@{HashSet::Iterator}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_hash_set_1_1_iterator_a3054125b19a4ccab5f0aefb7944cf1a9}{hasNext} ()
+\item 
+const T \& \hyperlink{class_hash_set_1_1_iterator_a7b26734cd6b131511c7d35acc411c6ff}{next} ()
+\item 
+void \hyperlink{class_hash_set_1_1_iterator_ae1f3074c53d3dbda7ec5b9d804793aa2}{remove} ()
+\end{DoxyCompactItemize}
+\subsubsection*{template$<$class T, class H$>$ class HashSet$<$ T, H $>$::Iterator}
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hash_set_1_1_iterator_a3054125b19a4ccab5f0aefb7944cf1a9}{
+\index{HashSet::Iterator@{HashSet::Iterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!HashSet::Iterator@{HashSet::Iterator}}
+\subsubsection[{hasNext}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ bool {\bf HashSet}$<$ T, H $>$::Iterator::hasNext (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_1_1_iterator_a3054125b19a4ccab5f0aefb7944cf1a9}
+Returns true if the iteration has more elements. O(n) for iterating through the container. \hypertarget{class_hash_set_1_1_iterator_a7b26734cd6b131511c7d35acc411c6ff}{
+\index{HashSet::Iterator@{HashSet::Iterator}!next@{next}}
+\index{next@{next}!HashSet::Iterator@{HashSet::Iterator}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ const T\& {\bf HashSet}$<$ T, H $>$::Iterator::next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_1_1_iterator_a7b26734cd6b131511c7d35acc411c6ff}
+Returns the next element in the iteration. O(n) for iterating through the container 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_hash_set_1_1_iterator_ae1f3074c53d3dbda7ec5b9d804793aa2}{
+\index{HashSet::Iterator@{HashSet::Iterator}!remove@{remove}}
+\index{remove@{remove}!HashSet::Iterator@{HashSet::Iterator}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ void {\bf HashSet}$<$ T, H $>$::Iterator::remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_1_1_iterator_ae1f3074c53d3dbda7ec5b9d804793aa2}
+Removes from the underlying collection the last element returned by the iterator. O(1) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_hash_set_8h}{HashSet.h}\end{DoxyCompactItemize}

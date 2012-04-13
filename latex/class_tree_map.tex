@@ -1,0 +1,281 @@
+\hypertarget{class_tree_map}{
+\section{TreeMap$<$ K, V $>$ Class Template Reference}
+\label{class_tree_map}\index{TreeMap@{TreeMap}}
+}
+
+
+{\ttfamily \#include $<$TreeMap.h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_tree_map_1_1_const_iterator}{ConstIterator}
+\item 
+class \hyperlink{class_tree_map_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tree_map_a593591d7d7c54568e71718f4c1f18372}{TreeMap} ()
+\item 
+\hyperlink{class_tree_map_ac8b2498e36f69506015935ff3a5f65ed}{TreeMap} (const \hyperlink{class_tree_map}{TreeMap} \&c)
+\item 
+\hyperlink{class_tree_map_a61ade1db7da7e51d738b030d8c877353}{$\sim$TreeMap} ()
+\item 
+\hyperlink{class_tree_map}{TreeMap} \& \hyperlink{class_tree_map_ac3807b00ab97c1aa3b28a99392f46c12}{operator=} (const \hyperlink{class_tree_map}{TreeMap} \&c)
+\item 
+{\footnotesize template$<$class C $>$ }\\\hyperlink{class_tree_map_a47d49805043cf06578efaf3f01f66a78}{TreeMap} (const C \&c)
+\item 
+\hyperlink{class_tree_map_1_1_iterator}{Iterator} \hyperlink{class_tree_map_a7ecfe50de55ccd84dd63198d06c7b403}{iterator} ()
+\item 
+\hyperlink{class_tree_map_1_1_const_iterator}{ConstIterator} \hyperlink{class_tree_map_a517b1bf341cfad0c491e8a4c67a9bf48}{constIterator} () const 
+\item 
+void \hyperlink{class_tree_map_a38e2b91c7f411cc38f8f904caaa56f92}{clear} ()
+\item 
+bool \hyperlink{class_tree_map_a1210e85fda1625a246bd38821234cfc1}{containsKey} (const K \&key) const 
+\item 
+bool \hyperlink{class_tree_map_aff9f0239099fa20f190f9278ec4caf24}{containsValue} (const V \&value) const 
+\item 
+const \hyperlink{class_entry}{Entry}$<$ K, V $>$ \& \hyperlink{class_tree_map_ad20aca04934bcd713a405007ca91d15a}{firstEntry} () const 
+\item 
+const K \& \hyperlink{class_tree_map_a2f99b33736297aa9152504bcc414c8fe}{firstKey} () const 
+\item 
+V \& \hyperlink{class_tree_map_a418b5b606f97a6d73533be37407e9ddf}{get} (const K \&key)
+\item 
+const V \& \hyperlink{class_tree_map_a77456cc28ea659dac453e607874f7981}{get} (const K \&key) const 
+\item 
+const \hyperlink{class_entry}{Entry}$<$ K, V $>$ \& \hyperlink{class_tree_map_a45cdf549345c3fe1c3b0c7fe045893f7}{lastEntry} () const 
+\item 
+const K \& \hyperlink{class_tree_map_aabab5c6afdddda058d680a904f9337b4}{lastKey} () const 
+\item 
+V \hyperlink{class_tree_map_a058a05ba6dbd11531477a55fb1cb0c02}{put} (const K \&key, const V \&value)
+\item 
+V \hyperlink{class_tree_map_a5dfe016edc0681f4352748683919672b}{remove} (const K \&key)
+\item 
+int \hyperlink{class_tree_map_ac8e67b70aca3ce24a9b4a2f27256690a}{size} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class K, class V$>$class TreeMap$<$ K, V $>$}
+
+A map is a sequence of (key, value) entries that provides fast retrieval based on the key. At most one value is held for each key.
+
+\hyperlink{class_tree_map}{TreeMap} is the balanced-\/tree implementation of map. The iterators must iterate through the map in the natural order (operator$<$) of the key. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tree_map_a593591d7d7c54568e71718f4c1f18372}{
+\index{TreeMap@{TreeMap}!TreeMap@{TreeMap}}
+\index{TreeMap@{TreeMap}!TreeMap@{TreeMap}}
+\subsubsection[{TreeMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ {\bf TreeMap}$<$ K, V $>$::{\bf TreeMap} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a593591d7d7c54568e71718f4c1f18372}
+Constructs an empty map \hypertarget{class_tree_map_ac8b2498e36f69506015935ff3a5f65ed}{
+\index{TreeMap@{TreeMap}!TreeMap@{TreeMap}}
+\index{TreeMap@{TreeMap}!TreeMap@{TreeMap}}
+\subsubsection[{TreeMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ {\bf TreeMap}$<$ K, V $>$::{\bf TreeMap} (
+\begin{DoxyParamCaption}
+\item[{const {\bf TreeMap}$<$ K, V $>$ \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_ac8b2498e36f69506015935ff3a5f65ed}
+Copy constructor \hypertarget{class_tree_map_a61ade1db7da7e51d738b030d8c877353}{
+\index{TreeMap@{TreeMap}!$\sim$TreeMap@{$\sim$TreeMap}}
+\index{$\sim$TreeMap@{$\sim$TreeMap}!TreeMap@{TreeMap}}
+\subsubsection[{$\sim$TreeMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ {\bf TreeMap}$<$ K, V $>$::$\sim${\bf TreeMap} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a61ade1db7da7e51d738b030d8c877353}
+Destructor \hypertarget{class_tree_map_a47d49805043cf06578efaf3f01f66a78}{
+\index{TreeMap@{TreeMap}!TreeMap@{TreeMap}}
+\index{TreeMap@{TreeMap}!TreeMap@{TreeMap}}
+\subsubsection[{TreeMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ template$<$class C $>$ {\bf TreeMap}$<$ K, V $>$::{\bf TreeMap} (
+\begin{DoxyParamCaption}
+\item[{const C \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a47d49805043cf06578efaf3f01f66a78}
+Constructs a new tree map containing the same mappings as the given map 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tree_map_a38e2b91c7f411cc38f8f904caaa56f92}{
+\index{TreeMap@{TreeMap}!clear@{clear}}
+\index{clear@{clear}!TreeMap@{TreeMap}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ void {\bf TreeMap}$<$ K, V $>$::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a38e2b91c7f411cc38f8f904caaa56f92}
+Removes all of the mappings from this map. O(n). \hypertarget{class_tree_map_a517b1bf341cfad0c491e8a4c67a9bf48}{
+\index{TreeMap@{TreeMap}!constIterator@{constIterator}}
+\index{constIterator@{constIterator}!TreeMap@{TreeMap}}
+\subsubsection[{constIterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ {\bf ConstIterator} {\bf TreeMap}$<$ K, V $>$::constIterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a517b1bf341cfad0c491e8a4c67a9bf48}
+Returns an const iterator over the elements in this map. O(1). \hypertarget{class_tree_map_a1210e85fda1625a246bd38821234cfc1}{
+\index{TreeMap@{TreeMap}!containsKey@{containsKey}}
+\index{containsKey@{containsKey}!TreeMap@{TreeMap}}
+\subsubsection[{containsKey}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ bool {\bf TreeMap}$<$ K, V $>$::containsKey (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a1210e85fda1625a246bd38821234cfc1}
+Returns true if this map contains a mapping for the specified key. O(logn). \hypertarget{class_tree_map_aff9f0239099fa20f190f9278ec4caf24}{
+\index{TreeMap@{TreeMap}!containsValue@{containsValue}}
+\index{containsValue@{containsValue}!TreeMap@{TreeMap}}
+\subsubsection[{containsValue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ bool {\bf TreeMap}$<$ K, V $>$::containsValue (
+\begin{DoxyParamCaption}
+\item[{const V \&}]{value}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_aff9f0239099fa20f190f9278ec4caf24}
+Returns true if this map contains a mapping for the specified value. O(n). \hypertarget{class_tree_map_ad20aca04934bcd713a405007ca91d15a}{
+\index{TreeMap@{TreeMap}!firstEntry@{firstEntry}}
+\index{firstEntry@{firstEntry}!TreeMap@{TreeMap}}
+\subsubsection[{firstEntry}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ const {\bf Entry}$<$K, V$>$\& {\bf TreeMap}$<$ K, V $>$::firstEntry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_ad20aca04934bcd713a405007ca91d15a}
+Returns a key-\/value mapping associated with the least key in this map. O(logn). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_map_a2f99b33736297aa9152504bcc414c8fe}{
+\index{TreeMap@{TreeMap}!firstKey@{firstKey}}
+\index{firstKey@{firstKey}!TreeMap@{TreeMap}}
+\subsubsection[{firstKey}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ const K\& {\bf TreeMap}$<$ K, V $>$::firstKey (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a2f99b33736297aa9152504bcc414c8fe}
+Returns the first (lowest) key currently in this map. O(logn). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_map_a418b5b606f97a6d73533be37407e9ddf}{
+\index{TreeMap@{TreeMap}!get@{get}}
+\index{get@{get}!TreeMap@{TreeMap}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ V\& {\bf TreeMap}$<$ K, V $>$::get (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a418b5b606f97a6d73533be37407e9ddf}
+Returns a reference to the value which the specified key is mapped O(logn). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_map_a77456cc28ea659dac453e607874f7981}{
+\index{TreeMap@{TreeMap}!get@{get}}
+\index{get@{get}!TreeMap@{TreeMap}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ const V\& {\bf TreeMap}$<$ K, V $>$::get (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a77456cc28ea659dac453e607874f7981}
+Returns a reference to the value which the specified key is mapped O(logn). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_map_a7ecfe50de55ccd84dd63198d06c7b403}{
+\index{TreeMap@{TreeMap}!iterator@{iterator}}
+\index{iterator@{iterator}!TreeMap@{TreeMap}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ {\bf Iterator} {\bf TreeMap}$<$ K, V $>$::iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a7ecfe50de55ccd84dd63198d06c7b403}
+Returns an iterator over the elements in this map. O(1). \hypertarget{class_tree_map_a45cdf549345c3fe1c3b0c7fe045893f7}{
+\index{TreeMap@{TreeMap}!lastEntry@{lastEntry}}
+\index{lastEntry@{lastEntry}!TreeMap@{TreeMap}}
+\subsubsection[{lastEntry}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ const {\bf Entry}$<$K, V$>$\& {\bf TreeMap}$<$ K, V $>$::lastEntry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a45cdf549345c3fe1c3b0c7fe045893f7}
+Returns a key-\/value mapping associated with the greatest key in this map. O(logn). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_map_aabab5c6afdddda058d680a904f9337b4}{
+\index{TreeMap@{TreeMap}!lastKey@{lastKey}}
+\index{lastKey@{lastKey}!TreeMap@{TreeMap}}
+\subsubsection[{lastKey}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ const K\& {\bf TreeMap}$<$ K, V $>$::lastKey (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_aabab5c6afdddda058d680a904f9337b4}
+Returns the last (highest) key currently in this map. O(logn). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_map_ac3807b00ab97c1aa3b28a99392f46c12}{
+\index{TreeMap@{TreeMap}!operator=@{operator=}}
+\index{operator=@{operator=}!TreeMap@{TreeMap}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ {\bf TreeMap}\& {\bf TreeMap}$<$ K, V $>$::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf TreeMap}$<$ K, V $>$ \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_ac3807b00ab97c1aa3b28a99392f46c12}
+Assignment operator \hypertarget{class_tree_map_a058a05ba6dbd11531477a55fb1cb0c02}{
+\index{TreeMap@{TreeMap}!put@{put}}
+\index{put@{put}!TreeMap@{TreeMap}}
+\subsubsection[{put}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ V {\bf TreeMap}$<$ K, V $>$::put (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key, }
+\item[{const V \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a058a05ba6dbd11531477a55fb1cb0c02}
+Associates the specified value with the specified key in this map. Returns the previous value, if not exist, a value returned by the default-\/constructor. O(logn). \hypertarget{class_tree_map_a5dfe016edc0681f4352748683919672b}{
+\index{TreeMap@{TreeMap}!remove@{remove}}
+\index{remove@{remove}!TreeMap@{TreeMap}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ V {\bf TreeMap}$<$ K, V $>$::remove (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_a5dfe016edc0681f4352748683919672b}
+Removes the mapping for this key from this \hyperlink{class_tree_map}{TreeMap} if present. O(logn). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_map_ac8e67b70aca3ce24a9b4a2f27256690a}{
+\index{TreeMap@{TreeMap}!size@{size}}
+\index{size@{size}!TreeMap@{TreeMap}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V $>$ int {\bf TreeMap}$<$ K, V $>$::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_map_ac8e67b70aca3ce24a9b4a2f27256690a}
+Returns the number of key-\/value mappings in this map. O(logn). 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_tree_map_8h}{TreeMap.h}\end{DoxyCompactItemize}

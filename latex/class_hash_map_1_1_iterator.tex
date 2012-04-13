@@ -1,0 +1,60 @@
+\hypertarget{class_hash_map_1_1_iterator}{
+\section{HashMap$<$ K, V, H $>$::Iterator Class Reference}
+\label{class_hash_map_1_1_iterator}\index{HashMap::Iterator@{HashMap::Iterator}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_hash_map_1_1_iterator_a5e7786cabee60410293e51b666301a07}{hasNext} ()
+\item 
+\hyperlink{class_entry}{Entry}$<$ K, V $>$ \& \hyperlink{class_hash_map_1_1_iterator_aab7df63f7b13a229e0dccc71d2123b21}{next} ()
+\item 
+void \hyperlink{class_hash_map_1_1_iterator_af0f58ac5800876fddce601e5c6e6dd11}{remove} ()
+\end{DoxyCompactItemize}
+\subsubsection*{template$<$class K, class V, class H$>$ class HashMap$<$ K, V, H $>$::Iterator}
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hash_map_1_1_iterator_a5e7786cabee60410293e51b666301a07}{
+\index{HashMap::Iterator@{HashMap::Iterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!HashMap::Iterator@{HashMap::Iterator}}
+\subsubsection[{hasNext}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ bool {\bf HashMap}$<$ K, V, H $>$::Iterator::hasNext (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_1_1_iterator_a5e7786cabee60410293e51b666301a07}
+Returns true if the iteration has more elements. O(n) for iterating through the container. \hypertarget{class_hash_map_1_1_iterator_aab7df63f7b13a229e0dccc71d2123b21}{
+\index{HashMap::Iterator@{HashMap::Iterator}!next@{next}}
+\index{next@{next}!HashMap::Iterator@{HashMap::Iterator}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf Entry}$<$K, V$>$\& {\bf HashMap}$<$ K, V, H $>$::Iterator::next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_1_1_iterator_aab7df63f7b13a229e0dccc71d2123b21}
+Returns a const reference the next element in the iteration. O(n) for iterating through the container. 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_hash_map_1_1_iterator_af0f58ac5800876fddce601e5c6e6dd11}{
+\index{HashMap::Iterator@{HashMap::Iterator}!remove@{remove}}
+\index{remove@{remove}!HashMap::Iterator@{HashMap::Iterator}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ void {\bf HashMap}$<$ K, V, H $>$::Iterator::remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_1_1_iterator_af0f58ac5800876fddce601e5c6e6dd11}
+Removes from the underlying collection the last element returned by the iterator (optional operation). O(1) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_hash_map_8h}{HashMap.h}\end{DoxyCompactItemize}

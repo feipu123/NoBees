@@ -1,0 +1,339 @@
+\hypertarget{class_array_list}{
+\section{ArrayList$<$ E $>$ Class Template Reference}
+\label{class_array_list}\index{ArrayList@{ArrayList}}
+}
+
+
+{\ttfamily \#include $<$ArrayList.h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_array_list_1_1_const_iterator}{ConstIterator}
+\item 
+class \hyperlink{class_array_list_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_array_list_a371a715481ccce9bbdbb86044eefaebb}{ArrayList} ()
+\item 
+{\footnotesize template$<$class E2 $>$ }\\\hyperlink{class_array_list_a23baf9480f2353c2ce1906a2f6dd9cd2}{ArrayList} (const E2 \&x)
+\item 
+\hyperlink{class_array_list_a5ae5b9508b562aa091759cb5768aeea8}{ArrayList} (int initialCapacity)
+\item 
+\hyperlink{class_array_list_aa318c2d3c6f2ee14ed3a27792efd3a32}{$\sim$ArrayList} ()
+\item 
+\hyperlink{class_array_list}{ArrayList} \& \hyperlink{class_array_list_a0c52a33afef5e5b24cb88456a3cde90d}{operator=} (const \hyperlink{class_array_list}{ArrayList} \&x)
+\item 
+\hyperlink{class_array_list_a4c8b10361aa8b19dbd12e3b41a79630a}{ArrayList} (const \hyperlink{class_array_list}{ArrayList} \&x)
+\item 
+\hyperlink{class_array_list_1_1_iterator}{Iterator} \hyperlink{class_array_list_a44df53a15dbd4851a1bb0473ed290958}{iterator} ()
+\item 
+\hyperlink{class_array_list_1_1_const_iterator}{ConstIterator} \hyperlink{class_array_list_a786a7383044b94691f12ab53a680dafb}{constIterator} () const 
+\item 
+bool \hyperlink{class_array_list_a07811697c3e5c53665d06855258eefa4}{add} (const E \&e)
+\item 
+void \hyperlink{class_array_list_a15eaaa22218a4b9eff398ab18a392cbf}{add} (int index, const E \&element)
+\item 
+void \hyperlink{class_array_list_ae48149564e6372f130a27b26bf5371f9}{clear} ()
+\item 
+bool \hyperlink{class_array_list_ae43ac84e5f0c976bac66a4f93fc7029c}{contains} (const E \&e) const 
+\item 
+void \hyperlink{class_array_list_afb9135e6c2ec8c65f823a5cb74b728f5}{ensureCapacity} (int minCapacity)
+\item 
+E \& \hyperlink{class_array_list_a4356ce8e7e3928d22b0349528d0d1726}{get} (int index)
+\item 
+const E \& \hyperlink{class_array_list_a2727014b60c125348d9fac3c0f9ce32b}{get} (int index) const 
+\item 
+int \hyperlink{class_array_list_aafeb94867c79626bb829ad4b471bfcb2}{indexOf} (const E \&e) const 
+\item 
+bool \hyperlink{class_array_list_abfb328475abc7c9f4931232688be23b9}{isEmpty} () const 
+\item 
+int \hyperlink{class_array_list_a95ec02cc44cee3495beccf5364133625}{lastIndexOf} (const E \&e) const 
+\item 
+E \hyperlink{class_array_list_a87860785d580e03a925122ce7abe5457}{removeIndex} (int index)
+\item 
+bool \hyperlink{class_array_list_a489a4fbf04c42a05aa283f06d128977e}{remove} (const E \&e)
+\item 
+void \hyperlink{class_array_list_abe7beae5227c494abbf185afb935d547}{removeRange} (int fromIndex, int toIndex)
+\item 
+E \hyperlink{class_array_list_ab341d881c100b94b0184117419417288}{set} (int index, const E \&element)
+\item 
+int \hyperlink{class_array_list_a9c6533b2c52ae75d8248d9f620d62fec}{size} () const 
+\item 
+\hyperlink{class_array_list}{ArrayList} \hyperlink{class_array_list_aace6498dc396a248c3451039129921b2}{subList} (int fromIndex, int toIndex) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E$>$class ArrayList$<$ E $>$}
+
+The \hyperlink{class_array_list}{ArrayList} is just like vector in C++. You should know that \char`\"{}capacity\char`\"{} here doesn't mean how many elements are now in this list, it means the length of the array of your inner implemention For example, even if the capacity is 10, the method \char`\"{}isEmpty()\char`\"{} may still return true.
+
+The iterator iterates in the order of the elements being loaded into this list 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_array_list_a371a715481ccce9bbdbb86044eefaebb}{
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\subsubsection[{ArrayList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ArrayList}$<$ E $>$::{\bf ArrayList} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a371a715481ccce9bbdbb86044eefaebb}
+Constructs an empty list with an initial capacity of ten. \hypertarget{class_array_list_a23baf9480f2353c2ce1906a2f6dd9cd2}{
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\subsubsection[{ArrayList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ template$<$class E2 $>$ {\bf ArrayList}$<$ E $>$::{\bf ArrayList} (
+\begin{DoxyParamCaption}
+\item[{const E2 \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, explicit\mbox{]}}}}
+\label{class_array_list_a23baf9480f2353c2ce1906a2f6dd9cd2}
+Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator. \hypertarget{class_array_list_a5ae5b9508b562aa091759cb5768aeea8}{
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\subsubsection[{ArrayList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ArrayList}$<$ E $>$::{\bf ArrayList} (
+\begin{DoxyParamCaption}
+\item[{int}]{initialCapacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a5ae5b9508b562aa091759cb5768aeea8}
+Constructs an empty list with the specified initial capacity. \hypertarget{class_array_list_aa318c2d3c6f2ee14ed3a27792efd3a32}{
+\index{ArrayList@{ArrayList}!$\sim$ArrayList@{$\sim$ArrayList}}
+\index{$\sim$ArrayList@{$\sim$ArrayList}!ArrayList@{ArrayList}}
+\subsubsection[{$\sim$ArrayList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ArrayList}$<$ E $>$::$\sim${\bf ArrayList} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_aa318c2d3c6f2ee14ed3a27792efd3a32}
+Destructor \hypertarget{class_array_list_a4c8b10361aa8b19dbd12e3b41a79630a}{
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\index{ArrayList@{ArrayList}!ArrayList@{ArrayList}}
+\subsubsection[{ArrayList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ArrayList}$<$ E $>$::{\bf ArrayList} (
+\begin{DoxyParamCaption}
+\item[{const {\bf ArrayList}$<$ E $>$ \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a4c8b10361aa8b19dbd12e3b41a79630a}
+Copy-\/constructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_array_list_a07811697c3e5c53665d06855258eefa4}{
+\index{ArrayList@{ArrayList}!add@{add}}
+\index{add@{add}!ArrayList@{ArrayList}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf ArrayList}$<$ E $>$::add (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a07811697c3e5c53665d06855258eefa4}
+Appends the specified element to the end of this list. O(1) \hypertarget{class_array_list_a15eaaa22218a4b9eff398ab18a392cbf}{
+\index{ArrayList@{ArrayList}!add@{add}}
+\index{add@{add}!ArrayList@{ArrayList}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ void {\bf ArrayList}$<$ E $>$::add (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{const E \&}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a15eaaa22218a4b9eff398ab18a392cbf}
+Inserts the specified element at the specified position in this list. The range of index is \mbox{[}0, size\mbox{]}. O(n) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_array_list_ae48149564e6372f130a27b26bf5371f9}{
+\index{ArrayList@{ArrayList}!clear@{clear}}
+\index{clear@{clear}!ArrayList@{ArrayList}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ void {\bf ArrayList}$<$ E $>$::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_ae48149564e6372f130a27b26bf5371f9}
+Removes all of the elements from this list. \hypertarget{class_array_list_a786a7383044b94691f12ab53a680dafb}{
+\index{ArrayList@{ArrayList}!constIterator@{constIterator}}
+\index{constIterator@{constIterator}!ArrayList@{ArrayList}}
+\subsubsection[{constIterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ConstIterator} {\bf ArrayList}$<$ E $>$::constIterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a786a7383044b94691f12ab53a680dafb}
+Returns an CONST iterator over the elements in this list in proper sequence. \hypertarget{class_array_list_ae43ac84e5f0c976bac66a4f93fc7029c}{
+\index{ArrayList@{ArrayList}!contains@{contains}}
+\index{contains@{contains}!ArrayList@{ArrayList}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf ArrayList}$<$ E $>$::contains (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_ae43ac84e5f0c976bac66a4f93fc7029c}
+Returns true if this list contains the specified element. O(n) \hypertarget{class_array_list_afb9135e6c2ec8c65f823a5cb74b728f5}{
+\index{ArrayList@{ArrayList}!ensureCapacity@{ensureCapacity}}
+\index{ensureCapacity@{ensureCapacity}!ArrayList@{ArrayList}}
+\subsubsection[{ensureCapacity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ void {\bf ArrayList}$<$ E $>$::ensureCapacity (
+\begin{DoxyParamCaption}
+\item[{int}]{minCapacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_afb9135e6c2ec8c65f823a5cb74b728f5}
+Increases the capacity of this \hyperlink{class_array_list}{ArrayList} instance, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument. \hypertarget{class_array_list_a4356ce8e7e3928d22b0349528d0d1726}{
+\index{ArrayList@{ArrayList}!get@{get}}
+\index{get@{get}!ArrayList@{ArrayList}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E\& {\bf ArrayList}$<$ E $>$::get (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a4356ce8e7e3928d22b0349528d0d1726}
+Returns a reference to the element at the specified position in this list. O(1) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_array_list_a2727014b60c125348d9fac3c0f9ce32b}{
+\index{ArrayList@{ArrayList}!get@{get}}
+\index{get@{get}!ArrayList@{ArrayList}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ const E\& {\bf ArrayList}$<$ E $>$::get (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a2727014b60c125348d9fac3c0f9ce32b}
+Returns a const reference to the element at the specified position in this list. O(1) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_array_list_aafeb94867c79626bb829ad4b471bfcb2}{
+\index{ArrayList@{ArrayList}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!ArrayList@{ArrayList}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ int {\bf ArrayList}$<$ E $>$::indexOf (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_aafeb94867c79626bb829ad4b471bfcb2}
+Returns the index of the first occurrence of the specified element in this list, or -\/1 if this list does not contain the element. O(n) \hypertarget{class_array_list_abfb328475abc7c9f4931232688be23b9}{
+\index{ArrayList@{ArrayList}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!ArrayList@{ArrayList}}
+\subsubsection[{isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf ArrayList}$<$ E $>$::isEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_abfb328475abc7c9f4931232688be23b9}
+Returns true if this list contains no elements. O(1) \hypertarget{class_array_list_a44df53a15dbd4851a1bb0473ed290958}{
+\index{ArrayList@{ArrayList}!iterator@{iterator}}
+\index{iterator@{iterator}!ArrayList@{ArrayList}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf Iterator} {\bf ArrayList}$<$ E $>$::iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a44df53a15dbd4851a1bb0473ed290958}
+Returns an iterator over the elements in this list in proper sequence. \hypertarget{class_array_list_a95ec02cc44cee3495beccf5364133625}{
+\index{ArrayList@{ArrayList}!lastIndexOf@{lastIndexOf}}
+\index{lastIndexOf@{lastIndexOf}!ArrayList@{ArrayList}}
+\subsubsection[{lastIndexOf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ int {\bf ArrayList}$<$ E $>$::lastIndexOf (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a95ec02cc44cee3495beccf5364133625}
+Returns the index of the last occurrence of the specified element in this list, or -\/1 if this list does not contain the element. O(n) \hypertarget{class_array_list_a0c52a33afef5e5b24cb88456a3cde90d}{
+\index{ArrayList@{ArrayList}!operator=@{operator=}}
+\index{operator=@{operator=}!ArrayList@{ArrayList}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ArrayList}\& {\bf ArrayList}$<$ E $>$::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf ArrayList}$<$ E $>$ \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a0c52a33afef5e5b24cb88456a3cde90d}
+Assignment operator \hypertarget{class_array_list_a489a4fbf04c42a05aa283f06d128977e}{
+\index{ArrayList@{ArrayList}!remove@{remove}}
+\index{remove@{remove}!ArrayList@{ArrayList}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf ArrayList}$<$ E $>$::remove (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a489a4fbf04c42a05aa283f06d128977e}
+Removes the first occurrence of the specified element from this list, if it is present. O(n) \hypertarget{class_array_list_a87860785d580e03a925122ce7abe5457}{
+\index{ArrayList@{ArrayList}!removeIndex@{removeIndex}}
+\index{removeIndex@{removeIndex}!ArrayList@{ArrayList}}
+\subsubsection[{removeIndex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E {\bf ArrayList}$<$ E $>$::removeIndex (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a87860785d580e03a925122ce7abe5457}
+Removes the element at the specified position in this list. Returns the element that was removed from the list. O(n) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_array_list_abe7beae5227c494abbf185afb935d547}{
+\index{ArrayList@{ArrayList}!removeRange@{removeRange}}
+\index{removeRange@{removeRange}!ArrayList@{ArrayList}}
+\subsubsection[{removeRange}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ void {\bf ArrayList}$<$ E $>$::removeRange (
+\begin{DoxyParamCaption}
+\item[{int}]{fromIndex, }
+\item[{int}]{toIndex}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_abe7beae5227c494abbf185afb935d547}
+Removes from this list all of the elements whose index is between fromIndex, inclusive, and toIndex, exclusive. O(n) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_array_list_ab341d881c100b94b0184117419417288}{
+\index{ArrayList@{ArrayList}!set@{set}}
+\index{set@{set}!ArrayList@{ArrayList}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E {\bf ArrayList}$<$ E $>$::set (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{const E \&}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_ab341d881c100b94b0184117419417288}
+Replaces the element at the specified position in this list with the specified element. Returns the element previously at the specified position. O(1) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_array_list_a9c6533b2c52ae75d8248d9f620d62fec}{
+\index{ArrayList@{ArrayList}!size@{size}}
+\index{size@{size}!ArrayList@{ArrayList}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ int {\bf ArrayList}$<$ E $>$::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_a9c6533b2c52ae75d8248d9f620d62fec}
+Returns the number of elements in this list. O(1) \hypertarget{class_array_list_aace6498dc396a248c3451039129921b2}{
+\index{ArrayList@{ArrayList}!subList@{subList}}
+\index{subList@{subList}!ArrayList@{ArrayList}}
+\subsubsection[{subList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ArrayList} {\bf ArrayList}$<$ E $>$::subList (
+\begin{DoxyParamCaption}
+\item[{int}]{fromIndex, }
+\item[{int}]{toIndex}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_array_list_aace6498dc396a248c3451039129921b2}
+Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive. O(n) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_array_list_8h}{ArrayList.h}\end{DoxyCompactItemize}

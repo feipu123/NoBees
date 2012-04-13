@@ -1,0 +1,396 @@
+\hypertarget{class_linked_list}{
+\section{LinkedList$<$ T $>$ Class Template Reference}
+\label{class_linked_list}\index{LinkedList@{LinkedList}}
+}
+
+
+{\ttfamily \#include $<$LinkedList.h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_linked_list_1_1_const_iterator}{ConstIterator}
+\item 
+class \hyperlink{class_linked_list_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_linked_list_a3c20fcfec867e867f541061a09fc640c}{LinkedList} ()
+\item 
+\hyperlink{class_linked_list_a06c97ccd01573325f1bddf30e15e366c}{LinkedList} (const \hyperlink{class_linked_list}{LinkedList}$<$ T $>$ \&c)
+\item 
+\hyperlink{class_linked_list}{LinkedList}$<$ T $>$ \& \hyperlink{class_linked_list_a07ef021b97550ab6ed0f3a1d1ad7427d}{operator=} (const \hyperlink{class_linked_list}{LinkedList}$<$ T $>$ \&c)
+\item 
+{\footnotesize template$<$class C $>$ }\\\hyperlink{class_linked_list_a7e4c42f63cd8d0624fb8960f25d03e45}{LinkedList} (const C \&c)
+\item 
+\hyperlink{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}{$\sim$LinkedList} ()
+\item 
+void \hyperlink{class_linked_list_ad0177c4910fb1aac2f0fffd06b471e58}{add} (int index, const T \&elem)
+\item 
+bool \hyperlink{class_linked_list_ac3efbdccf1679ad827ea10bef5898785}{add} (const T \&elem)
+\item 
+void \hyperlink{class_linked_list_af19a202520edaf4d33edff6f55daf996}{addFirst} (const T \&elem)
+\item 
+void \hyperlink{class_linked_list_a50c26292740c964ac7bef0e072868be1}{clear} ()
+\item 
+bool \hyperlink{class_linked_list_a2c4297c495231df567e0f0e303b91794}{contains} (const T \&elem) const 
+\item 
+T \& \hyperlink{class_linked_list_aa34d85df4f82f094ba9d6f4708519ebd}{get} (int index)
+\item 
+const T \& \hyperlink{class_linked_list_a78c5a8787f9470caf6338926ada07799}{get} (int index) const 
+\item 
+T \& \hyperlink{class_linked_list_ada8499b0f4f17bf69a30366efccae972}{getFirst} ()
+\item 
+const T \& \hyperlink{class_linked_list_af44b74adc8430722a39e3b6cc98bc6d1}{getFirst} () const 
+\item 
+T \& \hyperlink{class_linked_list_aefe930154ad592cc18c78136bdf07413}{getLast} ()
+\item 
+const T \& \hyperlink{class_linked_list_a0db2a1d97087a713049ea00e94e613e1}{getLast} () const 
+\item 
+int \hyperlink{class_linked_list_a646dd45a585d1900ade684066d0e481e}{indexOf} (const T \&elem) const 
+\item 
+bool \hyperlink{class_linked_list_a1b28b1e19e5aa68f3d89352e307928f6}{isEmpty} () const 
+\item 
+\hyperlink{class_linked_list_1_1_iterator}{Iterator} \hyperlink{class_linked_list_a6304437e7c2bf371965a2e722ecee408}{iterator} ()
+\item 
+\hyperlink{class_linked_list_1_1_const_iterator}{ConstIterator} \hyperlink{class_linked_list_afa4fb24c30cd90be305291270e1c1d43}{constIterator} () const 
+\item 
+T \hyperlink{class_linked_list_a932dc97715de110afc96c9ea5739c3da}{removeIndex} (int index)
+\item 
+bool \hyperlink{class_linked_list_a11920077d4dfb00686249a5ecff12438}{remove} (const T \&elem)
+\item 
+T \hyperlink{class_linked_list_ac673b58c520de5ef8e3c7dc38699b5bf}{removeFirst} ()
+\item 
+T \hyperlink{class_linked_list_aaf5239e3fee9b7571b72990df0c9402e}{removeLast} ()
+\item 
+T \hyperlink{class_linked_list_a9bcd89bb9a2fedac344e6917e15e134e}{set} (int index, const T \&elem)
+\item 
+int \hyperlink{class_linked_list_a1d41dc6acb9222b8dcef37485fbbf0dd}{size} () const 
+\item 
+\hyperlink{class_linked_list}{LinkedList}$<$ T $>$ \hyperlink{class_linked_list_a1979ba893435f94d8746aac9623be412}{subList} (int fromIndex, int toIndex)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class LinkedList$<$ T $>$}
+
+A linked list.
+
+The iterator iterates in the order of the elements being loaded into this list. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_linked_list_a3c20fcfec867e867f541061a09fc640c}{
+\index{LinkedList@{LinkedList}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList@{LinkedList}}
+\subsubsection[{LinkedList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf LinkedList}$<$ T $>$::{\bf LinkedList} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a3c20fcfec867e867f541061a09fc640c}
+Constructs an empty list \hypertarget{class_linked_list_a06c97ccd01573325f1bddf30e15e366c}{
+\index{LinkedList@{LinkedList}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList@{LinkedList}}
+\subsubsection[{LinkedList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf LinkedList}$<$ T $>$::{\bf LinkedList} (
+\begin{DoxyParamCaption}
+\item[{const {\bf LinkedList}$<$ T $>$ \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a06c97ccd01573325f1bddf30e15e366c}
+Copy constructor You may utilize the ``addAll'' function from \hyperlink{_utility_8h}{Utility.h} \hypertarget{class_linked_list_a7e4c42f63cd8d0624fb8960f25d03e45}{
+\index{LinkedList@{LinkedList}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList@{LinkedList}}
+\subsubsection[{LinkedList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ template$<$class C $>$ {\bf LinkedList}$<$ T $>$::{\bf LinkedList} (
+\begin{DoxyParamCaption}
+\item[{const C \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a7e4c42f63cd8d0624fb8960f25d03e45}
+Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's const iterator. You may utilize the ``addAll'' function from \hyperlink{_utility_8h}{Utility.h} \hypertarget{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}{
+\index{LinkedList@{LinkedList}!$\sim$LinkedList@{$\sim$LinkedList}}
+\index{$\sim$LinkedList@{$\sim$LinkedList}!LinkedList@{LinkedList}}
+\subsubsection[{$\sim$LinkedList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf LinkedList}$<$ T $>$::$\sim${\bf LinkedList} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}
+Desturctor 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_linked_list_ad0177c4910fb1aac2f0fffd06b471e58}{
+\index{LinkedList@{LinkedList}!add@{add}}
+\index{add@{add}!LinkedList@{LinkedList}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf LinkedList}$<$ T $>$::add (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_ad0177c4910fb1aac2f0fffd06b471e58}
+Inserts the specified element at the specified position in this list. O(n) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & exception when index is out of bound \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_ac3efbdccf1679ad827ea10bef5898785}{
+\index{LinkedList@{LinkedList}!add@{add}}
+\index{add@{add}!LinkedList@{LinkedList}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf LinkedList}$<$ T $>$::add (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_ac3efbdccf1679ad827ea10bef5898785}
+Appends the specified element to the end of this list. O(1). Always returns true; \hypertarget{class_linked_list_af19a202520edaf4d33edff6f55daf996}{
+\index{LinkedList@{LinkedList}!addFirst@{addFirst}}
+\index{addFirst@{addFirst}!LinkedList@{LinkedList}}
+\subsubsection[{addFirst}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf LinkedList}$<$ T $>$::addFirst (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_af19a202520edaf4d33edff6f55daf996}
+Inserts the specified element at the beginning of this list. O(1). \hypertarget{class_linked_list_a50c26292740c964ac7bef0e072868be1}{
+\index{LinkedList@{LinkedList}!clear@{clear}}
+\index{clear@{clear}!LinkedList@{LinkedList}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf LinkedList}$<$ T $>$::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a50c26292740c964ac7bef0e072868be1}
+Removes all of the elements from this list. O(n). \hypertarget{class_linked_list_afa4fb24c30cd90be305291270e1c1d43}{
+\index{LinkedList@{LinkedList}!constIterator@{constIterator}}
+\index{constIterator@{constIterator}!LinkedList@{LinkedList}}
+\subsubsection[{constIterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf ConstIterator} {\bf LinkedList}$<$ T $>$::constIterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_afa4fb24c30cd90be305291270e1c1d43}
+Returns an const iterator O(1). \hypertarget{class_linked_list_a2c4297c495231df567e0f0e303b91794}{
+\index{LinkedList@{LinkedList}!contains@{contains}}
+\index{contains@{contains}!LinkedList@{LinkedList}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf LinkedList}$<$ T $>$::contains (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a2c4297c495231df567e0f0e303b91794}
+Returns true if this list contains the specified element. O(n). \hypertarget{class_linked_list_a78c5a8787f9470caf6338926ada07799}{
+\index{LinkedList@{LinkedList}!get@{get}}
+\index{get@{get}!LinkedList@{LinkedList}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const T\& {\bf LinkedList}$<$ T $>$::get (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a78c5a8787f9470caf6338926ada07799}
+Returns a const reference to the element at the specified position. O(n). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_aa34d85df4f82f094ba9d6f4708519ebd}{
+\index{LinkedList@{LinkedList}!get@{get}}
+\index{get@{get}!LinkedList@{LinkedList}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T\& {\bf LinkedList}$<$ T $>$::get (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_aa34d85df4f82f094ba9d6f4708519ebd}
+Returns a reference to the element at the specified position. O(n). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & exception when index is out of bound \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_ada8499b0f4f17bf69a30366efccae972}{
+\index{LinkedList@{LinkedList}!getFirst@{getFirst}}
+\index{getFirst@{getFirst}!LinkedList@{LinkedList}}
+\subsubsection[{getFirst}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T\& {\bf LinkedList}$<$ T $>$::getFirst (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_ada8499b0f4f17bf69a30366efccae972}
+Returns a reference to the first element. O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_af44b74adc8430722a39e3b6cc98bc6d1}{
+\index{LinkedList@{LinkedList}!getFirst@{getFirst}}
+\index{getFirst@{getFirst}!LinkedList@{LinkedList}}
+\subsubsection[{getFirst}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const T\& {\bf LinkedList}$<$ T $>$::getFirst (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_af44b74adc8430722a39e3b6cc98bc6d1}
+Returns a const reference to the first element. O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_aefe930154ad592cc18c78136bdf07413}{
+\index{LinkedList@{LinkedList}!getLast@{getLast}}
+\index{getLast@{getLast}!LinkedList@{LinkedList}}
+\subsubsection[{getLast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T\& {\bf LinkedList}$<$ T $>$::getLast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_aefe930154ad592cc18c78136bdf07413}
+Returns a reference to the last element. O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_a0db2a1d97087a713049ea00e94e613e1}{
+\index{LinkedList@{LinkedList}!getLast@{getLast}}
+\index{getLast@{getLast}!LinkedList@{LinkedList}}
+\subsubsection[{getLast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const T\& {\bf LinkedList}$<$ T $>$::getLast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a0db2a1d97087a713049ea00e94e613e1}
+Returns a const reference to the last element. O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_a646dd45a585d1900ade684066d0e481e}{
+\index{LinkedList@{LinkedList}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!LinkedList@{LinkedList}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf LinkedList}$<$ T $>$::indexOf (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a646dd45a585d1900ade684066d0e481e}
+Returns the index of the first occurrence of the specified element O(1). in this list, or -\/1 if this list does not contain the element. \hypertarget{class_linked_list_a1b28b1e19e5aa68f3d89352e307928f6}{
+\index{LinkedList@{LinkedList}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!LinkedList@{LinkedList}}
+\subsubsection[{isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf LinkedList}$<$ T $>$::isEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a1b28b1e19e5aa68f3d89352e307928f6}
+Returns true if this list contains no elements. O(1). \hypertarget{class_linked_list_a6304437e7c2bf371965a2e722ecee408}{
+\index{LinkedList@{LinkedList}!iterator@{iterator}}
+\index{iterator@{iterator}!LinkedList@{LinkedList}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Iterator} {\bf LinkedList}$<$ T $>$::iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a6304437e7c2bf371965a2e722ecee408}
+Returns an iterator O(1). \hypertarget{class_linked_list_a07ef021b97550ab6ed0f3a1d1ad7427d}{
+\index{LinkedList@{LinkedList}!operator=@{operator=}}
+\index{operator=@{operator=}!LinkedList@{LinkedList}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf LinkedList}$<$T$>$\& {\bf LinkedList}$<$ T $>$::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf LinkedList}$<$ T $>$ \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a07ef021b97550ab6ed0f3a1d1ad7427d}
+Assignment operator You may utilize the ``addAll'' function from \hyperlink{_utility_8h}{Utility.h} \hypertarget{class_linked_list_a11920077d4dfb00686249a5ecff12438}{
+\index{LinkedList@{LinkedList}!remove@{remove}}
+\index{remove@{remove}!LinkedList@{LinkedList}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf LinkedList}$<$ T $>$::remove (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a11920077d4dfb00686249a5ecff12438}
+Removes the first occurrence of the specified element from this O(n). list, if it is present. \hypertarget{class_linked_list_ac673b58c520de5ef8e3c7dc38699b5bf}{
+\index{LinkedList@{LinkedList}!removeFirst@{removeFirst}}
+\index{removeFirst@{removeFirst}!LinkedList@{LinkedList}}
+\subsubsection[{removeFirst}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf LinkedList}$<$ T $>$::removeFirst (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_ac673b58c520de5ef8e3c7dc38699b5bf}
+Removes and returns the first element from this list. O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_a932dc97715de110afc96c9ea5739c3da}{
+\index{LinkedList@{LinkedList}!removeIndex@{removeIndex}}
+\index{removeIndex@{removeIndex}!LinkedList@{LinkedList}}
+\subsubsection[{removeIndex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf LinkedList}$<$ T $>$::removeIndex (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a932dc97715de110afc96c9ea5739c3da}
+Removes the element at the specified position in this list. O(n). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & exception when index is out of bound \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_aaf5239e3fee9b7571b72990df0c9402e}{
+\index{LinkedList@{LinkedList}!removeLast@{removeLast}}
+\index{removeLast@{removeLast}!LinkedList@{LinkedList}}
+\subsubsection[{removeLast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf LinkedList}$<$ T $>$::removeLast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_aaf5239e3fee9b7571b72990df0c9402e}
+Removes and returns the last element from this list. O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_a9bcd89bb9a2fedac344e6917e15e134e}{
+\index{LinkedList@{LinkedList}!set@{set}}
+\index{set@{set}!LinkedList@{LinkedList}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf LinkedList}$<$ T $>$::set (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a9bcd89bb9a2fedac344e6917e15e134e}
+Replaces the element at the specified position in this list with the specified element. O(n). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & exception when index is out of bound \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_a1d41dc6acb9222b8dcef37485fbbf0dd}{
+\index{LinkedList@{LinkedList}!size@{size}}
+\index{size@{size}!LinkedList@{LinkedList}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf LinkedList}$<$ T $>$::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_a1d41dc6acb9222b8dcef37485fbbf0dd}
+Returns the number of elements in this list. \hypertarget{class_linked_list_a1979ba893435f94d8746aac9623be412}{
+\index{LinkedList@{LinkedList}!subList@{subList}}
+\index{subList@{subList}!LinkedList@{LinkedList}}
+\subsubsection[{subList}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf LinkedList}$<$T$>$ {\bf LinkedList}$<$ T $>$::subList (
+\begin{DoxyParamCaption}
+\item[{int}]{fromIndex, }
+\item[{int}]{toIndex}
+\end{DoxyParamCaption}
+)}}
+\label{class_linked_list_a1979ba893435f94d8746aac9623be412}
+Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive. O(n). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_index_out_of_bound}{IndexOutOfBound}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_linked_list_8h}{LinkedList.h}\end{DoxyCompactItemize}

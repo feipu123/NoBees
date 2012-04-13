@@ -1,0 +1,60 @@
+\hypertarget{class_linked_list_1_1_iterator}{
+\section{LinkedList$<$ T $>$::Iterator Class Reference}
+\label{class_linked_list_1_1_iterator}\index{LinkedList::Iterator@{LinkedList::Iterator}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_linked_list_1_1_iterator_a1ce93392129927a71250c6ca367cf1bd}{hasNext} ()
+\item 
+T \& \hyperlink{class_linked_list_1_1_iterator_ad8ad5dd4b14cd6dcb848d085bc061d8d}{next} ()
+\item 
+void \hyperlink{class_linked_list_1_1_iterator_a36832ccc5473db2ffee78e58447130b8}{remove} ()
+\end{DoxyCompactItemize}
+\subsubsection*{template$<$class T$>$ class LinkedList$<$ T $>$::Iterator}
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_linked_list_1_1_iterator_a1ce93392129927a71250c6ca367cf1bd}{
+\index{LinkedList::Iterator@{LinkedList::Iterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!LinkedList::Iterator@{LinkedList::Iterator}}
+\subsubsection[{hasNext}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf LinkedList}$<$ T $>$::Iterator::hasNext (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_1_1_iterator_a1ce93392129927a71250c6ca367cf1bd}
+Returns true if the iteration has more elements. O(1). \hypertarget{class_linked_list_1_1_iterator_ad8ad5dd4b14cd6dcb848d085bc061d8d}{
+\index{LinkedList::Iterator@{LinkedList::Iterator}!next@{next}}
+\index{next@{next}!LinkedList::Iterator@{LinkedList::Iterator}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T\& {\bf LinkedList}$<$ T $>$::Iterator::next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_1_1_iterator_ad8ad5dd4b14cd6dcb848d085bc061d8d}
+Returns the next element in the iteration. O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & exception when \hyperlink{class_linked_list_1_1_iterator_a1ce93392129927a71250c6ca367cf1bd}{hasNext()} == false \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_linked_list_1_1_iterator_a36832ccc5473db2ffee78e58447130b8}{
+\index{LinkedList::Iterator@{LinkedList::Iterator}!remove@{remove}}
+\index{remove@{remove}!LinkedList::Iterator@{LinkedList::Iterator}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf LinkedList}$<$ T $>$::Iterator::remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_linked_list_1_1_iterator_a36832ccc5473db2ffee78e58447130b8}
+Removes from the underlying collection the last element returned by the iterator O(1). 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_linked_list_8h}{LinkedList.h}\end{DoxyCompactItemize}

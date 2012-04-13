@@ -1,0 +1,254 @@
+\hypertarget{class_hash_map}{
+\section{HashMap$<$ K, V, H $>$ Class Template Reference}
+\label{class_hash_map}\index{HashMap@{HashMap}}
+}
+
+
+{\ttfamily \#include $<$HashMap.h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_hash_map_1_1_const_iterator}{ConstIterator}
+\item 
+class \hyperlink{class_hash_map_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hash_map_aa93ddf9596512c3e842fe59ca15e9e13}{HashMap} ()
+\item 
+\hyperlink{class_hash_map_a3067fc2e4f1e3dca0666a74cfe574aba}{HashMap} (const \hyperlink{class_hash_map}{HashMap} \&x)
+\item 
+\hyperlink{class_hash_map_a0df361108ae553ae4e89106dbb21121a}{HashMap} (int initialCapacity)
+\item 
+{\footnotesize template$<$class E2 $>$ }\\\hyperlink{class_hash_map_ad6a979c9927c1cd8c19b00a067f625a8}{HashMap} (const E2 \&m)
+\item 
+\hyperlink{class_hash_map}{HashMap} \& \hyperlink{class_hash_map_ab6c4c9d3ca5b69d7c19bb10ec6f6b527}{operator=} (const \hyperlink{class_hash_map}{HashMap} \&x)
+\item 
+\hyperlink{class_hash_map_a3d7c06dec87b3d40af6910cb401f8dcb}{$\sim$HashMap} ()
+\item 
+\hyperlink{class_hash_map_1_1_iterator}{Iterator} \hyperlink{class_hash_map_aa3b142edfeb0e72ecf6741a2ffe6007f}{iterator} ()
+\item 
+\hyperlink{class_hash_map_1_1_const_iterator}{ConstIterator} \hyperlink{class_hash_map_a484e1e766dcc2c90f7a085c19c1e8d71}{constIterator} () const 
+\item 
+void \hyperlink{class_hash_map_a126d97ebd7a4a0c5d88a6e1cc8e1a8eb}{clear} ()
+\item 
+bool \hyperlink{class_hash_map_a845b9f47bbde02094ae9f60fbd2cc380}{containsKey} (const K \&key) const 
+\item 
+bool \hyperlink{class_hash_map_a0b236f958ef6ac2706c8127c27024a99}{containsValue} (const V \&value) const 
+\item 
+V \& \hyperlink{class_hash_map_aa83f1bf4f5c04a3b1cdfc57bcaa8918e}{get} (const K \&key)
+\item 
+const V \& \hyperlink{class_hash_map_aa0d97505a2c30b30913ede8d89429a92}{get} (const K \&key) const 
+\item 
+bool \hyperlink{class_hash_map_afc5be2f3abd968fc5a6b276e2d48215f}{isEmpty} () const 
+\item 
+V \hyperlink{class_hash_map_adbe7c76672b49498a6c43ee54e62d11c}{put} (const K \&key, const V \&value)
+\item 
+V \hyperlink{class_hash_map_a1ed3ded70279d176b2cf15cd5535ae15}{remove} (const K \&key)
+\item 
+int \hyperlink{class_hash_map_ab7977a0f47381547893744d66c213897}{size} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class K, class V, class H$>$class HashMap$<$ K, V, H $>$}
+
+\hyperlink{class_hash_map}{HashMap} is a map implemented by hashing. Also, the 'capacity' here means the number of buckets in your inner implemention, not the current number of the elements.
+
+Template argument H are used to specify the hash function. H should be a class with a static function named ``hashcode'', which takes a parameter of type T and returns a value of type int. For example, the following class 
+\begin{DoxyCode}
+      class Hashint {
+      public:
+          static int hashcode(int obj) {
+              return obj;
+          }
+      };
+\end{DoxyCode}
+ specifies an hash function for integers. Then we can define: 
+\begin{DoxyCode}
+      HashMap<int, int, Hashint> hash;
+\end{DoxyCode}
+
+
+We don't require an order in the iteration, but you should guarantee all elements will be iterated. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hash_map_aa93ddf9596512c3e842fe59ca15e9e13}{
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\subsubsection[{HashMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf HashMap}$<$ K, V, H $>$::{\bf HashMap} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_aa93ddf9596512c3e842fe59ca15e9e13}
+Constructs an empty list with an initial capacity. You can construct it with your own initial capacity. \hypertarget{class_hash_map_a3067fc2e4f1e3dca0666a74cfe574aba}{
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\subsubsection[{HashMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf HashMap}$<$ K, V, H $>$::{\bf HashMap} (
+\begin{DoxyParamCaption}
+\item[{const {\bf HashMap}$<$ K, V, H $>$ \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a3067fc2e4f1e3dca0666a74cfe574aba}
+Copy-\/constructor \hypertarget{class_hash_map_a0df361108ae553ae4e89106dbb21121a}{
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\subsubsection[{HashMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf HashMap}$<$ K, V, H $>$::{\bf HashMap} (
+\begin{DoxyParamCaption}
+\item[{int}]{initialCapacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a0df361108ae553ae4e89106dbb21121a}
+Constructs an empty \hyperlink{class_hash_map}{HashMap} with the specified initial capacity \hypertarget{class_hash_map_ad6a979c9927c1cd8c19b00a067f625a8}{
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\subsubsection[{HashMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ template$<$class E2 $>$ {\bf HashMap}$<$ K, V, H $>$::{\bf HashMap} (
+\begin{DoxyParamCaption}
+\item[{const E2 \&}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}explicit\mbox{]}}}}
+\label{class_hash_map_ad6a979c9927c1cd8c19b00a067f625a8}
+Constructs a new \hyperlink{class_hash_map}{HashMap} with the same mappings as the specified Map. \hypertarget{class_hash_map_a3d7c06dec87b3d40af6910cb401f8dcb}{
+\index{HashMap@{HashMap}!$\sim$HashMap@{$\sim$HashMap}}
+\index{$\sim$HashMap@{$\sim$HashMap}!HashMap@{HashMap}}
+\subsubsection[{$\sim$HashMap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf HashMap}$<$ K, V, H $>$::$\sim${\bf HashMap} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a3d7c06dec87b3d40af6910cb401f8dcb}
+destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hash_map_a126d97ebd7a4a0c5d88a6e1cc8e1a8eb}{
+\index{HashMap@{HashMap}!clear@{clear}}
+\index{clear@{clear}!HashMap@{HashMap}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ void {\bf HashMap}$<$ K, V, H $>$::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a126d97ebd7a4a0c5d88a6e1cc8e1a8eb}
+Removes all of the mappings from this map. \hypertarget{class_hash_map_a484e1e766dcc2c90f7a085c19c1e8d71}{
+\index{HashMap@{HashMap}!constIterator@{constIterator}}
+\index{constIterator@{constIterator}!HashMap@{HashMap}}
+\subsubsection[{constIterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf ConstIterator} {\bf HashMap}$<$ K, V, H $>$::constIterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a484e1e766dcc2c90f7a085c19c1e8d71}
+Returns an CONST iterator over the elements in this map in proper sequence. \hypertarget{class_hash_map_a845b9f47bbde02094ae9f60fbd2cc380}{
+\index{HashMap@{HashMap}!containsKey@{containsKey}}
+\index{containsKey@{containsKey}!HashMap@{HashMap}}
+\subsubsection[{containsKey}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ bool {\bf HashMap}$<$ K, V, H $>$::containsKey (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a845b9f47bbde02094ae9f60fbd2cc380}
+Returns true if this map contains a mapping for the specified key. O(1) for average \hypertarget{class_hash_map_a0b236f958ef6ac2706c8127c27024a99}{
+\index{HashMap@{HashMap}!containsValue@{containsValue}}
+\index{containsValue@{containsValue}!HashMap@{HashMap}}
+\subsubsection[{containsValue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ bool {\bf HashMap}$<$ K, V, H $>$::containsValue (
+\begin{DoxyParamCaption}
+\item[{const V \&}]{value}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a0b236f958ef6ac2706c8127c27024a99}
+Returns true if this map maps one or more keys to the specified value. O(n) \hypertarget{class_hash_map_aa0d97505a2c30b30913ede8d89429a92}{
+\index{HashMap@{HashMap}!get@{get}}
+\index{get@{get}!HashMap@{HashMap}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ const V\& {\bf HashMap}$<$ K, V, H $>$::get (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_aa0d97505a2c30b30913ede8d89429a92}
+Returns a const reference to the value to which the specified key is mapped. O(1) for average 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_hash_map_aa83f1bf4f5c04a3b1cdfc57bcaa8918e}{
+\index{HashMap@{HashMap}!get@{get}}
+\index{get@{get}!HashMap@{HashMap}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ V\& {\bf HashMap}$<$ K, V, H $>$::get (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_aa83f1bf4f5c04a3b1cdfc57bcaa8918e}
+Returns a reference to the value to which the specified key is mapped. O(1) for average 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_hash_map_afc5be2f3abd968fc5a6b276e2d48215f}{
+\index{HashMap@{HashMap}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!HashMap@{HashMap}}
+\subsubsection[{isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ bool {\bf HashMap}$<$ K, V, H $>$::isEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_afc5be2f3abd968fc5a6b276e2d48215f}
+Returns true if this map contains no key-\/value mappings. O(1) \hypertarget{class_hash_map_aa3b142edfeb0e72ecf6741a2ffe6007f}{
+\index{HashMap@{HashMap}!iterator@{iterator}}
+\index{iterator@{iterator}!HashMap@{HashMap}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf Iterator} {\bf HashMap}$<$ K, V, H $>$::iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_aa3b142edfeb0e72ecf6741a2ffe6007f}
+Returns an iterator over the elements in this map in proper sequence. \hypertarget{class_hash_map_ab6c4c9d3ca5b69d7c19bb10ec6f6b527}{
+\index{HashMap@{HashMap}!operator=@{operator=}}
+\index{operator=@{operator=}!HashMap@{HashMap}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ {\bf HashMap}\& {\bf HashMap}$<$ K, V, H $>$::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf HashMap}$<$ K, V, H $>$ \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_ab6c4c9d3ca5b69d7c19bb10ec6f6b527}
+assignment operator \hypertarget{class_hash_map_adbe7c76672b49498a6c43ee54e62d11c}{
+\index{HashMap@{HashMap}!put@{put}}
+\index{put@{put}!HashMap@{HashMap}}
+\subsubsection[{put}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ V {\bf HashMap}$<$ K, V, H $>$::put (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key, }
+\item[{const V \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_adbe7c76672b49498a6c43ee54e62d11c}
+Associates the specified value with the specified key in this map. Returns the previous value, if not exist, a value returned by the default-\/constructor. O(1) \hypertarget{class_hash_map_a1ed3ded70279d176b2cf15cd5535ae15}{
+\index{HashMap@{HashMap}!remove@{remove}}
+\index{remove@{remove}!HashMap@{HashMap}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ V {\bf HashMap}$<$ K, V, H $>$::remove (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_a1ed3ded70279d176b2cf15cd5535ae15}
+Removes the mapping for the specified key from this map if present. Returns the previous value. O(1) for average 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_hash_map_ab7977a0f47381547893744d66c213897}{
+\index{HashMap@{HashMap}!size@{size}}
+\index{size@{size}!HashMap@{HashMap}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K, class V, class H$>$ int {\bf HashMap}$<$ K, V, H $>$::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_map_ab7977a0f47381547893744d66c213897}
+Returns the number of key-\/value mappings in this map. O(1) 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_hash_map_8h}{HashMap.h}\end{DoxyCompactItemize}

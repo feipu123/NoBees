@@ -1,0 +1,211 @@
+\hypertarget{class_tree_set}{
+\section{TreeSet$<$ E $>$ Class Template Reference}
+\label{class_tree_set}\index{TreeSet@{TreeSet}}
+}
+
+
+{\ttfamily \#include $<$TreeSet.h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_tree_set_1_1_const_iterator}{ConstIterator}
+\item 
+class \hyperlink{class_tree_set_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tree_set_a63b26923cbe71d1d8510122122db3d1a}{TreeSet} ()
+\item 
+{\footnotesize template$<$class E2 $>$ }\\\hyperlink{class_tree_set_ac4f90bbe6be9124628602a8051cc1bf7}{TreeSet} (const E2 \&x)
+\item 
+\hyperlink{class_tree_set_adfb73164a45aaf261ce5417ff43133de}{$\sim$TreeSet} ()
+\item 
+\hyperlink{class_tree_set}{TreeSet} \& \hyperlink{class_tree_set_a62c2c924979ed32bb18fad84f951ac92}{operator=} (const \hyperlink{class_tree_set}{TreeSet} \&x)
+\item 
+\hyperlink{class_tree_set_a1cb7531ae5e2e1258d7ee1bdc8e17059}{TreeSet} (const \hyperlink{class_tree_set}{TreeSet} \&x)
+\item 
+\hyperlink{class_tree_set_1_1_iterator}{Iterator} \hyperlink{class_tree_set_a4b22eab02d8d0600c305c29d63f3f7b8}{iterator} ()
+\item 
+\hyperlink{class_tree_set_1_1_const_iterator}{ConstIterator} \hyperlink{class_tree_set_a058de9aabb37e4263cc015365cadfc32}{constIterator} () const 
+\item 
+bool \hyperlink{class_tree_set_a3f311b68d64e3f630ef80eeca5dead7b}{add} (const E \&e)
+\item 
+void \hyperlink{class_tree_set_ae7b265d0ef49ecdfb4da1cfdd83b8778}{clear} ()
+\item 
+bool \hyperlink{class_tree_set_ab049cee0c63f84b93f5a81b338466909}{contains} (const E \&e) const 
+\item 
+const E \& \hyperlink{class_tree_set_a22dd96a543c903dd9b88b0b6d4cd92c6}{first} () const 
+\item 
+bool \hyperlink{class_tree_set_a7b70bc121f66750395cdae672cd1b084}{isEmpty} () const 
+\item 
+const E \& \hyperlink{class_tree_set_aa3eb29e936ae87a7f97c0d0dd4ec86a3}{last} () const 
+\item 
+bool \hyperlink{class_tree_set_aa76016b3ebd8868809812a3f2bd88b9e}{remove} (const E \&e)
+\item 
+int \hyperlink{class_tree_set_a8d184163dd000468de54110fc0999785}{size} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E$>$class TreeSet$<$ E $>$}
+
+A set implemented by balanced tree, the elements being putted must guarantee operator'$<$'
+
+The iterator must iterates in the order defined by the operator'$<$' (from the smallest to the biggest) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tree_set_a63b26923cbe71d1d8510122122db3d1a}{
+\index{TreeSet@{TreeSet}!TreeSet@{TreeSet}}
+\index{TreeSet@{TreeSet}!TreeSet@{TreeSet}}
+\subsubsection[{TreeSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf TreeSet}$<$ E $>$::{\bf TreeSet} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a63b26923cbe71d1d8510122122db3d1a}
+Constructs a new, empty tree set, sorted according to the natural ordering of its elements. \hypertarget{class_tree_set_ac4f90bbe6be9124628602a8051cc1bf7}{
+\index{TreeSet@{TreeSet}!TreeSet@{TreeSet}}
+\index{TreeSet@{TreeSet}!TreeSet@{TreeSet}}
+\subsubsection[{TreeSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ template$<$class E2 $>$ {\bf TreeSet}$<$ E $>$::{\bf TreeSet} (
+\begin{DoxyParamCaption}
+\item[{const E2 \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, explicit\mbox{]}}}}
+\label{class_tree_set_ac4f90bbe6be9124628602a8051cc1bf7}
+Constructs a set containing the elements of the specified collection, in the order they are returned by the collection's iterator. \hypertarget{class_tree_set_adfb73164a45aaf261ce5417ff43133de}{
+\index{TreeSet@{TreeSet}!$\sim$TreeSet@{$\sim$TreeSet}}
+\index{$\sim$TreeSet@{$\sim$TreeSet}!TreeSet@{TreeSet}}
+\subsubsection[{$\sim$TreeSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf TreeSet}$<$ E $>$::$\sim${\bf TreeSet} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_adfb73164a45aaf261ce5417ff43133de}
+Destructor \hypertarget{class_tree_set_a1cb7531ae5e2e1258d7ee1bdc8e17059}{
+\index{TreeSet@{TreeSet}!TreeSet@{TreeSet}}
+\index{TreeSet@{TreeSet}!TreeSet@{TreeSet}}
+\subsubsection[{TreeSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf TreeSet}$<$ E $>$::{\bf TreeSet} (
+\begin{DoxyParamCaption}
+\item[{const {\bf TreeSet}$<$ E $>$ \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a1cb7531ae5e2e1258d7ee1bdc8e17059}
+Copy-\/constructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tree_set_a3f311b68d64e3f630ef80eeca5dead7b}{
+\index{TreeSet@{TreeSet}!add@{add}}
+\index{add@{add}!TreeSet@{TreeSet}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf TreeSet}$<$ E $>$::add (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a3f311b68d64e3f630ef80eeca5dead7b}
+Adds the specified element to this set if it is not already present. Returns true if this set did not already contain the specified element. O(logn) \hypertarget{class_tree_set_ae7b265d0ef49ecdfb4da1cfdd83b8778}{
+\index{TreeSet@{TreeSet}!clear@{clear}}
+\index{clear@{clear}!TreeSet@{TreeSet}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ void {\bf TreeSet}$<$ E $>$::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_ae7b265d0ef49ecdfb4da1cfdd83b8778}
+Removes all of the elements from this set. \hypertarget{class_tree_set_a058de9aabb37e4263cc015365cadfc32}{
+\index{TreeSet@{TreeSet}!constIterator@{constIterator}}
+\index{constIterator@{constIterator}!TreeSet@{TreeSet}}
+\subsubsection[{constIterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf ConstIterator} {\bf TreeSet}$<$ E $>$::constIterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a058de9aabb37e4263cc015365cadfc32}
+Returns an CONST iterator over the elements in this set in proper sequence. \hypertarget{class_tree_set_ab049cee0c63f84b93f5a81b338466909}{
+\index{TreeSet@{TreeSet}!contains@{contains}}
+\index{contains@{contains}!TreeSet@{TreeSet}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf TreeSet}$<$ E $>$::contains (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_ab049cee0c63f84b93f5a81b338466909}
+Returns true if this set contains the specified element. O(logn) \hypertarget{class_tree_set_a22dd96a543c903dd9b88b0b6d4cd92c6}{
+\index{TreeSet@{TreeSet}!first@{first}}
+\index{first@{first}!TreeSet@{TreeSet}}
+\subsubsection[{first}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ const E\& {\bf TreeSet}$<$ E $>$::first (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a22dd96a543c903dd9b88b0b6d4cd92c6}
+Returns a const reference to the first (lowest) element currently in this set. O(logn) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_set_a7b70bc121f66750395cdae672cd1b084}{
+\index{TreeSet@{TreeSet}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!TreeSet@{TreeSet}}
+\subsubsection[{isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf TreeSet}$<$ E $>$::isEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a7b70bc121f66750395cdae672cd1b084}
+Returns true if this set contains no elements. O(1) \hypertarget{class_tree_set_a4b22eab02d8d0600c305c29d63f3f7b8}{
+\index{TreeSet@{TreeSet}!iterator@{iterator}}
+\index{iterator@{iterator}!TreeSet@{TreeSet}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf Iterator} {\bf TreeSet}$<$ E $>$::iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a4b22eab02d8d0600c305c29d63f3f7b8}
+Returns an iterator over the elements in this set in proper sequence. \hypertarget{class_tree_set_aa3eb29e936ae87a7f97c0d0dd4ec86a3}{
+\index{TreeSet@{TreeSet}!last@{last}}
+\index{last@{last}!TreeSet@{TreeSet}}
+\subsubsection[{last}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ const E\& {\bf TreeSet}$<$ E $>$::last (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_aa3eb29e936ae87a7f97c0d0dd4ec86a3}
+Returns a const reference to the last (highest) element currently in this set. O(logn) 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_element_not_exist}{ElementNotExist}} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tree_set_a62c2c924979ed32bb18fad84f951ac92}{
+\index{TreeSet@{TreeSet}!operator=@{operator=}}
+\index{operator=@{operator=}!TreeSet@{TreeSet}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf TreeSet}\& {\bf TreeSet}$<$ E $>$::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf TreeSet}$<$ E $>$ \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a62c2c924979ed32bb18fad84f951ac92}
+Assignment operator \hypertarget{class_tree_set_aa76016b3ebd8868809812a3f2bd88b9e}{
+\index{TreeSet@{TreeSet}!remove@{remove}}
+\index{remove@{remove}!TreeSet@{TreeSet}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf TreeSet}$<$ E $>$::remove (
+\begin{DoxyParamCaption}
+\item[{const E \&}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_aa76016b3ebd8868809812a3f2bd88b9e}
+Removes the specified element from this set if it is present. O(logn) \hypertarget{class_tree_set_a8d184163dd000468de54110fc0999785}{
+\index{TreeSet@{TreeSet}!size@{size}}
+\index{size@{size}!TreeSet@{TreeSet}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ int {\bf TreeSet}$<$ E $>$::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_tree_set_a8d184163dd000468de54110fc0999785}
+Returns the number of elements in this set (its cardinality). O(1) 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_tree_set_8h}{TreeSet.h}\end{DoxyCompactItemize}

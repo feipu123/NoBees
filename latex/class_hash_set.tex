@@ -1,0 +1,205 @@
+\hypertarget{class_hash_set}{
+\section{HashSet$<$ T, H $>$ Class Template Reference}
+\label{class_hash_set}\index{HashSet@{HashSet}}
+}
+
+
+{\ttfamily \#include $<$HashSet.h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_hash_set_1_1_const_iterator}{ConstIterator}
+\item 
+class \hyperlink{class_hash_set_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hash_set_ac59c9d9b1952ad325f8ecce3088fa49e}{HashSet} ()
+\item 
+\hyperlink{class_hash_set_aa934b0583360b04ae4f16af3861e2286}{$\sim$HashSet} ()
+\item 
+\hyperlink{class_hash_set_af159fc24c29460b1af57b979e19d7cf8}{HashSet} (const \hyperlink{class_hash_set}{HashSet} \&c)
+\item 
+\hyperlink{class_hash_set}{HashSet} \& \hyperlink{class_hash_set_a0332fe3d59e16ba2db8ee4ef9df5e25a}{operator=} (const \hyperlink{class_hash_set}{HashSet} \&c)
+\item 
+{\footnotesize template$<$class C $>$ }\\\hyperlink{class_hash_set_a7f67475b071394062251c44b67f7156e}{HashSet} (const C \&c)
+\item 
+\hyperlink{class_hash_set_a8ac5b8b9efdc5cea188f26291264b7e5}{HashSet} (int capacity)
+\item 
+bool \hyperlink{class_hash_set_a372828f1f3db2cd77ece30ae028bae38}{add} (const T \&elem)
+\item 
+void \hyperlink{class_hash_set_a3b138200e3e1571572e89c0da47e07e3}{clear} ()
+\item 
+bool \hyperlink{class_hash_set_ad5d4c93b3cf750c4ed983b3bf92c1b30}{contains} (const T \&elem) const 
+\item 
+bool \hyperlink{class_hash_set_a1893b49141da8f144b6ec2a66d8ea80e}{isEmpty} () const 
+\item 
+\hyperlink{class_hash_set_1_1_iterator}{Iterator} \hyperlink{class_hash_set_a4c32a5782f450ff3946e2f9876f0c6da}{iterator} ()
+\item 
+\hyperlink{class_hash_set_1_1_const_iterator}{ConstIterator} \hyperlink{class_hash_set_af21ade72c48d9e4f315994b50192efec}{constIterator} () const 
+\item 
+bool \hyperlink{class_hash_set_add07e569cdcf534278ab1039d511b715}{remove} (const T \&elem)
+\item 
+int \hyperlink{class_hash_set_a21e68de8656af694da61d7aadd04add9}{size} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class H$>$class HashSet$<$ T, H $>$}
+
+A \hyperlink{class_hash_set}{HashSet} holds elements using a hash table, providing facilities to insert, remove an element into the container and search an element within the container efficiently.
+
+We don't require an order in the iteration, but you should guarantee all elements will be iterated.
+
+Template argument H are used to specify the hash function. H should be a class with a static function named ``hashcode'', which takes a parameter of type T and returns a value of type int. For example, the following class 
+\begin{DoxyCode}
+      class Hashint {
+      public:
+          static int hashcode(int obj) {
+              return obj;
+          }
+      };
+\end{DoxyCode}
+ specifies an hash function for integers. Then we can define: 
+\begin{DoxyCode}
+      HashSet<int, Hashint> hash;
+\end{DoxyCode}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hash_set_ac59c9d9b1952ad325f8ecce3088fa49e}{
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\subsubsection[{HashSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ {\bf HashSet}$<$ T, H $>$::{\bf HashSet} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_ac59c9d9b1952ad325f8ecce3088fa49e}
+Constructs a empty set with your own default capacity \hypertarget{class_hash_set_aa934b0583360b04ae4f16af3861e2286}{
+\index{HashSet@{HashSet}!$\sim$HashSet@{$\sim$HashSet}}
+\index{$\sim$HashSet@{$\sim$HashSet}!HashSet@{HashSet}}
+\subsubsection[{$\sim$HashSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ {\bf HashSet}$<$ T, H $>$::$\sim${\bf HashSet} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_aa934b0583360b04ae4f16af3861e2286}
+Destructor \hypertarget{class_hash_set_af159fc24c29460b1af57b979e19d7cf8}{
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\subsubsection[{HashSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ {\bf HashSet}$<$ T, H $>$::{\bf HashSet} (
+\begin{DoxyParamCaption}
+\item[{const {\bf HashSet}$<$ T, H $>$ \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_af159fc24c29460b1af57b979e19d7cf8}
+Copy constructor \hypertarget{class_hash_set_a7f67475b071394062251c44b67f7156e}{
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\subsubsection[{HashSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ template$<$class C $>$ {\bf HashSet}$<$ T, H $>$::{\bf HashSet} (
+\begin{DoxyParamCaption}
+\item[{const C \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, explicit\mbox{]}}}}
+\label{class_hash_set_a7f67475b071394062251c44b67f7156e}
+Constructs a new set containing the elements in the specified collection. \hypertarget{class_hash_set_a8ac5b8b9efdc5cea188f26291264b7e5}{
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\index{HashSet@{HashSet}!HashSet@{HashSet}}
+\subsubsection[{HashSet}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ {\bf HashSet}$<$ T, H $>$::{\bf HashSet} (
+\begin{DoxyParamCaption}
+\item[{int}]{capacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_a8ac5b8b9efdc5cea188f26291264b7e5}
+Constructs a new, empty set; the backing \hyperlink{class_hash_map}{HashMap} instance has the specified capacity 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hash_set_a372828f1f3db2cd77ece30ae028bae38}{
+\index{HashSet@{HashSet}!add@{add}}
+\index{add@{add}!HashSet@{HashSet}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ bool {\bf HashSet}$<$ T, H $>$::add (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_a372828f1f3db2cd77ece30ae028bae38}
+Adds the specified element to this set if it is not already present. Returns false if element is previously in the set. O(1) for average \hypertarget{class_hash_set_a3b138200e3e1571572e89c0da47e07e3}{
+\index{HashSet@{HashSet}!clear@{clear}}
+\index{clear@{clear}!HashSet@{HashSet}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ void {\bf HashSet}$<$ T, H $>$::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_a3b138200e3e1571572e89c0da47e07e3}
+Removes all of the elements from this set. \hypertarget{class_hash_set_af21ade72c48d9e4f315994b50192efec}{
+\index{HashSet@{HashSet}!constIterator@{constIterator}}
+\index{constIterator@{constIterator}!HashSet@{HashSet}}
+\subsubsection[{constIterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ {\bf ConstIterator} {\bf HashSet}$<$ T, H $>$::constIterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_af21ade72c48d9e4f315994b50192efec}
+Returns an const iterator over the elements in this set. \hypertarget{class_hash_set_ad5d4c93b3cf750c4ed983b3bf92c1b30}{
+\index{HashSet@{HashSet}!contains@{contains}}
+\index{contains@{contains}!HashSet@{HashSet}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ bool {\bf HashSet}$<$ T, H $>$::contains (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_ad5d4c93b3cf750c4ed983b3bf92c1b30}
+Returns true if this set contains the specified element. O(1) for average \hypertarget{class_hash_set_a1893b49141da8f144b6ec2a66d8ea80e}{
+\index{HashSet@{HashSet}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!HashSet@{HashSet}}
+\subsubsection[{isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ bool {\bf HashSet}$<$ T, H $>$::isEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_a1893b49141da8f144b6ec2a66d8ea80e}
+Returns true if this set contains no elements. O(1) \hypertarget{class_hash_set_a4c32a5782f450ff3946e2f9876f0c6da}{
+\index{HashSet@{HashSet}!iterator@{iterator}}
+\index{iterator@{iterator}!HashSet@{HashSet}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ {\bf Iterator} {\bf HashSet}$<$ T, H $>$::iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_a4c32a5782f450ff3946e2f9876f0c6da}
+Returns an iterator over the elements in this set. \hypertarget{class_hash_set_a0332fe3d59e16ba2db8ee4ef9df5e25a}{
+\index{HashSet@{HashSet}!operator=@{operator=}}
+\index{operator=@{operator=}!HashSet@{HashSet}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ {\bf HashSet}\& {\bf HashSet}$<$ T, H $>$::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf HashSet}$<$ T, H $>$ \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_a0332fe3d59e16ba2db8ee4ef9df5e25a}
+Assignment operator \hypertarget{class_hash_set_add07e569cdcf534278ab1039d511b715}{
+\index{HashSet@{HashSet}!remove@{remove}}
+\index{remove@{remove}!HashSet@{HashSet}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ bool {\bf HashSet}$<$ T, H $>$::remove (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_add07e569cdcf534278ab1039d511b715}
+Removes the specified element from this set if it is present. O(1) for average \hypertarget{class_hash_set_a21e68de8656af694da61d7aadd04add9}{
+\index{HashSet@{HashSet}!size@{size}}
+\index{size@{size}!HashSet@{HashSet}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class H$>$ int {\bf HashSet}$<$ T, H $>$::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_hash_set_a21e68de8656af694da61d7aadd04add9}
+Returns the number of elements in this set (its cardinality). O(1) 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_hash_set_8h}{HashSet.h}\end{DoxyCompactItemize}
