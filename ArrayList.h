@@ -140,7 +140,7 @@ public:
      * O(1)
      */
     bool add(const E& e) {
-        if (currentsize == capacity) ensureCapacity(currentsize << 1);
+        if (currentsize == capacity) ensureCapacity(capacity << 1);
         data[currentsize++] = e;
         return true;
     }
