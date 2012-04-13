@@ -97,9 +97,9 @@ public:
      * Destructor
      */
     ~ArrayList() {
-        capacity = 0;
-        currentsize = 0;
-        delete []data;
+        //capacity = 0;
+        //currentsize = 0;
+        delete [] data;
     }
 
     /**
@@ -140,7 +140,7 @@ public:
      * O(1)
      */
     bool add(const E& e) {
-        if (currentsize == capacity) ensureCapacity(2 * currentsize);
+        if (currentsize == capacity) ensureCapacity(currentsize << 1);
         data[currentsize++] = e;
         return true;
     }
@@ -152,7 +152,7 @@ public:
      * @throw IndexOutOfBound
      */
     void add(int index, const E& element) {
-        if (currentsize == capacity) ensureCapacity(2 * currentsize);
+        if (currentsize == capacity) ensureCapacity(capacity << 1);
         for (int i = currentsize - 1; i > index; --i) {
             data[i] = data[i - 1];
         }
@@ -193,6 +193,7 @@ public:
         for (int i = 0; i < currentsize; ++i) {
             data[i] = tmp[i];
         }
+        capacity = minCapacity;
     }
 
     /**
