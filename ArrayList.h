@@ -60,7 +60,8 @@ public:
          * @throw ElementNotExist
          */
         void remove() {
-            parent->remove(position + 1);
+            parent->remove(position);
+            --position;
         }
     };
 
