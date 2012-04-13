@@ -12,13 +12,13 @@ public:
     class ConstIterator {
     public:
         int position;
-        ArrayList<E> *parent;
+        const ArrayList<E> *parent;
         /**
          * Returns true if the iteration has more elements.
          * O(1)
          */
         bool hasNext() {
-            if (position < parent->size - 1) return true;
+            if (position < parent->size() - 1) return true;
             return false;
         }
 
@@ -34,14 +34,14 @@ public:
 
     class Iterator {
         int position;
-        ArrayList<E> *parent;
+        const ArrayList<E> * parent;
     public:
         /**
          * Returns true if the iteration has more elements.
          * O(1)
          */
         bool hasNext() {
-            if (position < parent->size - 1) return true;
+            if (position < parent->size() - 1) return true;
             return false;
         }
 
