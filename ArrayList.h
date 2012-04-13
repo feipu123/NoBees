@@ -116,13 +116,13 @@ public:
     /**
      * Copy-constructor
      */
-    /*ArrayList(const ArrayList& x) {
+    ArrayList(const ArrayList& x) {
         this->ArrayList(x->capacity);
         this->currentSize = x->currentSize;
         for (int i = 0; i < this->currentSize; ++i) {
             this->data[i] = x->data[i];
         }
-    }*/
+    }
 
     /**
      * Returns an iterator over the elements in this list in proper sequence.
