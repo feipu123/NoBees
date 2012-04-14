@@ -13,7 +13,7 @@ int main() {
     for (int i = 0; i < 10; ++i) {
         list.add(i + 1);
     }
-   // cout << list.size() << endl;
+    cout << list.size() << endl;
 
     for (ArrayList<int>::ConstIterator iter = list.constIterator(); iter.hasNext();) {
         cout << iter.next() << endl;
@@ -21,11 +21,11 @@ int main() {
 
 
 
-   //  for (int i = 0; i < 22; ++i) {
-     // cout << list.get(i) << endl;
+     for (int i = 0; i < 10; ++i) {
+        cout << list.get(i) << endl;
 
-     //}
-     system("pause");
+     }
+     //system("pause");
 
 
 return 0;
