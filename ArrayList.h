@@ -100,6 +100,12 @@ public:
         this->currentSize = 0;
     }
 
+    ArrayList(int initialCapacity, int initialCurrentsize) {
+        this->data = new E[initialCapacity];
+        this->capacity = initialCapacity;
+        this->currentSize = initialCurrentsize;
+    }
+
     /**
      * Destructor
      */
@@ -114,21 +120,23 @@ public:
      */
     ArrayList& operator=(const ArrayList& x) {
         delete []data;
-        data = new E[x.capacity];
-        this->currentSize = x.currentSize;
-        for (int i = 0; i < this->currentSize; ++i) {
-            this->data[i] = x.data[i];
+        data = new E[x.size() * 2];
+        currentSize = 0;
+        for (int i = 0; i < x.size(); ++i) {
+            add(x.get(i));
         }
+        return *this;
     }
 
     /**
      * Copy-constructor
      */
     ArrayList(const ArrayList& x) {
-        ArrayList(x.capacity);
-        this->currentSize = x.currentSize;
-        for (int i = 0; i < this->currentSize; ++i) {
-            this->data[i] = x.data[i];
+        data = new E[x.size() * 2];
+        capacity = x.size() * 2;
+        currentSize = 0;
+        for (int i = 0; i < x.size(); ++i) {
+            add(x.get(i));
         }
     }
 
@@ -158,7 +166,8 @@ public:
      */
     bool add(const E& e) {
         if (currentSize == capacity) ensureCapacity(capacity << 1);
-        data[currentSize++] = e;
+        data[currentSize] = e;
+        ++currentSize;
         return true;
     }
 
@@ -170,7 +179,7 @@ public:
      */
     void add(int index, const E& element) {
         if (currentSize == capacity) ensureCapacity(capacity << 1);
-        for (int i = currentSize - 1; i > index; --i) {
+        for (int i = currentSize; i > index; --i) {
             data[i] = data[i - 1];
         }
         data[index] = element;
@@ -325,9 +334,9 @@ public:
      * @throw IndexOutOfBound
      */
     ArrayList subList(int fromIndex, int toIndex) const {
-        ArrayList tmp = ArrayList(2 * (toIndex - fromIndex));
+        ArrayList tmp = ArrayList(toIndex - fromIndex + 1, toIndex - fromIndex);
         for (int i = 0; i < toIndex - fromIndex; ++i) {
-            tmp.data[i] = this->data[fromIndex + i];
+            tmp.get(i) = data[fromIndex + i];
         }
         return tmp;
     }

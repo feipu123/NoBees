@@ -219,7 +219,7 @@ public:
         node *p = head;
         while (p->next != NULL) {
             p = p->next;
-            if (p != NULL) delete p->prev;
+            if (p != NULL && p->prev != head) delete p->prev;
         }
         if (head != tail) delete tail;
         tail = head;
@@ -459,11 +459,8 @@ public:
             tmpnode = tmpnode->next;
         }
         for (int i = fromIndex; i < toIndex; ++i) {
-            node *q = new node(p->data);
+            tmp->add(tmpnode->data);
             tmpnode = tmpnode->next;
-            tmp->tail->next = q;
-            q->prev = tmp->tail;
-            tmp->tail = q;
         }
     return *tmp;
     }
