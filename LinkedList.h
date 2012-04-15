@@ -316,27 +316,57 @@ public:
      * Returns an iterator
      * O(1).
      */
-    Iterator iterator() {}
+    Iterator iterator() {
+        Iterator tmp;
+        tmp.pos = head;
+        return tmp;
+    }
 
     /**
      * Returns an const iterator
      * O(1).
      */
-    ConstIterator constIterator() const {}
+    ConstIterator constIterator() const {
+        ConstIterator tmp;
+        tmp.pos = head;
+        return tmp;
+    }
 
     /**
      * Removes the element at the specified position in this list.
      * O(n).
      * @throw IndexOutOfBound exception when index is out of bound
      */
-    T removeIndex(int index) {}
+    T removeIndex(int index) {
+        node *p = head->next;
+        for (int i = 0; i < index; ++i) {
+            p = p->next;
+        }
+        p->prev->next = p->next;
+        p->next->prev = p->prev;
+        T tmp = p->data;
+        delete p;
+    return tmp;
+    }
 
     /**
      * Removes the first occurrence of the specified element from this
      * O(n).
      * list, if it is present.
      */
-    bool remove(const T& elem) {}
+    bool remove(const T& elem) {
+        node *p = head->next;
+        while(p != NULL) {
+            if (p->data == elem) {
+                p->prev->next = p->next;
+                p->next->prev = p->prev;
+                delete p;
+                return true;
+            }
+            p = p->next;
+        }
+        return false;
+    }
 
     /**
      * Removes and returns the first element from this list.
