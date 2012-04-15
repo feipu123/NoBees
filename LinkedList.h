@@ -403,12 +403,15 @@ public:
      */
     LinkedList<T> subList(int fromIndex, int toIndex) {
         LinkedList *tmp = new LinkedList();
+
         node *p = head->next;
         for (int i = 0; i < fromIndex; ++i) {
             p = p->next;
         }
         for (int i = fromIndex; i < toIndex; ++i) {
-            tmp->
+            node
+            tmp->data = p->data;
+            p = p->next;
         }
     }
 };

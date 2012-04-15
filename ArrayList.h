@@ -34,7 +34,7 @@ public:
 
     class Iterator {
         int position;
-        const ArrayList<E> * parent;
+        const ArrayList<E> *parent;
     public:
         /**
          * Returns true if the iteration has more elements.
@@ -80,6 +80,15 @@ public:
      */
     template <class E2>
     explicit ArrayList(const E2& x) {
+        data = new E[10];
+        capacity = 10;
+        currentSize = 0;
+        E2::iterator iter = x.iterator();
+        while (iter.hasNext()) {
+            if (currentSize == capacity) ensureCapacity(capacity << 1);
+            data[currentSize] = iter.next();
+            ++currentSize;
+        }
 
     }
 
