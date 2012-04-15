@@ -8,27 +8,29 @@
  *
  * The iterator iterates in the order of the elements being loaded into this list.
  */
-template <class T> class LinkedList {
+template <class T>
+class LinkedList {
     struct node{
         T data;
         node *next;
         node *prev;
+        node(T &x) {
+            data = x;
+            next = NULL;
+            prev = NULL;
+        }
+        node() {
+            next = NULL;
+            prev = NULL;
+        }
     };
     node *head;
     node *tail;
 public:
-    node(T &x) {
-        data = x;
-        next = NULL;
-        tail = NULL;
-    }
-    node() {
-        next = NULL;
-        tail = NULL;
-    }
+
     class ConstIterator {
-        LinkedList::node *pos;
     public:
+        LinkedList<T>::node *pos;
         /**
          * Returns true if the iteration has more elements.
          * O(1).
@@ -51,6 +53,7 @@ public:
 
     class Iterator {
     public:
+        LinkedList<T>::node *pos;
         /**
          * Returns true if the iteration has more elements.
          * O(1).
@@ -152,7 +155,7 @@ public:
         node *p = head;
         while (p != NULL) {
             p = p->next;
-            delete p->prev;
+            if (p != NULL) delete p->prev;
         }
         delete tail;
     }
@@ -181,7 +184,8 @@ public:
      * Always returns true;
      */
     bool add(const T& elem) {
-        node *tmp = new node(elem);
+        LinkedList::node *tmp = new LinkedList::node();
+        tmp->data = elem;
         tail->next = tmp;
         tmp->prev = tail;
         tail = tmp;
@@ -342,6 +346,7 @@ public:
         for (int i = 0; i < index; ++i) {
             p = p->next;
         }
+        if (p == tail) tail = p->prev;
         p->prev->next = p->next;
         p->next->prev = p->prev;
         T tmp = p->data;
@@ -358,6 +363,7 @@ public:
         node *p = head->next;
         while(p != NULL) {
             if (p->data == elem) {
+                if (p == tail) tail = p->prev;
                 p->prev->next = p->next;
                 p->next->prev = p->prev;
                 delete p;
@@ -433,16 +439,21 @@ public:
      */
     LinkedList<T> subList(int fromIndex, int toIndex) {
         LinkedList *tmp = new LinkedList();
-
-        node *p = head->next;
+        LinkedList::node *p = new node();
+        tmp->head = p;
+        tmp->tail = p;
+        node *tmpnode = head->next;
         for (int i = 0; i < fromIndex; ++i) {
-            p = p->next;
+            tmpnode = tmpnode->next;
         }
         for (int i = fromIndex; i < toIndex; ++i) {
-            node
-            tmp->data = p->data;
-            p = p->next;
+            node *q = new node(p->data);
+            tmpnode = tmpnode->next;
+            tmp->tail->next = q;
+            q->prev = tmp->tail;
+            tmp->tail = q;
         }
+    return tmp;
     }
 };
 #endif
