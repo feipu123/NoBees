@@ -83,7 +83,7 @@ public:
         data = new E[10];
         capacity = 10;
         currentSize = 0;
-        E2::iterator iter = x.iterator();
+        typename E2::iterator iter = x.iterator();
         while (iter.hasNext()) {
             if (currentSize == capacity) ensureCapacity(capacity << 1);
             data[currentSize] = iter.next();
