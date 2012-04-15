@@ -33,9 +33,9 @@ public:
     };
 
     class Iterator {
+    public:
         int position;
         const ArrayList<E> *parent;
-    public:
         /**
          * Returns true if the iteration has more elements.
          * O(1)
@@ -79,17 +79,16 @@ public:
      * the order they are returned by the collection's iterator.
      */
     template <class E2>
-    explicit ArrayList(const E2& x) {
+    explicit ArrayList(E2& x) {
         data = new E[10];
         capacity = 10;
         currentSize = 0;
-        typename E2::iterator iter = x.iterator();
+        typename E2::Iterator iter = x.iterator();
         while (iter.hasNext()) {
             if (currentSize == capacity) ensureCapacity(capacity << 1);
             data[currentSize] = iter.next();
             ++currentSize;
         }
-
     }
 
     /**
@@ -105,20 +104,20 @@ public:
      * Destructor
      */
     ~ArrayList() {
-        //capacity = 0;
-        //currentSize = 0;
-        delete [] data;
+        capacity = 0;
+        currentSize = 0;
+        delete []data;
     }
 
     /**
      * Assignment operator
      */
     ArrayList& operator=(const ArrayList& x) {
-        this->clear();
-        this->ArrayList(x->capacity);
-        this->currentSize = x->currentSize;
+        delete []data;
+        data = new E[x.capacity];
+        this->currentSize = x.currentSize;
         for (int i = 0; i < this->currentSize; ++i) {
-            this->data[i] = x->data[i];
+            this->data[i] = x.data[i];
         }
     }
 
@@ -126,10 +125,10 @@ public:
      * Copy-constructor
      */
     ArrayList(const ArrayList& x) {
-        this->ArrayList(x->capacity);
-        this->currentSize = x->currentSize;
+        ArrayList(x.capacity);
+        this->currentSize = x.currentSize;
         for (int i = 0; i < this->currentSize; ++i) {
-            this->data[i] = x->data[i];
+            this->data[i] = x.data[i];
         }
     }
 
@@ -328,7 +327,7 @@ public:
     ArrayList subList(int fromIndex, int toIndex) const {
         ArrayList tmp = ArrayList(2 * (toIndex - fromIndex));
         for (int i = 0; i < toIndex - fromIndex; ++i) {
-            tmp->data[i] = this->data[fromIndex + i];
+            tmp.data[i] = this->data[fromIndex + i];
         }
         return tmp;
     }

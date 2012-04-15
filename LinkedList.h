@@ -80,7 +80,7 @@ public:
          * @throw ElementNotExist
          */
         void remove() {
-            LinkedList::node *tmp = pos->prev;
+            LinkedList<T>::node *tmp = pos->prev;
             tmp->next = pos->next;
             pos->next->prev = tmp;
             delete pos;
@@ -101,7 +101,7 @@ public:
      * You may utilize the ``addAll'' function from Utility.h
      */
     LinkedList(const LinkedList<T> &c) {
-        node *p = c->head;
+        node *p = c.head;
         node *q = new node();
         head = q;
         while (p->next != NULL) {
@@ -119,18 +119,11 @@ public:
      * You may utilize the ``addAll'' function from Utility.h
      */
     LinkedList<T>& operator=(const LinkedList<T> &c) {
-        node *p = head->next;
+        this->clear();
+        node *p = (c.head)->next;
         while (p != NULL) {
-            p = p->next;
-            delete p->prev;
-        }
-        if (head != tail) {
-            delete tail;
-            tail = head;
-        }
-        p = c->head->next;
-        while (p != NULL) {
-            node *tmp = new node(p->data);
+            node *tmp = new node();
+            tmp->data = p->data;
             tail->next = tmp;
             tmp->prev = tail;
             tail = tmp;
@@ -171,7 +164,8 @@ public:
         for (int i = 0; i < index; ++i) {
             p = p->next;
         }
-        node *tmp = new node(elem);
+        node *tmp = new node();
+        tmp->data = elem;
         p->prev->next = tmp;
         tmp->prev = p->prev;
         tmp->next = p;
@@ -197,11 +191,19 @@ public:
      * O(1).
      */
     void addFirst(const T& elem) {
-        node *tmp = new node(elem);
-        tmp->next = head->next;
-        tmp->next->prev = tmp;
-        head->next = tmp;
-        tmp->prev = head;
+        node *tmp = new node();
+        tmp->data = elem;
+        if (head == tail) {
+            tail = tmp;
+            head->next = tmp;
+            tmp->prev = head;
+        }
+        else {
+            tmp->next = head->next;
+            head->next = tmp;
+            tmp->prev = head;
+            tmp->next->prev = tmp;
+        }
     }
 
     /**
@@ -209,10 +211,10 @@ public:
      * O(n).
      */
     void clear() {
-        node *p = head->next;
-        while (p != NULL) {
+        node *p = head;
+        while (p->next != NULL) {
             p = p->next;
-            delete p->prev;
+            if (p != NULL) delete p->prev;
         }
         if (head != tail) delete tail;
         tail = head;
@@ -342,13 +344,13 @@ public:
      * @throw IndexOutOfBound exception when index is out of bound
      */
     T removeIndex(int index) {
-        node *p = head->next;
+        node *p = this->head->next;
         for (int i = 0; i < index; ++i) {
             p = p->next;
         }
-        if (p == tail) tail = p->prev;
+        if (p != tail) p->next->prev = p->prev;
+        else tail = p->prev;
         p->prev->next = p->next;
-        p->next->prev = p->prev;
         T tmp = p->data;
         delete p;
     return tmp;
@@ -366,6 +368,7 @@ public:
                 if (p == tail) tail = p->prev;
                 p->prev->next = p->next;
                 p->next->prev = p->prev;
+                if (p == tail) tail = p->prev;
                 delete p;
                 return true;
             }
@@ -453,7 +456,7 @@ public:
             q->prev = tmp->tail;
             tmp->tail = q;
         }
-    return tmp;
+    return *tmp;
     }
 };
 #endif
