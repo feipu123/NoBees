@@ -30,7 +30,7 @@ public:
 
     class ConstIterator {
     public:
-        LinkedList<T>::node *pos;
+        node *pos;
         /**
          * Returns true if the iteration has more elements.
          * O(1).
@@ -53,7 +53,7 @@ public:
 
     class Iterator {
     public:
-        LinkedList<T>::node *pos;
+        node *pos;
         /**
          * Returns true if the iteration has more elements.
          * O(1).
@@ -80,7 +80,7 @@ public:
          * @throw ElementNotExist
          */
         void remove() {
-            LinkedList<T>::node *tmp = pos->prev;
+            node *tmp = pos->prev;
             tmp->next = pos->next;
             pos->next->prev = tmp;
             delete pos;
@@ -160,16 +160,21 @@ public:
      * @throw IndexOutOfBound exception when index is out of bound
      */
     void add(int index, const T& elem) {
-        node *p = head->next;
+        node *p = head;
         for (int i = 0; i < index; ++i) {
             p = p->next;
         }
         node *tmp = new node();
         tmp->data = elem;
-        p->prev->next = tmp;
-        tmp->prev = p->prev;
-        tmp->next = p;
-        p->prev = tmp;
+        tmp->prev = p;
+        tmp->next = p->next;
+        p->next = tmp;
+        if (p != tail) tmp->next->prev = tmp;
+        else tail = tmp;
+        //p->prev->next = tmp;
+        //tmp->prev = p->prev;
+        //tmp->next = p;
+        //p->prev = tmp;
     }
 
     /**
@@ -178,7 +183,7 @@ public:
      * Always returns true;
      */
     bool add(const T& elem) {
-        LinkedList::node *tmp = new LinkedList::node();
+        node *tmp = new node();
         tmp->data = elem;
         tail->next = tmp;
         tmp->prev = tail;
@@ -446,7 +451,7 @@ public:
      */
     LinkedList<T> subList(int fromIndex, int toIndex) {
         LinkedList *tmp = new LinkedList();
-        LinkedList::node *p = new node();
+        node *p = new node();
         tmp->head = p;
         tmp->tail = p;
         node *tmpnode = head->next;

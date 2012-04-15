@@ -85,12 +85,14 @@ int main()
 		for (int i = 1; i <= 10; i++) link_a.addFirst(i);/** 正向加入元素10..1 */
         displayLinkedList(link_a);
         link_a.add(3,11);/** 在a[3]加入元素11 */
-        cout << "add(3,11): "; displayLinkedList(link_a);
+        cout << "add(3,11): "; 
+        displayLinkedList(link_a);
         link_a.add(10,12);/** 在a[10]加入元素12 */
         cout << "add(10,12): "; displayLinkedList(link_a);
 
     cout << "\n### Part II : method Get ###" << endl;
-        for (int i = 0; i < 12; i++) cout << link_a.get(i) << " ";
+        for (int i = 0; i < 12; i++) 
+            cout << link_a.get(i) << " ";
         cout << endl;
         cout << link_a.getFirst() << " " << link_a.getLast() << endl;/** 返回头元素及尾元素 */
 
