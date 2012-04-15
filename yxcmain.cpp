@@ -86,7 +86,6 @@ int main()
         displayLinkedList(link_a);
         link_a.add(3,11);/** 在a[3]加入元素11 */
         cout << "add(3,11): "; displayLinkedList(link_a);
-        system("pause");
         link_a.add(10,12);/** 在a[10]加入元素12 */
         cout << "add(10,12): "; displayLinkedList(link_a);
 
@@ -101,6 +100,7 @@ int main()
         link_b.remove(3); link_b.remove(12);/** 删除LinkedList b中的元素3及12*/
         cout << "remove(3) & remove(12): "; displayLinkedList(link_b);
         link_b = link_a;/** LinkedList赋值 */
+
         link_b.removeIndex(5);/** 删除LinkedList b中元素b[5] */
         while (1) {}
         cout << "removeIndex(5): ";displayLinkedList(link_b);

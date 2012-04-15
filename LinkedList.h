@@ -344,14 +344,18 @@ public:
      * @throw IndexOutOfBound exception when index is out of bound
      */
     T removeIndex(int index) {
-        node *p = this->head->next;
+        node *p = head->next;
         for (int i = 0; i < index; ++i) {
             p = p->next;
         }
+        T tmp = p->data;
+        p->prev->next = p->next;
         if (p != tail) p->next->prev = p->prev;
         else tail = p->prev;
-        p->prev->next = p->next;
-        T tmp = p->data;
+
+        //if (p != tail && p != NULL) p->next->prev = p->prev;
+        //else if (p == tail) tail = p->prev;
+        //p->prev->next = p->next;
         delete p;
     return tmp;
     }
