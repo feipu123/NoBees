@@ -31,7 +31,7 @@ public:
          * @throw ElementNotExist
          */
         const E& next() {
-            return parent->data[++position];
+            return parent->get(++position);
         }
     };
 
@@ -56,8 +56,8 @@ public:
          * O(1)
          * @throw ElementNotExist
          */
-        E& next() {
-            return parent->data[++position];
+        const E& next() {
+            return parent->get(++position);
         }
 
         /**
