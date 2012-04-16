@@ -38,7 +38,7 @@ public:
     class Iterator {
         int position;
     public:
-        const ArrayList<E> *parent;
+        ArrayList<E> *parent;
         Iterator() {
             position = -1;
         }
@@ -56,7 +56,7 @@ public:
          * O(1)
          * @throw ElementNotExist
          */
-        const E& next() {
+        E& next() {
             return parent->get(++position);
         }
 
