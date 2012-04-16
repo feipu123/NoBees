@@ -7,12 +7,15 @@ template <class E>
 class ArrayList {
     E *data;
     int currentSize, capacity;
-
 public:
     class ConstIterator {
-    public:
         int position;
+    public:
         const ArrayList<E> *parent;
+        ConstIterator() {
+            position = -1;
+        }
+
         /**
          * Returns true if the iteration has more elements.
          * O(1)
@@ -33,9 +36,12 @@ public:
     };
 
     class Iterator {
-    public:
         int position;
+    public:
         const ArrayList<E> *parent;
+        Iterator() {
+            position = -1;
+        }
         /**
          * Returns true if the iteration has more elements.
          * O(1)
@@ -60,7 +66,7 @@ public:
          * @throw ElementNotExist
          */
         void remove() {
-            parent->remove(position);
+            parent->removeIndex(position);
             --position;
         }
     };
@@ -69,9 +75,9 @@ public:
      * Constructs an empty list with an initial capacity of ten.
      */
     ArrayList() {
-        this->data = new E[10];
-        this->capacity = 10;
-        this->currentSize = 0;
+        data = new E[10];
+        capacity = 10;
+        currentSize = 0;
     }
 
     /**
@@ -95,15 +101,15 @@ public:
      * Constructs an empty list with the specified initial capacity.
      */
     ArrayList(int initialCapacity) {
-        this->data = new E[initialCapacity];
-        this->capacity = initialCapacity;
-        this->currentSize = 0;
+        data = new E[initialCapacity];
+        capacity = initialCapacity;
+        currentSize = 0;
     }
 
     ArrayList(int initialCapacity, int initialCurrentsize) {
-        this->data = new E[initialCapacity];
-        this->capacity = initialCapacity;
-        this->currentSize = initialCurrentsize;
+        data = new E[initialCapacity];
+        capacity = initialCapacity;
+        currentSize = initialCurrentsize;
     }
 
     /**
@@ -144,20 +150,18 @@ public:
      * Returns an iterator over the elements in this list in proper sequence.
      */
     Iterator iterator() {
-             Iterator tmp;
-             tmp.position = -1;
-             tmp.parent = this;
-             return tmp;
+        Iterator tmp;
+        tmp.parent = this;
+        return tmp;
     }
 
     /**
      * Returns an CONST iterator over the elements in this list in proper sequence.
      */
     ConstIterator constIterator() const {
-                  ConstIterator tmp;
-                  tmp.position = -1;
-                  tmp.parent = this;
-                  return tmp;
+        ConstIterator tmp;
+        tmp.parent = this;
+        return tmp;
     }
 
     /**
