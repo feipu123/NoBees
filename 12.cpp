@@ -10,7 +10,7 @@
 #include <cstdlib>
 using namespace std;
 
-ofstream fout("judge.out");
+ofstream fout("judgeout.txt");
 
 void goWA() {
     cerr << "WRONG ANSWER" << endl;

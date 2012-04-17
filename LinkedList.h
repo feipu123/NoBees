@@ -82,7 +82,7 @@ public:
         void remove() {
             node *tmp = pos->prev;
             tmp->next = pos->next;
-            pos->next->prev = tmp;
+            if (pos->next != NULL) pos->next->prev = tmp;
             delete pos;
             pos = tmp;
         }
