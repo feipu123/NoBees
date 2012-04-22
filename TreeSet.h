@@ -2,6 +2,7 @@
 #define __TREESET_H
 
 #include "Utility.h"
+#include <cstdlib>
 
 /**
  * A set implemented by balanced tree,
@@ -12,14 +13,61 @@
 
 template <class E>
 class TreeSet {
+    struct node{
+        E data;
+        int aux;
+        node *lf, *rh, *fa;
+        node() {
+            srand(time(NULL));
+            aux = rand();
+        }
+    }
+    node *root;
+    node *Null;
+    int siz;
+    node::node(E x) {
+        srand(time(NULL));
+        aux = rand();
+        data = x;
+        lf = rh = Null;
+    }
 public:
+    void RotateL(Node* &x) {
+        Node *y = x->rh;
+        x->rh = y->lf;
+        y->lf = x;
+        x = y;
+    }
+    void RotateR(Node* &x) {
+        Node *y = x->lf;
+        x->lf = y->rh;
+        y->rh = x;
+        x = y;
+    }
+    void insert(node* &nd, E &e) {
+        if (nd == Null) {
+            nd = new node(e);
+            ++size;
+            return;
+        }
+        if (e < nd->data) {
+            Insert(nd->lf, e);
+            if (nd->lf->aux < nd->aux) RotateR(nd);
+        }
+        else {
+            Insert(nd->rh, e);
+            if (nd->rh->aux < nd->aux) RotateL(nd);
+        }
+    }
     class ConstIterator {
+        E value;
     public:
         /**
          * Returns true if the iteration has more elements.
          * O(logn)
          */
-        bool hasNext() { }
+        bool hasNext() {
+        }
 
         /**
          * Returns a const reference to the next element in the iteration.
@@ -49,13 +97,19 @@ public:
          * O(logn)
          * @throw ElementNotExist
          */
-        void remove() { }
+        void remove() {
+
+        }
     };
 
     /**
      * Constructs a new, empty tree set, sorted according to the natural ordering of its elements.
      */
-    TreeSet() { }
+    TreeSet() {
+        Null = new node();
+        root = Null;
+        siz = 0;
+    }
 
     /**
      * Constructs a set containing the elements of the specified collection, in
@@ -72,7 +126,9 @@ public:
     /**
      * Assignment operator
      */
-    TreeSet& operator=(const TreeSet& x) { }
+    TreeSet& operator=(const TreeSet& x) {
+        clear();
+    }
 
     /**
      * Copy-constructor
@@ -94,7 +150,12 @@ public:
      * Returns true if this set did not already contain the specified element.
      * O(logn)
      */
-    bool add(const E& e) { }
+
+    bool add(const E& e) {
+        if (contains(e)) return false;
+        insert(root, e);
+        return true;
+    }
 
     /**
      * Removes all of the elements from this set.
@@ -105,27 +166,43 @@ public:
      * Returns true if this set contains the specified element.
      * O(logn)
      */
-    bool contains(const E& e) const { }
+    bool contains(const E& e) const {
+
+    }
 
     /**
      * Returns a const reference to the first (lowest) element currently in this set.
      * O(logn)
      * @throw ElementNotExist
      */
-    const E& first() const { }
+    const E& first() const {
+        node *tmp = root;
+        while (tmp->lf != Null) {
+            tmp = tmp->lf;
+        }
+        return tmp->data;
+    }
 
     /**
      * Returns true if this set contains no elements.
      * O(1)
      */
-    bool isEmpty() const { }
+    bool isEmpty() const {
+        return (siz == 0);
+    }
 
     /**
      * Returns a const reference to the last (highest) element currently in this set.
      * O(logn)
      * @throw ElementNotExist
      */
-    const E& last() const { }
+    const E& last() const {
+        node *tmp = root;
+        while (tmp->rh != Null) {
+            tmp = tmp->rh;
+        }
+        return tmp->data;
+    }
 
     /**
      * Removes the specified element from this set if it is present.
@@ -137,6 +214,8 @@ public:
      * Returns the number of elements in this set (its cardinality).
      * O(1)
      */
-    int size() const { }
+    int size() const {
+        return siz;
+    }
 };
 #endif
