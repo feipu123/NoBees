@@ -1,5 +1,3 @@
-/** @file */
-
 #ifndef __TREESET_H
 #define __TREESET_H
 
@@ -13,11 +11,9 @@
  */
 
 template <class E>
-class TreeSet
-{
+class TreeSet {
 public:
-    class ConstIterator
-    {
+    class ConstIterator {
     public:
         /**
          * Returns true if the iteration has more elements.
@@ -33,8 +29,7 @@ public:
         const E& next() { }
     };
 
-    class Iterator
-    {
+    class Iterator {
     public:
         /**
          * Returns true if the iteration has more elements.
