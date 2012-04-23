@@ -156,7 +156,7 @@ public:
      * Copy constructor
      */
     TreeMap(const TreeMap &c) {
-                  addAll(*this, x);              
+                  addAll(*this, c);              
     }
 
     /**
@@ -181,8 +181,7 @@ public:
      */
     TreeMap& operator=(const TreeMap &c) {
              clear();
-        siz = x->size();
-        makeTree(Root, x->getRoot());
+        addAll(*this, c);
         return *this;
     }
 
@@ -191,31 +190,52 @@ public:
      * given map
      */
     template <class C> TreeMap(const C& c) {
-             }
+             addAll(*this, c);
+    }
 
     /**
      * Returns an iterator over the elements in this map.
      * O(1).
      */
-    Iterator iterator() {}
+    Iterator iterator() {
+            Iterator *tmp = new Iterator(this);
+            return *tmp;         
+    }
 
     /**
      * Returns an const iterator over the elements in this map.
      * O(1).
      */
-    ConstIterator constIterator() const {}
+    ConstIterator constIterator() const {
+        ConstIterator *tmp = new ConstIterator(this);
+        return *tmp;                  
+    }
 
     /**
      * Removes all of the mappings from this map.
      * O(n).
      */
-    void clear() {}
+    void clear() {
+         if (p == NULL) return;
+        clear(p->lf);
+        clear(p->rh);
+        delete p;
+    }
 
+    bool contain(node *p, const K& key) const {
+        if (p == NULL) return false;
+        if (p->data == key) return true;
+        if (e < p->data) return contain(p->lf, key);
+        else return contain(p->rh, key);
+    }
+    
     /**
      * Returns true if this map contains a mapping for the specified key.
      * O(logn).
      */
-    bool containsKey(const K& key) const {}
+    bool containsKey(const K& key) const {
+         return contain(Root, key);
+    }
 
     /**
      * Returns true if this map contains a mapping for the specified value.
