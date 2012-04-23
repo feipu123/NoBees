@@ -31,7 +31,7 @@ static const int MAXN = 1000000000;
             aux = rand() % MAXN;
             lf = rh = NULL;
         }
-        node(const node* &y) {
+        node(const node* const y) {
             data = y->data;
             lf = y->lf;
             rh = y->rh;
@@ -54,7 +54,7 @@ public:
         y->rh = x;
         x = y;
     }
-    void Insert(node* &nd, E &e) {
+    void Insert(node* &nd, const E &e) {
         if (nd == NULL) {
             nd = new node(e);
             ++siz;
@@ -69,7 +69,7 @@ public:
             if (nd->rh->aux < nd->aux) RotateL(nd);
         }
     }
-    void Delete(node* &nd, E &e) {
+    void Delete(node* &nd, const E &e) {
         if (nd == NULL) return;
         if (nd->data == e) {
             if (nd->lf == NULL || nd->rh == NULL) {
@@ -106,7 +106,7 @@ public:
         TreeSet *parent;
         E value;
     public:
-        ConstIterator(TreeSet* &x) {
+        ConstIterator(TreeSet* const x) {
             parent = x;
             node *p = x->Root;
             while (p->lf != NULL) {
@@ -154,7 +154,7 @@ public:
         TreeSet *parent;
         E value;
     public:
-        Iterator(TreeSet* &x) {
+        Iterator(TreeSet* const x) {
             parent = x;
             node *p = x->getRoot();
             while (p->lf != NULL) {
@@ -248,7 +248,7 @@ public:
     /**
      * Assignment operator
      */
-    void makeTree(node* &x, node* &y){
+    void makeTree(node* &x, node* y){
         if (y == NULL) {
             x = NULL;
             return;
@@ -271,7 +271,7 @@ public:
 
 
     TreeSet(const TreeSet& x) {
-        makeTree(Root, x->getRoot());
+        makeTree(Root, x.getRoot());
     }
 
     /**
@@ -321,7 +321,7 @@ public:
      * Returns true if this set contains the specified element.
      * O(logn)
      */
-    bool contain(node *p, const E& e) {
+    bool contain(node *p, const E& e) const {
         if (p == NULL) return false;
         if (p->data == e) return true;
         if (e < p->data) return contain(p->lf, e);
@@ -385,7 +385,7 @@ public:
         return siz;
     }
 
-    node* &getRoot(){
+    node* getRoot() const{
         return Root;
     }
 };
