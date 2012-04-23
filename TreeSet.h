@@ -14,7 +14,7 @@
 
 template <class E>
 class TreeSet {
-public:
+private:
 static const int MAXN = 1000000000;
     struct node{
         E data;
@@ -38,7 +38,6 @@ static const int MAXN = 1000000000;
             aux = y->aux;
         }
     };
-private:
     node *Root;
     int siz;
 public:
