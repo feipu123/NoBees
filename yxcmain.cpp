@@ -265,4 +265,5 @@ int main()
 //        cout << "remove the first Entry using Iterator::remove() : "; displayHashMap(hashmap_b);/** 利用Iterator::remove()删除元素 */
 
     cout << "Hello World!" << endl;
+    system("pause");
 }

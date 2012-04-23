@@ -25,7 +25,7 @@ static const int MAXN = 1000000000;
             aux = rand() % MAXN;
             lf = rh = NULL;
         }
-        node(E x) {
+        node(const E& x) {
             data = x;
             srand(time(NULL));
             aux = rand() % MAXN;
@@ -54,7 +54,7 @@ public:
         y->rh = x;
         x = y;
     }
-    void Insert(node* &nd, const E &e) {
+    void Insert(node* &nd, const E& e) {
         if (nd == NULL) {
             nd = new node(e);
             ++siz;
@@ -69,7 +69,7 @@ public:
             if (nd->rh->aux < nd->aux) RotateL(nd);
         }
     }
-    void Delete(node* &nd, const E &e) {
+    void Delete(node* &nd, const E& e) {
         if (nd == NULL) return;
         if (nd->data == e) {
             if (nd->lf == NULL || nd->rh == NULL) {
@@ -152,7 +152,7 @@ public:
 
     class Iterator {
         TreeSet *parent;
-        E value;
+        E* value;//**************************************ATTENTION
     public:
         Iterator(TreeSet* const x) {
             parent = x;
@@ -169,7 +169,7 @@ public:
          * O(logn)
          */
         bool hasNext() {
-            if (value < parent->last()) return true;
+            if (value <= parent->last()) return true;
             return false;
         }
 
@@ -236,7 +236,11 @@ public:
      * the order they are returned by the collection's iterator.
      */
     template <class E2>
-    explicit TreeSet(const E2& x) { }
+    explicit TreeSet(const E2& x) {
+             typename E2::Iterator iter = x.iterator();
+             while (iter.hasNext()) 
+                   add(iter.next());
+    }
 
     /**
      * Destructor
@@ -361,12 +365,12 @@ public:
      * @throw ElementNotExist
      */
     const E& last() const {
+        if (Root == NULL) throw;
         node *tmp = Root;
         while (tmp->rh != NULL) {
             tmp = tmp->rh;
         }
-        if (tmp != NULL) return tmp->data;
-        else throw;
+        return tmp->data;
     }
 
     /**
@@ -385,7 +389,7 @@ public:
         return siz;
     }
 
-    node* getRoot() const{
+    node* getRoot() const {
         return Root;
     }
 };
