@@ -151,7 +151,8 @@ public:
 
     class Iterator {
         TreeSet *parent;
-        E value, before;
+        E value;
+        bool flag;
     public:
         Iterator(TreeSet* const x) {
             parent = x;
@@ -160,7 +161,7 @@ public:
                 p = p->lf;
             }
             value = p->data;
-            before = value;
+            flag = false;
         }
 
         /**
@@ -168,7 +169,8 @@ public:
          * O(logn)
          */
         bool hasNext() {
-            if (before < parent->last()) return true;
+            if (!flag) return true;
+            if (value < parent->last()) return true;
             return false;
         }
 
@@ -178,12 +180,17 @@ public:
          * @throw ElementNotExist
          */
         const E& next() {
-              before = value;
+            if (!flag) {
+                flag = true;
+                return value;
+            }
             node *p = parent->getRoot();
             node *tag = p;
             while (p->data != value) {
-                if (p->data > value) tag = p;
-                if (value < p->data) p = p->lf;
+                if (value < p->data) {
+                    p = p->lf;
+                    tag = p;
+                }
                 else p = p->rh;
             }
             if (p->rh != NULL) {
@@ -194,8 +201,7 @@ public:
             }
             if (value < p->data) tag = p;
             value = tag->data;
-            if (value < before) value = before;
-            return before;
+            return value;
         }
 
         /**
@@ -240,7 +246,7 @@ public:
     explicit TreeSet(const E2& x) {
              addAll(*this, x);
              //typename E2::Iterator iter = x.iterator();
-             //while (iter.hasNext()) 
+             //while (iter.hasNext())
              //      add(iter.next());
     }
 
