@@ -30,7 +30,7 @@ static const int MAXN = 1000000000;
             aux = rand() % MAXN;
             lf = rh = NULL;
         }
-        node(const Entry<K, V>& x) : Entry(x.key, y.value){
+        node(const Entry<K, V>& x) : Entry(x.key, x.value){
             srand(time(NULL));
             aux = rand() % MAXN;
             lf = rh = NULL;
