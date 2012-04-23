@@ -86,15 +86,16 @@ public:
      */
     template <class E2>
     explicit ArrayList(E2& x) {
-        data = new E[10];
-        capacity = 10;
-        currentSize = 0;
-        typename E2::Iterator iter = x.iterator();
-        while (iter.hasNext()) {
-            if (currentSize == capacity) ensureCapacity(capacity << 1);
-            data[currentSize] = iter.next();
-            ++currentSize;
-        }
+             addAll(*this, x);
+        //data = new E[10];
+        //capacity = 10;
+        //currentSize = 0;
+        //typename E2::Iterator iter = x.iterator();
+        //while (iter.hasNext()) {
+        //    if (currentSize == capacity) ensureCapacity(capacity << 1);
+        //    data[currentSize] = iter.next();
+        //    ++currentSize;
+        //}
     }
 
     /**

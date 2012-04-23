@@ -152,7 +152,7 @@ public:
 
     class Iterator {
         TreeSet *parent;
-        E* value;//**************************************ATTENTION
+        E value, before;
     public:
         Iterator(TreeSet* const x) {
             parent = x;
@@ -160,8 +160,8 @@ public:
             while (p->lf != NULL) {
                 p = p->lf;
             }
-            if (p != NULL) value = p->data;
-            else throw;
+            value = p->data;
+            before = value;
         }
 
         /**
@@ -169,7 +169,7 @@ public:
          * O(logn)
          */
         bool hasNext() {
-            if (value <= parent->last()) return true;
+            if (before < parent->last()) return true;
             return false;
         }
 
@@ -179,10 +179,11 @@ public:
          * @throw ElementNotExist
          */
         const E& next() {
+              before = value;
             node *p = parent->getRoot();
             node *tag = p;
             while (p->data != value) {
-                tag = p;
+                if (p->data > value) tag = p;
                 if (value < p->data) p = p->lf;
                 else p = p->rh;
             }
@@ -194,7 +195,8 @@ public:
             }
             if (value < p->data) tag = p;
             value = tag->data;
-            return value;
+            if (value < before) value = before;
+            return before;
         }
 
         /**
@@ -237,9 +239,10 @@ public:
      */
     template <class E2>
     explicit TreeSet(const E2& x) {
-             typename E2::Iterator iter = x.iterator();
-             while (iter.hasNext()) 
-                   add(iter.next());
+             addAll(*this, x);
+             //typename E2::Iterator iter = x.iterator();
+             //while (iter.hasNext()) 
+             //      add(iter.next());
     }
 
     /**
@@ -319,6 +322,8 @@ public:
 
     void clear() {
         clear(Root);
+        siz = 0;
+        Root = NULL;
     }
 
     /**

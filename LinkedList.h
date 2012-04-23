@@ -139,7 +139,9 @@ public:
      * You may utilize the ``addAll'' function from Utility.h
      */
     template <class C>
-    LinkedList(const C& c) {}
+    LinkedList(const C& c) {
+                     addAll(*this, c);
+    }
 
     /**
      * Desturctor
