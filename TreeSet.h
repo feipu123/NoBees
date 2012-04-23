@@ -104,8 +104,10 @@ public:
     class ConstIterator {
         TreeSet *parent;
         E value;
+        bool flag;
     public:
         ConstIterator(TreeSet* const x) {
+            flag = false;
             parent = x;
             node *p = x->Root;
             while (p->lf != NULL) {
@@ -120,6 +122,7 @@ public:
          * O(logn)
          */
         bool hasNext() {
+            if (!flag) return true;
             if (value < parent->last()) return true;
             return false;
         }
@@ -130,6 +133,10 @@ public:
          * @throw ElementNotExist
          */
         const E& next() {
+            if (!flag) {
+                flag = true;
+                return value;
+            }
             node *p = parent->getRoot();
             node *tag = p;
             while (p->data != value) {
