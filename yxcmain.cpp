@@ -156,7 +156,7 @@ int main()
 //        cout << endl;
 
 	cout << "\n--- Testing TreeSet.h ---" << endl;
-    TreeSet<int> treeset_a;
+        TreeSet<int> treeset_a;
     cout << "\n### Part I : method Add ###" << endl;
         for (int i = 1; i <= 10; i++) treeset_a.add(i);
         displayTreeSet(treeset_a);
@@ -167,7 +167,7 @@ int main()
         displayTreeSet(treeset_a);
         cout << "first() : " << treeset_a.first() << "\tlast() : " << treeset_a.last() << endl;/** 返回头元素和尾元素*/
         cout << ((treeset_a.contains(2))?("contains 2"):("not contains 2")) << endl;
-       cout << ((treeset_a.contains(15))?("contains 15"):("not contains 15")) << endl;
+        cout << ((treeset_a.contains(15))?("contains 15"):("not contains 15")) << endl;
 
     cout << "\n### Part III : method Remove ###" << endl;
         TreeSet<int> treeset_b(treeset_a);
@@ -177,7 +177,7 @@ int main()
         cout << "remove(10) : "; displayTreeSet(treeset_b);
         TreeSet<int>::Iterator treeset_iter = treeset_b.iterator();
         treeset_iter.next();
-       treeset_iter.remove();
+        treeset_iter.remove();
         cout << "remove the first element using Iterator::remove() : "; displayTreeSet(treeset_b);/** 利用Iterator::remove()删除元素 */
 
 //	cout << "\n--- Testing HashSet.h ---" << endl;
@@ -265,5 +265,4 @@ int main()
 //        cout << "remove the first Entry using Iterator::remove() : "; displayHashMap(hashmap_b);/** 利用Iterator::remove()删除元素 */
 
     cout << "Hello World!" << endl;
-    system("pause");
 }
