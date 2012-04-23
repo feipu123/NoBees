@@ -351,8 +351,7 @@ public:
         while (tmp->lf != NULL) {
             tmp = tmp->lf;
         }
-        if (tmp != NULL) return tmp->data;
-        else throw;
+        return tmp->data;
     }
 
     /**

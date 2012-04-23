@@ -17,8 +17,7 @@ template<class K, class V> class TreeMap {
 private:
 static const int MAXN = 1000000000;
     struct node{
-        K nodeKey;
-        V nodeValue;
+           Entry<K, V> data
         int aux;
         node *lf, *rh;
         node() {
@@ -26,16 +25,18 @@ static const int MAXN = 1000000000;
             aux = rand() % MAXN;
             lf = rh = NULL;
         }
-        node(const K& x, const V& y) {
-            nodeKey = x;
-            nodeValue = y;
+        node(const K& x, const V& y) : Entry(x, y){
+            srand(time(NULL));
+            aux = rand() % MAXN;
+            lf = rh = NULL;
+        }
+        node(const Entry<K, V>& x) : Entry(x.key, y.value){
             srand(time(NULL));
             aux = rand() % MAXN;
             lf = rh = NULL;
         }
         node(const node* const y) {
-            nodeKey = y->nodeKey;
-            nodeValue = y->nodeValue;
+            data = y->data;
             lf = y->lf;
             rh = y->rh;
             aux = y->aux;
@@ -56,13 +57,13 @@ public:
         y->rh = x;
         x = y;
     }
-    void Insert(node* &nd, const E& e) {
+    void Insert(node* &nd, const Entry<K, V>& e) {
         if (nd == NULL) {
             nd = new node(e);
             ++siz;
             return;
         }
-        if (e < nd->data) {
+        if (e.key < nd->data.key) {
             Insert(nd->lf, e);
             if (nd->lf->aux < nd->aux) RotateR(nd);
         }
@@ -71,9 +72,9 @@ public:
             if (nd->rh->aux < nd->aux) RotateL(nd);
         }
     }
-    void Delete(node* &nd, const E& e) {
+    void Delete(node* &nd, const K& key) {
         if (nd == NULL) return;
-        if (nd->data == e) {
+        if (nd->data.key == key) {
             if (nd->lf == NULL || nd->rh == NULL) {
                 if (nd->lf == NULL) {
                     --siz;
@@ -91,17 +92,17 @@ public:
             else {
                 if (nd->lf->aux < nd->rh->aux) {
                     RotateR(nd);
-                    Delete(nd->rh, e);
+                    Delete(nd->rh, key);
                 }
                 else {
                     RotateL(nd);
-                    Delete(nd->lf, e);
+                    Delete(nd->lf, key);
                 }
             }
         }
         else {
-            if (e < nd->data) Delete(nd->lf, e);
-            else Delete(nd->rh, e);
+            if (key < nd->data.key) Delete(nd->lf, key);
+            else Delete(nd->rh, key);
         }
     }
     class ConstIterator {
@@ -224,8 +225,8 @@ public:
 
     bool contain(node *p, const K& key) const {
         if (p == NULL) return false;
-        if (p->data == key) return true;
-        if (e < p->data) return contain(p->lf, key);
+        if (p->data.key == key) return true;
+        if (key < p->data.key) return contain(p->lf, key);
         else return contain(p->rh, key);
     }
     
@@ -241,7 +242,13 @@ public:
      * Returns true if this map contains a mapping for the specified value.
      * O(n).
      */
-    bool containsValue(const V& value) const {}
+    bool containsValue(const V& value) const {
+         Iterator iter = iterator();
+         while (iter.hasNext()) 
+               if (iter.next().value == value) 
+                  return true;
+         return false;
+    }
 
     /**
      * Returns a key-value mapping associated with the least key in
@@ -249,14 +256,22 @@ public:
      * O(logn).
      * @throw ElementNotExist
      */
-    const Entry<K, V>& firstEntry() const {}
+    const Entry<K, V>& firstEntry() const {
+          node *tmp = Root;
+        while (tmp->lf != NULL) {
+            tmp = tmp->lf;
+        }
+        return tmp->data;
+    }
 
     /**
      * Returns the first (lowest) key currently in this map.
      * O(logn).
      * @throw ElementNotExist
      */
-    const K& firstKey() const {}
+    const K& firstKey() const {
+          return firstEntry().key;
+          }
 
     /**
      * Returns a reference to the value which the specified key is mapped
@@ -278,14 +293,23 @@ public:
      * O(logn).
      * @throw ElementNotExist
      */
-    const Entry<K, V>& lastEntry() const {}
+    const Entry<K, V>& lastEntry() const {
+          if (Root == NULL) throw;
+        node *tmp = Root;
+        while (tmp->rh != NULL) {
+            tmp = tmp->rh;
+        }
+        return tmp->data;
+    }
 
     /**
      * Returns the last (highest) key currently in this map.
      * O(logn).
      * @throw ElementNotExist
      */
-    const K& lastKey() const {}
+    const K& lastKey() const {
+          return lastEntry().key;
+    }
 
     /**
      * Associates the specified value with the specified key in this map.
@@ -293,20 +317,33 @@ public:
      * default-constructor.
      * O(logn).
      */
-    V put(const K& key, const V& value) {}
+    V put(const K& key, const V& value) {
+                Entry<K, V> e(key, value);
+                if (contains(e)) return false;
+                Insert(Root, e);
+                return value;
+    }
 
     /**
      * Removes the mapping for this key from this TreeMap if present.
      * O(logn).
      * @throw ElementNotExist
      */
-    V remove(const K& key) {}
+    V remove(const K& key) {
+                   Delete(Root, key);
+    }
 
     /**
      * Returns the number of key-value mappings in this map.
      * O(logn).
      */
-    int size() const {}
+    int size() const {
+        return siz;
+    }
+    
+    node* getRoot() const {
+        return Root;
+    }
 };
 
 #endif
