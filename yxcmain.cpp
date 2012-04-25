@@ -4,8 +4,8 @@
 #include "Utility.h"
 //#include "LinkedList.h"
 //#include "ArrayList.h"
-#include "TreeSet.h"
-//#include "TreeMap.h"
+//#include "TreeSet.h"
+#include "TreeMap.h"
 //#include "HashSet.h"
 //#include "HashMap.h"
 
@@ -29,7 +29,7 @@ void displayArrayList(ArrayList<char> a)
         cout << iter.next() << " ";
     }
     cout << endl;
-}*/
+}
 
 void displayTreeSet(TreeSet<int> a)
 {
@@ -41,7 +41,7 @@ void displayTreeSet(TreeSet<int> a)
     cout << endl;
 }
 
-/*void displayHashSet(HashSet<int,Hashint> a)
+void displayHashSet(HashSet<int,Hashint> a)
 {
     HashSet<int,Hashint>::Iterator iter = a.iterator();
     while (iter.hasNext())
@@ -49,7 +49,7 @@ void displayTreeSet(TreeSet<int> a)
         cout << iter.next() << " ";
     }
     cout << endl;
-}
+}*/
 
 void displayTreeMap(TreeMap<int,char> a)
 {
@@ -61,7 +61,7 @@ void displayTreeMap(TreeMap<int,char> a)
     }
     cout << endl;
 }
-
+/*
 void displayHashMap(HashMap<int,char,Hashint> a)
 {
     HashMap<int,char,Hashint>::Iterator iter = a.iterator();
@@ -155,30 +155,30 @@ int main()
 //        for (int i = 0; i < array_exp_a.size(); i++) cout << array_exp_a.get(i) << " ";
 //        cout << endl;
 
-	cout << "\n--- Testing TreeSet.h ---" << endl;
-        TreeSet<int> treeset_a;
-    cout << "\n### Part I : method Add ###" << endl;
-        for (int i = 1; i <= 10; i++) treeset_a.add(i);
-        displayTreeSet(treeset_a);
-        treeset_a.clear();/** 清空a */
+//	cout << "\n--- Testing TreeSet.h ---" << endl;
+//        TreeSet<int> treeset_a;
+//    cout << "\n### Part I : method Add ###" << endl;
+//        for (int i = 1; i <= 10; i++) treeset_a.add(i);
+//        displayTreeSet(treeset_a);
+//        treeset_a.clear();/** 清空a */
 
-    cout << "\n### Part II : method Get & Contains ###" << endl;
-        for (int i = 1; i <= 12; i++) treeset_a.add(i);
-        displayTreeSet(treeset_a);
-        cout << "first() : " << treeset_a.first() << "\tlast() : " << treeset_a.last() << endl;/** 返回头元素和尾元素*/
-        cout << ((treeset_a.contains(2))?("contains 2"):("not contains 2")) << endl;
-        cout << ((treeset_a.contains(15))?("contains 15"):("not contains 15")) << endl;
+//    cout << "\n### Part II : method Get & Contains ###" << endl;
+//        for (int i = 1; i <= 12; i++) treeset_a.add(i);
+//        displayTreeSet(treeset_a);
+//        cout << "first() : " << treeset_a.first() << "\tlast() : " << treeset_a.last() << endl;/** 返回头元素和尾元素*/
+//        cout << ((treeset_a.contains(2))?("contains 2"):("not contains 2")) << endl;
+//        cout << ((treeset_a.contains(15))?("contains 15"):("not contains 15")) << endl;
 
-    cout << "\n### Part III : method Remove ###" << endl;
-        TreeSet<int> treeset_b(treeset_a);
-        treeset_b.remove(3);/** 删除元素3 */
-        cout << "remove(3) : "; displayTreeSet(treeset_b);
-        treeset_b.remove(10);/** 删除元素10 */
-        cout << "remove(10) : "; displayTreeSet(treeset_b);
-        TreeSet<int>::Iterator treeset_iter = treeset_b.iterator();
-        treeset_iter.next();
-        treeset_iter.remove();
-        cout << "remove the first element using Iterator::remove() : "; displayTreeSet(treeset_b);/** 利用Iterator::remove()删除元素 */
+//    cout << "\n### Part III : method Remove ###" << endl;
+//        TreeSet<int> treeset_b(treeset_a);
+//        treeset_b.remove(3);/** 删除元素3 */
+//        cout << "remove(3) : "; displayTreeSet(treeset_b);
+//        treeset_b.remove(10);/** 删除元素10 */
+//        cout << "remove(10) : "; displayTreeSet(treeset_b);
+//        TreeSet<int>::Iterator treeset_iter = treeset_b.iterator();
+//        treeset_iter.next();
+//        treeset_iter.remove();
+//        cout << "remove the first element using Iterator::remove() : "; displayTreeSet(treeset_b);/** 利用Iterator::remove()删除元素 */
 
 //	cout << "\n--- Testing HashSet.h ---" << endl;
 //    HashSet<int,Hashint> hashset_a(7);/** 定义一个大小为7的HashSet a */
@@ -208,35 +208,35 @@ int main()
 //        HashSet<int,Hashint> hashset_exp_a(treeset_a);
 //        displayHashSet(hashset_exp_a);
 
-//	cout << "\n--- Testing TreeMap.h ---" << endl;
-//    TreeMap<int,char> treemap_a;
-//    cout << "\n### Part I : method Add ###" << endl;
-//       for (int i = 1; i <= 10; i++) treemap_a.put(i,i+64);
-//        displayTreeMap(treemap_a);
-//        treemap_a.clear();/** 清空a */
+	cout << "\n--- Testing TreeMap.h ---" << endl;
+    TreeMap<int,char> treemap_a;
+    cout << "\n### Part I : method Add ###" << endl;
+       for (int i = 1; i <= 10; i++) treemap_a.put(i,i+64);
+        displayTreeMap(treemap_a);
+        treemap_a.clear();/** 清空a */
 
-//    cout << "\n### Part II : method Get & Contains ###" << endl;
-//        for (int i = 1; i <= 12; i++) treemap_a.put(i,i+64);
-//        displayTreeMap(treemap_a);
-//        cout << "firstKey() : " << treemap_a.firstKey() << "\t";/** 返回首关键字 */
-//        cout << "firstEntry() : (" << treemap_a.firstEntry().key << "," << treemap_a.firstEntry().value << ")"<< endl;/** 返回头元素 */
-//        cout << "lastKey() : " << treemap_a.lastKey() << "\t";/** 返回尾关键字 */
-//        cout << "lastEntry() : (" << treemap_a.lastEntry().key << "," << treemap_a.lastEntry().value << ")" << endl;/** 返回尾元素 */
-//        cout << ((treemap_a.containsKey(2))?("contains Key 2"):("not contains Key 2")) << endl;
-//        cout << ((treemap_a.containsKey(15))?("contains Key 15"):("not contains Key 15")) << endl;
-//        cout << ((treemap_a.containsValue('A'))?("contains Value A"):("not contains Value A")) << endl;
-//        cout << ((treemap_a.containsValue('Z'))?("contains Value Z"):("not contains Value Z")) << endl;
+    cout << "\n### Part II : method Get & Contains ###" << endl;
+        for (int i = 1; i <= 12; i++) treemap_a.put(i,i+64);
+        displayTreeMap(treemap_a);
+        cout << "firstKey() : " << treemap_a.firstKey() << "\t";/** 返回首关键字 */
+        cout << "firstEntry() : (" << treemap_a.firstEntry().key << "," << treemap_a.firstEntry().value << ")"<< endl;/** 返回头元素 */
+        cout << "lastKey() : " << treemap_a.lastKey() << "\t";/** 返回尾关键字 */
+        cout << "lastEntry() : (" << treemap_a.lastEntry().key << "," << treemap_a.lastEntry().value << ")" << endl;/** 返回尾元素 */
+        cout << ((treemap_a.containsKey(2))?("contains Key 2"):("not contains Key 2")) << endl;
+        cout << ((treemap_a.containsKey(15))?("contains Key 15"):("not contains Key 15")) << endl;
+        cout << ((treemap_a.containsValue('A'))?("contains Value A"):("not contains Value A")) << endl;
+        cout << ((treemap_a.containsValue('Z'))?("contains Value Z"):("not contains Value Z")) << endl;
 
-//    cout << "\n### Part III : method Remove ###" << endl;
-//        TreeMap<int,char> treemap_b(treemap_a);
-//        treemap_b.remove(3);/** 删除元素Key = 3 */
-//        cout << "remove(3) : "; displayTreeMap(treemap_b);
-//        treemap_b.remove(10);/** 删除元素Key = 10 */
-//        cout << "remove(10) : "; displayTreeMap(treemap_b);
-//        TreeMap<int,char>::Iterator treemap_iter = treemap_b.iterator();
-//        treemap_iter.next();
-//        treemap_iter.remove();
-//        cout << "remove the first Entry using Iterator::remove() : "; displayTreeMap(treemap_b);/** 利用Iterator::remove()删除元素 */
+    cout << "\n### Part III : method Remove ###" << endl;
+        TreeMap<int,char> treemap_b(treemap_a);
+        treemap_b.remove(3);/** 删除元素Key = 3 */
+        cout << "remove(3) : "; displayTreeMap(treemap_b);
+        treemap_b.remove(10);/** 删除元素Key = 10 */
+        cout << "remove(10) : "; displayTreeMap(treemap_b);
+        TreeMap<int,char>::Iterator treemap_iter = treemap_b.iterator();
+        treemap_iter.next();
+        treemap_iter.remove();
+        cout << "remove the first Entry using Iterator::remove() : "; displayTreeMap(treemap_b);/** 利用Iterator::remove()删除元素 */
 
 //	cout << "\n--- Testing HashMap.h ---" << endl;
 //    HashMap<int,char,Hashint> hashmap_a(7);
