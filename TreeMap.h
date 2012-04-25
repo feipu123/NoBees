@@ -17,7 +17,7 @@ template<class K, class V> class TreeMap {
 private:
 static const int MAXN = 1000000000;
     struct node{
-        Entry<K, V> data;
+           Entry<K, V> data;
         int aux;
         node *lf, *rh;
         node() {
@@ -25,12 +25,12 @@ static const int MAXN = 1000000000;
             aux = rand() % MAXN;
             lf = rh = NULL;
         }
-        node(const K& x, const V& y) : Entry(x, y){
+        node(const K& x, const V& y) : data(x, y){
             srand(time(NULL));
             aux = rand() % MAXN;
             lf = rh = NULL;
         }
-        node(const Entry<K, V>& x) : Entry(x.key, x.value){
+        node(const Entry<K, V>& x) : data(x.key, x.value){
             srand(time(NULL));
             aux = rand() % MAXN;
             lf = rh = NULL;
@@ -106,19 +106,19 @@ public:
         }
     }
     class ConstIterator {
-        TreeMap *parent;
-        Entry<K, V> value;
+        const TreeMap *parent;
+        Entry<K, V> *value;
         bool flag;
     public:
-           ConstIterator(TreeMap* const x) {
+           ConstIterator(const TreeMap* const x) {
+           if (x->Root == NULL) throw;
             flag = false;
             parent = x;
             node *p = x->Root;
             while (p->lf != NULL) {
                 p = p->lf;
             }
-            if (p != NULL) value = p->data;
-            else throw;
+            value = new Entry<K, V>(p->data);
         }
         /**
          * Returns true if the iteration has more elements.
@@ -126,7 +126,7 @@ public:
          */
         bool hasNext() {
              if (!flag) return true;
-            if (value < parent->last()) return true;
+            if (value->key < parent->lastKey()) return true;
             return false;
         }
 
@@ -138,13 +138,13 @@ public:
         const Entry<K, V>& next() {
               if (!flag) {
                 flag = true;
-                return value;
+                return *value;
             }
             node *p = parent->getRoot();
             node *tag = p;
-            while (p->data != value) {
+            while (p->data.key != value->key) {
                 tag = p;
-                if (value < p->data) p = p->lf;
+                if (value->key < p->data.key) p = p->lf;
                 else p = p->rh;
             }
             if (p->rh != NULL) {
@@ -153,15 +153,16 @@ public:
                     p = p->lf;
                 }
             }
-            if (p->data != value) tag = p;
-            value = tag->data;
-            return value;
+            if (p->data.key != value->key) tag = p;
+            delete value;
+            value = new Entry<K, V>(tag->data);
+            return *value;
         }
     };
 
     class Iterator {
           TreeMap *parent;
-        Entry<K, V> value;
+        Entry<K, V> *value;
         bool flag;
     public:
            Iterator(TreeMap* const x) {
@@ -170,7 +171,7 @@ public:
             while (p->lf != NULL) {
                 p = p->lf;
             }
-            value = p->data;
+            value = new Entry<K, V>(p->data);
             flag = false;
         }
         /**
@@ -179,7 +180,7 @@ public:
          */
         bool hasNext() {
              if (!flag) return true;
-            if (value < parent->last()) return true;
+            if (value->key < parent->lastKey()) return true;
             return false;
         }
 
@@ -191,12 +192,12 @@ public:
         Entry<K, V>& next() {
                  if (!flag) {
                 flag = true;
-                return value;
+                return *value;
             }
             node *p = parent->getRoot();
             node *tag = p;
-            while (p->data != value) {
-                if (value < p->data) {
+            while (p->data.key != value->key) {
+                if (value->key < p->data.key) {
                     p = p->lf;
                     tag = p;
                 }
@@ -208,9 +209,10 @@ public:
                     p = p->lf;
                 }
             }
-            if (value < p->data) tag = p;
-            value = tag->data;
-            return value;
+            if (value->key < p->data.key) tag = p;
+            delete value;
+            value = new Entry<K, V>(tag->data);
+            return *value;
         }
 
         /**
@@ -222,9 +224,9 @@ public:
         void remove() {
              node *p = parent->getRoot();
             node *tag = p;
-            while (p->data != value) {
+            while (p->data.key != value->key) {
                 tag = p;
-                if (value < p->data) p = p->lf;
+                if (value->key < p->data.key) p = p->lf;
                 else p = p->rh;
             }
             if (p->lf != NULL) {
@@ -233,17 +235,22 @@ public:
                     p = p->rh;
                 }
             }
-            if (p->data < value) tag = p;
-            E tmp = value;
-            value = tag->data;
+            if (p->data.key < value->key) tag = p;
+            K tmp = value->key;
+            delete value;
+            value = new Entry<K, V>(tag->data);
             parent->remove(tmp);
+        }
+        
+        ~Iterator() {
+                    delete value;
         }
     };
 
     /**
      * Constructs an empty map
      */
-    TreeMap() {
+    TreeMap() { 
         Root = NULL;
         siz = 0;
     }
@@ -252,7 +259,10 @@ public:
      * Copy constructor
      */
     TreeMap(const TreeMap &c) {
-        addAll(*this, c);
+                  clear();
+        ConstIterator iter = c.constIterator();
+             while (iter.hasNext())
+                   put(iter.next());              
     }
 
     /**
@@ -261,7 +271,7 @@ public:
     ~TreeMap() {
                clear();
     }
-
+    
     void makeTree(node* &x, node* y){
         if (y == NULL) {
             x = NULL;
@@ -271,13 +281,15 @@ public:
         makeTree(x->lf, y->lf);
         makeTree(x->rh, y->rh);
     }
-
+    
     /**
      * Assignment operator
      */
     TreeMap& operator=(const TreeMap &c) {
              clear();
-        addAll(*this, c);
+        ConstIterator iter = c.constIterator();
+             while (iter.hasNext())
+                   put(iter.next());
         return *this;
     }
 
@@ -286,7 +298,9 @@ public:
      * given map
      */
     template <class C> TreeMap(const C& c) {
-             addAll(*this, c);
+             typename C::ConstIterator iter = c.constIterator();
+             while (iter.hasNext())
+                   put(iter.next());
     }
 
     /**
@@ -295,7 +309,7 @@ public:
      */
     Iterator iterator() {
             Iterator *tmp = new Iterator(this);
-            return *tmp;
+            return *tmp;         
     }
 
     /**
@@ -304,18 +318,24 @@ public:
      */
     ConstIterator constIterator() const {
         ConstIterator *tmp = new ConstIterator(this);
-        return *tmp;
+        return *tmp;                  
     }
 
     /**
      * Removes all of the mappings from this map.
      * O(n).
      */
-    void clear() {
-         if (p == NULL) return;
+    void clear(node *p) {
+        if (p == NULL) return;
         clear(p->lf);
         clear(p->rh);
         delete p;
+    }
+
+    void clear() {
+        clear(Root);
+        siz = 0;
+        Root = NULL;
     }
 
     bool contain(node *p, const K& key) const {
@@ -324,7 +344,7 @@ public:
         if (key < p->data.key) return contain(p->lf, key);
         else return contain(p->rh, key);
     }
-
+    
     /**
      * Returns true if this map contains a mapping for the specified key.
      * O(logn).
@@ -338,9 +358,9 @@ public:
      * O(n).
      */
     bool containsValue(const V& value) const {
-         Iterator iter = iterator();
-         while (iter.hasNext())
-               if (iter.next().value == value)
+         ConstIterator iter = constIterator();
+         while (iter.hasNext()) 
+               if (iter.next().value == value) 
                   return true;
          return false;
     }
@@ -366,7 +386,7 @@ public:
      */
     const K& firstKey() const {
           return firstEntry().key;
-        }
+          }
 
     V& getValue(node *p, const K& key) const {
         if (p == NULL) throw;
@@ -374,7 +394,7 @@ public:
         if (key < p->data.key) return getValue(p->lf, key);
         else return getValue(p->rh, key);
     }
-
+    
     /**
      * Returns a reference to the value which the specified key is mapped
      * O(logn).
@@ -433,6 +453,16 @@ public:
                 Insert(Root, e);
                 return tmp;
     }
+    
+    V put(const Entry<K, V>& e) {
+                V tmp;
+                if (contain(Root, e.key)) {
+                   tmp = get(e.key);
+                   Delete(Root, e.key);
+                }
+                Insert(Root, e);
+                return tmp;
+    }
 
     /**
      * Removes the mapping for this key from this TreeMap if present.
@@ -450,7 +480,7 @@ public:
     int size() const {
         return siz;
     }
-
+    
     node* getRoot() const {
         return Root;
     }
