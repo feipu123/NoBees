@@ -34,7 +34,16 @@ class HashSet {
     struct node{
         T data;
         node *next;
+        node() {
+            next = NULL;
+        }
+        node(const T &x) {
+            data = x;
+            next = NULL;
+        }
     }
+    node **array;
+    int length;
 public:
     class ConstIterator {
     public:

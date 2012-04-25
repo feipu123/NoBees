@@ -86,17 +86,11 @@ public:
      * the order they are returned by the collection's iterator.
      */
     template <class E2>
-    explicit ArrayList(E2& x) {
-             addAll(*this, x);
-        //data = new E[10];
-        //capacity = 10;
-        //currentSize = 0;
-        //typename E2::Iterator iter = x.iterator();
-        //while (iter.hasNext()) {
-        //    if (currentSize == capacity) ensureCapacity(capacity << 1);
-        //    data[currentSize] = iter.next();
-        //    ++currentSize;
-        //}
+    explicit ArrayList(const E2& x) {
+        data = new E[10];
+        capacity = 10;
+        currentSize = 0;
+        addAll(*this, x);
     }
 
     /**
@@ -139,7 +133,7 @@ public:
     /**
      * Copy-constructor
      */
-    ArrayList(const ArrayList& x) {
+    ArrayList(const ArrayList<E>& x) {
         data = new E[x.size() << 1];
         capacity = x.size() << 1;
         currentSize = 0;

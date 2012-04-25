@@ -139,8 +139,9 @@ public:
      * You may utilize the ``addAll'' function from Utility.h
      */
     template <class C>
-    LinkedList(const C& c) {
-                     addAll(*this, c);
+    explicit LinkedList(const C& c) {
+        head = tail = new node();
+        addAll(*this, c);
     }
 
     /**
@@ -173,10 +174,6 @@ public:
         p->next = tmp;
         if (p != tail) tmp->next->prev = tmp;
         else tail = tmp;
-        //p->prev->next = tmp;
-        //tmp->prev = p->prev;
-        //tmp->next = p;
-        //p->prev = tmp;
     }
 
     /**
@@ -359,10 +356,6 @@ public:
         p->prev->next = p->next;
         if (p != tail) p->next->prev = p->prev;
         else tail = p->prev;
-
-        //if (p != tail && p != NULL) p->next->prev = p->prev;
-        //else if (p == tail) tail = p->prev;
-        //p->prev->next = p->next;
         delete p;
     return tmp;
     }
