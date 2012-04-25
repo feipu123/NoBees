@@ -106,35 +106,112 @@ public:
         }
     }
     class ConstIterator {
+        TreeSet *parent;
+        Entry<K, V> value;
+        bool flag;
     public:
+           ConstIterator(TreeSet* const x) {
+            flag = false;
+            parent = x;
+            node *p = x->Root;
+            while (p->lf != NULL) {
+                p = p->lf;
+            }
+            if (p != NULL) value = p->data;
+            else throw;
+        }
         /**
          * Returns true if the iteration has more elements.
          * Amortized O(1).
          */
-        bool hasNext() {}
+        bool hasNext() {
+             if (!flag) return true;
+            if (value < parent->last()) return true;
+            return false;
+        }
 
         /**
          * Returns a const reference to the next element in the iteration.
          * Amortized O(1).
          * @throw ElementNotExist
          */
-        const Entry<K, V>& next() {}
+        const Entry<K, V>& next() {
+              if (!flag) {
+                flag = true;
+                return value;
+            }
+            node *p = parent->getRoot();
+            node *tag = p;
+            while (p->data != value) {
+                tag = p;
+                if (value < p->data) p = p->lf;
+                else p = p->rh;
+            }
+            if (p->rh != NULL) {
+                p = p->rh;
+                while (p->lf != NULL) {
+                    p = p->lf;
+                }
+            }
+            if (p->data != value) tag = p;
+            value = tag->data;
+            return value;
+        }
     };
 
     class Iterator {
+          TreeSet *parent;
+        Entry<K, V> value;
+        bool flag;
     public:
+           Iterator(TreeSet* const x) {
+            parent = x;
+            node *p = x->getRoot();
+            while (p->lf != NULL) {
+                p = p->lf;
+            }
+            value = p->data;
+            flag = false;
+        }
         /**
          * Returns true if the iteration has more elements.
          * Amortized O(1).
          */
-        bool hasNext() {}
+        bool hasNext() {
+             if (!flag) return true;
+            if (value < parent->last()) return true;
+            return false;
+        }
 
         /**
          * Returns a reference to the next element in the iteration.
          * Amortized O(1).
          * @throw ElementNotExist
          */
-        Entry<K, V>& next() {}
+        Entry<K, V>& next() {
+                 if (!flag) {
+                flag = true;
+                return value;
+            }
+            node *p = parent->getRoot();
+            node *tag = p;
+            while (p->data != value) {
+                if (value < p->data) {
+                    p = p->lf;
+                    tag = p;
+                }
+                else p = p->rh;
+            }
+            if (p->rh != NULL) {
+                p = p->rh;
+                while (p->lf != NULL) {
+                    p = p->lf;
+                }
+            }
+            if (value < p->data) tag = p;
+            value = tag->data;
+            return value;
+        }
 
         /**
          * Removes from the underlying collection the last element
@@ -142,7 +219,25 @@ public:
          * Amortized O(1).
          * @throw ElementNotExist
          */
-        void remove() {}
+        void remove() {
+             node *p = parent->getRoot();
+            node *tag = p;
+            while (p->data != value) {
+                tag = p;
+                if (value < p->data) p = p->lf;
+                else p = p->rh;
+            }
+            if (p->lf != NULL) {
+                p = p->lf;
+                while (p->rh != NULL) {
+                    p = p->rh;
+                }
+            }
+            if (p->data < value) tag = p;
+            E tmp = value;
+            value = tag->data;
+            parent->remove(tmp);
+        }
     };
 
     /**
@@ -273,19 +368,30 @@ public:
           return firstEntry().key;
         }
 
+    V& getValue(node *p, const K& key) const {
+        if (p == NULL) throw;
+        if (p->data.key == key) return p->data.value;
+        if (key < p->data.key) return getValue(p->lf, key);
+        else return getValue(p->rh, key);
+    }
+    
     /**
      * Returns a reference to the value which the specified key is mapped
      * O(logn).
      * @throw ElementNotExist
      */
-    V& get(const K& key) {}
+    V& get(const K& key) {
+       return getValue(Root, key);
+    }
 
     /**
      * Returns a reference to the value which the specified key is mapped
      * O(logn).
      * @throw ElementNotExist
      */
-    const V& get(const K& key) const {}
+    const V& get(const K& key) const {
+          return getValue(Root, key);
+    }
 
     /**
      * Returns a key-value mapping associated with the greatest key
@@ -319,9 +425,13 @@ public:
      */
     V put(const K& key, const V& value) {
                 Entry<K, V> e(key, value);
-                if (contains(e)) return false;
+                V tmp;
+                if (contain(Root, e.key)) {
+                   tmp = get(e.key);
+                   Delete(Root, e.key);
+                }
                 Insert(Root, e);
-                return value;
+                return tmp;
     }
 
     /**
