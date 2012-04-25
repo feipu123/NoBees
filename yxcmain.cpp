@@ -145,15 +145,15 @@ int main()
         array_b.removeRange(0,3);/** 删除[0..3]中的元素 */
         cout << "removeRange(0,3): "; displayArrayList(array_b);
 
-//    cout << "\n### Part IV : method subList ###" << endl;
-//        ArrayList<char> array_c;
-//        array_c = array_a.subList(1,3);/** 取子列a[1..3] */
-//        cout << "subList(1,3): "; displayArrayList(array_c);
+    cout << "\n### Part IV : method subList ###" << endl;
+        ArrayList<char> array_c;
+        array_c = array_a.subList(1,3);/** 取子列a[1..3] */
+        cout << "subList(1,3): "; displayArrayList(array_c);
 
-//    cout << "\n### Part V : method explicit ArrayList ###" << endl;
-//        ArrayList<int> array_exp_a(link_a);/** 构造一个ArrayList，元素来自一个LinkedList */
-//        for (int i = 0; i < array_exp_a.size(); i++) cout << array_exp_a.get(i) << " ";
-//        cout << endl;
+    cout << "\n### Part V : method explicit ArrayList ###" << endl;
+        ArrayList<int> array_exp_a(link_a);/** 构造一个ArrayList，元素来自一个LinkedList */
+        for (int i = 0; i < array_exp_a.size(); i++) cout << array_exp_a.get(i) << " ";
+        cout << endl;
 
 	cout << "\n--- Testing TreeSet.h ---" << endl;
         TreeSet<int> treeset_a;
