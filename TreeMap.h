@@ -106,11 +106,11 @@ public:
         }
     }
     class ConstIterator {
-        TreeSet *parent;
+        TreeMap *parent;
         Entry<K, V> value;
         bool flag;
     public:
-           ConstIterator(TreeSet* const x) {
+           ConstIterator(TreeMap* const x) {
             flag = false;
             parent = x;
             node *p = x->Root;
@@ -160,11 +160,11 @@ public:
     };
 
     class Iterator {
-          TreeSet *parent;
+          TreeMap *parent;
         Entry<K, V> value;
         bool flag;
     public:
-           Iterator(TreeSet* const x) {
+           Iterator(TreeMap* const x) {
             parent = x;
             node *p = x->getRoot();
             while (p->lf != NULL) {
@@ -374,7 +374,7 @@ public:
         if (key < p->data.key) return getValue(p->lf, key);
         else return getValue(p->rh, key);
     }
-    
+
     /**
      * Returns a reference to the value which the specified key is mapped
      * O(logn).

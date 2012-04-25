@@ -5,7 +5,7 @@
 #include "LinkedList.h"
 #include "ArrayList.h"
 #include "TreeSet.h"
-//#include "TreeMap.h"
+#include "TreeMap.h"
 //#include "HashSet.h"
 //#include "HashMap.h"
 
