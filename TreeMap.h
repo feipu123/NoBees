@@ -368,19 +368,30 @@ public:
           return firstEntry().key;
           }
 
+    V& getValue(node *p, const K& key) const {
+        if (p == NULL) throw;
+        if (p->data.key == key) return p->data.value;
+        if (key < p->data.key) return getValue(p->lf, key);
+        else return getValue(p->rh, key);
+    }
+    
     /**
      * Returns a reference to the value which the specified key is mapped
      * O(logn).
      * @throw ElementNotExist
      */
-    V& get(const K& key) {}
+    V& get(const K& key) {
+       return getValue(Root, key);
+    }
 
     /**
      * Returns a reference to the value which the specified key is mapped
      * O(logn).
      * @throw ElementNotExist
      */
-    const V& get(const K& key) const {}
+    const V& get(const K& key) const {
+          return getValue(Root, key);
+    }
 
     /**
      * Returns a key-value mapping associated with the greatest key
@@ -414,9 +425,13 @@ public:
      */
     V put(const K& key, const V& value) {
                 Entry<K, V> e(key, value);
-                if (contains(e)) return false;
+                V tmp;
+                if (contain(Root, e.key)) {
+                   tmp = get(e.key);
+                   Delete(Root, e.key);
+                }
                 Insert(Root, e);
-                return value;
+                return tmp;
     }
 
     /**
