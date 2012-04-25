@@ -1,6 +1,7 @@
 #ifndef __ARRAYLIST_H
 #define __ARRAYLIST_H
 
+using namespace std;
 #include "Utility.h"
 
 template <class E>
@@ -139,8 +140,8 @@ public:
      * Copy-constructor
      */
     ArrayList(const ArrayList& x) {
-        data = new E[x.size() * 2];
-        capacity = x.size() * 2;
+        data = new E[x.size() << 1];
+        capacity = x.size() << 1;
         currentSize = 0;
         for (int i = 0; i < x.size(); ++i) {
             add(x.get(i));

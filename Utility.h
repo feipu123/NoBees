@@ -3,6 +3,8 @@
  * Some useful functions are also provided in this file.
  */
 #include <string>
+#include <cstdlib>
+#include <iostream>
 
 #ifndef __UTILITY_H
 #define __UTILITY_H
