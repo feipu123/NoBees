@@ -17,7 +17,7 @@ template<class K, class V> class TreeMap {
 private:
 static const int MAXN = 1000000000;
     struct node{
-           Entry<K, V> data
+        Entry<K, V> data;
         int aux;
         node *lf, *rh;
         node() {
@@ -148,7 +148,7 @@ public:
     /**
      * Constructs an empty map
      */
-    TreeMap() { 
+    TreeMap() {
         Root = NULL;
         siz = 0;
     }
@@ -157,7 +157,7 @@ public:
      * Copy constructor
      */
     TreeMap(const TreeMap &c) {
-                  addAll(*this, c);              
+        addAll(*this, c);
     }
 
     /**
@@ -166,7 +166,7 @@ public:
     ~TreeMap() {
                clear();
     }
-    
+
     void makeTree(node* &x, node* y){
         if (y == NULL) {
             x = NULL;
@@ -176,7 +176,7 @@ public:
         makeTree(x->lf, y->lf);
         makeTree(x->rh, y->rh);
     }
-    
+
     /**
      * Assignment operator
      */
@@ -200,7 +200,7 @@ public:
      */
     Iterator iterator() {
             Iterator *tmp = new Iterator(this);
-            return *tmp;         
+            return *tmp;
     }
 
     /**
@@ -209,7 +209,7 @@ public:
      */
     ConstIterator constIterator() const {
         ConstIterator *tmp = new ConstIterator(this);
-        return *tmp;                  
+        return *tmp;
     }
 
     /**
@@ -229,7 +229,7 @@ public:
         if (key < p->data.key) return contain(p->lf, key);
         else return contain(p->rh, key);
     }
-    
+
     /**
      * Returns true if this map contains a mapping for the specified key.
      * O(logn).
@@ -244,8 +244,8 @@ public:
      */
     bool containsValue(const V& value) const {
          Iterator iter = iterator();
-         while (iter.hasNext()) 
-               if (iter.next().value == value) 
+         while (iter.hasNext())
+               if (iter.next().value == value)
                   return true;
          return false;
     }
@@ -271,7 +271,7 @@ public:
      */
     const K& firstKey() const {
           return firstEntry().key;
-          }
+        }
 
     /**
      * Returns a reference to the value which the specified key is mapped
@@ -340,7 +340,7 @@ public:
     int size() const {
         return siz;
     }
-    
+
     node* getRoot() const {
         return Root;
     }

@@ -2,8 +2,8 @@
 #include <fstream>
 
 #include "Utility.h"
-//#include "LinkedList.h"
-//#include "ArrayList.h"
+#include "LinkedList.h"
+#include "ArrayList.h"
 #include "TreeSet.h"
 //#include "TreeMap.h"
 //#include "HashSet.h"
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/*void displayLinkedList(LinkedList<int> a)
+void displayLinkedList(LinkedList<int> a)
 {
     LinkedList<int>::Iterator iter = a.iterator();
     while (iter.hasNext())
@@ -29,7 +29,7 @@ void displayArrayList(ArrayList<char> a)
         cout << iter.next() << " ";
     }
     cout << endl;
-}*/
+}
 
 void displayTreeSet(TreeSet<int> a)
 {
@@ -76,84 +76,84 @@ void displayHashMap(HashMap<int,char,Hashint> a)
 int main()
 {
     freopen("out.txt", "w", stdout);
-//    cout << "--- Testing LinkedList.h ---" << endl;
-//    LinkedList<int> link_a;/** 定义一个int型的LinkedList a */
-//    cout << "\n### Part I : method Add ###" << endl;
-//        for (int i = 1; i <= 10; i++) link_a.add(i);/** 正向加入元素1..10 */
-//        displayLinkedList(link_a);
-//        link_a.clear();/** 清空a */
-//	 	 for (int i = 1; i <= 10; i++) link_a.addFirst(i);/** 正向加入元素10..1 */
-//       displayLinkedList(link_a);
-//        link_a.add(3,11);/** 在a[3]加入元素11 */
-//        cout << "add(3,11): "; displayLinkedList(link_a);
-//        link_a.add(10,12);/** 在a[10]加入元素12 */
-//        cout << "add(10,12): "; displayLinkedList(link_a);
+    cout << "--- Testing LinkedList.h ---" << endl;
+    LinkedList<int> link_a;/** 定义一个int型的LinkedList a */
+    cout << "\n### Part I : method Add ###" << endl;
+        for (int i = 1; i <= 10; i++) link_a.add(i);/** 正向加入元素1..10 */
+        displayLinkedList(link_a);
+        link_a.clear();/** 清空a */
+        for (int i = 1; i <= 10; i++) link_a.addFirst(i);/** 正向加入元素10..1 */
+        displayLinkedList(link_a);
+        link_a.add(3,11);/** 在a[3]加入元素11 */
+        cout << "add(3,11): "; displayLinkedList(link_a);
+        link_a.add(10,12);/** 在a[10]加入元素12 */
+        cout << "add(10,12): "; displayLinkedList(link_a);
 
-//    cout << "\n### Part II : method Get ###" << endl;
-//        for (int i = 0; i < 12; i++) cout << link_a.get(i) << " ";
-//        cout << endl;
-//        cout << link_a.getFirst() << " " << link_a.getLast() << endl;/** 返回头元素及尾元素 */
+    cout << "\n### Part II : method Get ###" << endl;
+        for (int i = 0; i < 12; i++) cout << link_a.get(i) << " ";
+        cout << endl;
+        cout << link_a.getFirst() << " " << link_a.getLast() << endl;/** 返回头元素及尾元素 */
 
-//    cout << "\n### Part III : method Remove ###" << endl;
-//        LinkedList<int> link_b(link_a);/** 复制构造 */
-//        link_b.remove(3); link_b.remove(12);/** 删除LinkedList b中的元素3及12*/
-//        cout << "remove(3) & remove(12): "; displayLinkedList(link_b);
-//        link_b = link_a;/** LinkedList赋值 */
-//        link_b.removeIndex(5);/** 删除LinkedList b中元素b[5] */
-//        cout << "removeIndex(5): "; displayLinkedList(link_b);
-//        link_b = link_a;
-//        link_b.removeFirst(); link_b.removeLast();/** 删除头元素及尾元素 */
-//        cout << "removeFirst() & removeLast(): "; displayLinkedList(link_b);
+    cout << "\n### Part III : method Remove ###" << endl;
+        LinkedList<int> link_b(link_a);/** 复制构造 */
+        link_b.remove(3); link_b.remove(12);/** 删除LinkedList b中的元素3及12*/
+        cout << "remove(3) & remove(12): "; displayLinkedList(link_b);
+        link_b = link_a;/** LinkedList赋值 */
+        link_b.removeIndex(5);/** 删除LinkedList b中元素b[5] */
+        cout << "removeIndex(5): "; displayLinkedList(link_b);
+        link_b = link_a;
+        link_b.removeFirst(); link_b.removeLast();/** 删除头元素及尾元素 */
+        cout << "removeFirst() & removeLast(): "; displayLinkedList(link_b);
 
-//    cout << "\n### Part IV : method subList ###" << endl;
-//        LinkedList<int> link_c;
-//        link_c = link_a.subList(1,3);/** 取子列a[1..3] */
-//        cout << "subList(1,3): "; displayLinkedList(link_c);
+    cout << "\n### Part IV : method subList ###" << endl;
+        LinkedList<int> link_c;
+        link_c = link_a.subList(1,3);/** 取子列a[1..3] */
+        cout << "subList(1,3): "; displayLinkedList(link_c);
 
-//	cout << "\n--- Testing ArrayList.h ---" << endl;
-//    ArrayList<char> array_a;/** 定义一个char型的Array a */
-//    cout << "\n### Part I : method Add ###" << endl;
-//        for (int i = 1; i <= 10; i++) array_a.add(i+64);/** 正向加入元素A..J */
-//        displayArrayList(array_a);
-//        array_a.clear();/** 清空a */
-//        array_a.add(65);
-//        for (int i = 2; i <= 10; i++) array_a.add(0,i+64);/** 正向加入元素J..A */
-//        displayArrayList(array_a);
-//        array_a.add(3,75);/** 在a[3]加入元素K */
-//        cout << "add(3,K): "; displayArrayList(array_a);
-//        array_a.add(10,76);/** 在a[10]加入元素L */
-//        cout << "add(10,L): "; displayArrayList(array_a);
+	cout << "\n--- Testing ArrayList.h ---" << endl;
+    ArrayList<char> array_a;/** 定义一个char型的Array a */
+    cout << "\n### Part I : method Add ###" << endl;
+        for (int i = 1; i <= 10; i++) array_a.add(i+64);/** 正向加入元素A..J */
+        displayArrayList(array_a);
+        array_a.clear();/** 清空a */
+        array_a.add(65);
+        for (int i = 2; i <= 10; i++) array_a.add(0,i+64);/** 正向加入元素J..A */
+        displayArrayList(array_a);
+        array_a.add(3,75);/** 在a[3]加入元素K */
+        cout << "add(3,K): "; displayArrayList(array_a);
+        array_a.add(10,76);/** 在a[10]加入元素L */
+        cout << "add(10,L): "; displayArrayList(array_a);
 
-//    cout << "\n### Part II : method Get & Contains ###" << endl;
-//        for (int i = 0; i < 12; i++) cout << array_a.get(i) << " ";
-//        cout << endl;
-//        for (int i = 0; i <= 12; i++) cout << array_a.indexOf(i+64) << " ";
-//        cout << endl;/** 返回元素i+64在a中的位置 */
-//        cout << ((array_a.contains('C'))?("contains C"):("not contains C")) << endl;
-//        cout << ((array_a.contains('Z'))?("contains Z"):("not contains Z")) << endl;
+    cout << "\n### Part II : method Get & Contains ###" << endl;
+        for (int i = 0; i < 12; i++) cout << array_a.get(i) << " ";
+        cout << endl;
+        for (int i = 0; i <= 12; i++) cout << array_a.indexOf(i+64) << " ";
+        cout << endl;/** 返回元素i+64在a中的位置 */
+        cout << ((array_a.contains('C'))?("contains C"):("not contains C")) << endl;
+        cout << ((array_a.contains('Z'))?("contains Z"):("not contains Z")) << endl;
 
-//    cout << "\n### Part III : method Remove ###" << endl;
-//        ArrayList<char> array_b(array_a);/** 复制构造 */
-//        array_b.remove(67); array_b.remove(75);/** 删除Array b中的元素C及K*/
-//        cout << "remove(C) & remove(K): "; displayArrayList(array_b);
-//        array_b = array_a;/** ArrayList赋值 */
-//        array_b.removeIndex(5);/** 删除ArrayList b中元素b[5] */
-//        cout << "removeIndex(5): "; displayArrayList(array_b);
-//        array_b = array_a;
-//        array_b.removeIndex(0); array_b.removeIndex(10);/** 删除头元素及尾元素 */
-//        cout << "removeIndex(0) & removeIndex(10): "; displayArrayList(array_b);
-//        array_b.removeRange(0,3);/** 删除[0..3]中的元素 */
-//        cout << "removeRange(0,3): "; displayArrayList(array_b);
+    cout << "\n### Part III : method Remove ###" << endl;
+        ArrayList<char> array_b(array_a);/** 复制构造 */
+        array_b.remove(67); array_b.remove(75);/** 删除Array b中的元素C及K*/
+        cout << "remove(C) & remove(K): "; displayArrayList(array_b);
+        array_b = array_a;/** ArrayList赋值 */
+        array_b.removeIndex(5);/** 删除ArrayList b中元素b[5] */
+        cout << "removeIndex(5): "; displayArrayList(array_b);
+        array_b = array_a;
+        array_b.removeIndex(0); array_b.removeIndex(10);/** 删除头元素及尾元素 */
+        cout << "removeIndex(0) & removeIndex(10): "; displayArrayList(array_b);
+        array_b.removeRange(0,3);/** 删除[0..3]中的元素 */
+        cout << "removeRange(0,3): "; displayArrayList(array_b);
 
-//    cout << "\n### Part IV : method subList ###" << endl;
-//        ArrayList<char> array_c;
-//        array_c = array_a.subList(1,3);/** 取子列a[1..3] */
-//        cout << "subList(1,3): "; displayArrayList(array_c);
+    cout << "\n### Part IV : method subList ###" << endl;
+        ArrayList<char> array_c;
+        array_c = array_a.subList(1,3);/** 取子列a[1..3] */
+        cout << "subList(1,3): "; displayArrayList(array_c);
 
-//    cout << "\n### Part V : method explicit ArrayList ###" << endl;
-//        ArrayList<int> array_exp_a(link_a);/** 构造一个ArrayList，元素来自一个LinkedList */
-//        for (int i = 0; i < array_exp_a.size(); i++) cout << array_exp_a.get(i) << " ";
-//        cout << endl;
+    cout << "\n### Part V : method explicit ArrayList ###" << endl;
+        ArrayList<int> array_exp_a(link_a);/** 构造一个ArrayList，元素来自一个LinkedList */
+        for (int i = 0; i < array_exp_a.size(); i++) cout << array_exp_a.get(i) << " ";
+        cout << endl;
 
 	cout << "\n--- Testing TreeSet.h ---" << endl;
         TreeSet<int> treeset_a;

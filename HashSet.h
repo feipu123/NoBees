@@ -29,7 +29,12 @@
  *      HashSet<int, Hashint> hash;
  * @endcode
  */
-template <class T, class H> class HashSet {
+template <class T, class H>
+class HashSet {
+    struct node{
+        T data;
+        node *next;
+    }
 public:
     class ConstIterator {
     public:
