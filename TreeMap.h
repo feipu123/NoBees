@@ -259,7 +259,8 @@ public:
      * Copy constructor
      */
     TreeMap(const TreeMap &c) {
-                  clear();
+        Root = NULL;
+        siz = 0;
         ConstIterator iter = c.constIterator();
              while (iter.hasNext())
                    put(iter.next());              
