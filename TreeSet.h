@@ -102,11 +102,11 @@ public:
         }
     }
     class ConstIterator {
-        TreeSet *parent;
+        const TreeSet *parent;
         E value;
         bool flag;
     public:
-        ConstIterator(TreeSet* const x) {
+        ConstIterator(const TreeSet* const x) {
             flag = false;
             parent = x;
             node *p = x->Root;
@@ -161,7 +161,7 @@ public:
         E value;
         bool flag;
     public:
-        Iterator(TreeSet* const x) {
+        Iterator(TreeSet* x) {
             parent = x;
             node *p = x->getRoot();
             while (p->lf != NULL) {
@@ -251,10 +251,7 @@ public:
      */
     template <class E2>
     explicit TreeSet(const E2& x) {
-             addAll(*this, x);
-             //typename E2::Iterator iter = x.iterator();
-             //while (iter.hasNext())
-             //      add(iter.next());
+        addAll(*this, x);
     }
 
     /**

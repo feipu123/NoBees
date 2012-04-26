@@ -33,50 +33,91 @@ template <class T, class H>
 class HashSet {
     struct node{
         T data;
-        node *next;
+        node *next, *prev;
         node() {
-            next = NULL;
+            prev = next = NULL;
         }
         node(const T &x) {
             data = x;
-            next = NULL;
+            prev = next = NULL;
         }
-    }
+    };
     node **array;
     int length;
     int siz;
-    int (*key) (const T &x);
 public:
     class ConstIterator {
+        const HashSet* parent;
+        int pos;
+        int counter;
+        node *npos;
     public:
+        ConstIterator(const HashSet* const x){
+            counter = 0;
+            pos = 0;
+            parent = x;
+            npos = x->array[0];
+        }
         /**
          * Returns true if the iteration has more elements.
          * O(n) for iterating through the container
          */
-        bool hasNext() {}
+        bool hasNext() {
+            if (counter < parent->size()) return true;
+            return false;
+        }
 
         /**
          * Returns the next element in the iteration.
          * O(n) for iterating through the container.
          * @throw ElementNotExist
          */
-        const T& next() {}
+        const T& next() {
+            while (npos->next == NULL) {
+                ++pos;
+                npos = parent->array[pos];
+            }
+            npos = npos->next;
+            ++counter;
+            return npos->data;
+        }
     };
 
     class Iterator {
+        HashSet *parent;
+        int pos;
+        int counter;
+        node *npos;
     public:
+        Iterator(HashSet* x){
+            counter = 0;
+            pos = 0;
+            parent = x;
+            npos = x->array[0];
+        }
         /**
          * Returns true if the iteration has more elements.
          * O(n) for iterating through the container.
          */
-        bool hasNext() {}
+        bool hasNext() {
+            if (counter < parent->size()) return true;
+            return false;
+        }
 
         /**
          * Returns the next element in the iteration.
          * O(n) for iterating through the container
          * @throw ElementNotExist
          */
-        const T& next() {}
+        const T& next() {
+            while (npos->next == NULL) {
+                ++pos;
+                npos = parent->array[pos];
+            }
+            npos = npos->next;
+            ++counter;
+            return npos->data;
+        }
 
         /**
          * Removes from the underlying collection the last element
@@ -84,16 +125,17 @@ public:
          * O(1)
          * @throw ElementNotExist
          */
-        void remove() {}
+        void remove() {
+            if (parent->remove(npos->data)) --counter;
+        }
     };
 
     /**
      * Constructs a empty set with your own default capacity
      */
     HashSet() {
-        length = 11;
+        length = 101;
         siz = 0;
-        key = H::hashcode;
         array = new node* [length];
         for (int i = 0; i < length; ++i) {
             array[i] = new node();
@@ -120,27 +162,50 @@ public:
      * Copy constructor
      */
     HashSet(const HashSet &c) {
-        /*array = new node* [c.length];
+        array = new node* [c.length];
+        length = c.length;
+        siz = 0;
         for (int i = 0; i < length; ++i) {
             array[i] = new node();
-            node *p = array[i];
-            node *q = c.a
-            while (p != NULL) {
-
-            }
-        }*/
+        }
+        HashSet::ConstIterator iter = c.constIterator();
+        while (iter.hasNext()) {
+            add(iter.next());
+        }
     }
 
     /**
      * Assignment operator
      */
-    HashSet& operator=(const HashSet &c) {}
+    HashSet& operator=(const HashSet &c) {
+        node *p, *q;
+        for (int i = 0; i < length; ++i) {
+            p = array[i];
+            while (p != NULL) {
+                q = p->next;
+                delete p;
+                p = q;
+            }
+        }
+        delete []array;
+        array = new node* [c.length];
+        addAll(*this, c);
+    }
 
     /**
      * Constructs a new set containing the elements in the specified
      * collection.
      */
-    template<class C> explicit HashSet(const C& c) {}
+    template<class C>
+    explicit HashSet(const C& c) {
+        array = new node* [11];
+        siz = 0;
+        length = 11;
+        for (int i = 0; i < length; ++i) {
+            array[i] = new node();
+        }
+        addAll(*this, c);
+    }
 
     /**
      * Constructs a new, empty set; the backing HashMap instance has the
@@ -148,7 +213,6 @@ public:
      */
     HashSet(int capacity) {
         siz = 0;
-        key = H::hashcode;
         length = capacity;
         array = new node* [length];
         for (int i = 0; i < length; ++i) {
@@ -162,13 +226,15 @@ public:
      * O(1) for average
      */
     bool add(const T& elem) {
-        int pos = key(elem);
+        int pos = H::hashcode(elem) % length;
         node *p = array[pos]->next;
         while (p != NULL && p->data != elem) p = p->next;
         if (p == NULL) {
             p = new node(elem);
             p->next = array[pos]->next;
+            if (array[pos]->next != NULL) array[pos]->next->prev = p;
             array[pos]->next = p;
+            p->prev = array[pos];
             ++siz;
             return true;
         }
@@ -181,12 +247,13 @@ public:
     void clear() {
         node *p, *q;
         for (int i = 0; i < length; ++i) {
-            p = array[i];
+            p = array[i]->next;
             while (p != NULL) {
                 q = p->next;
                 delete p;
                 p = q;
             }
+            array[i]->next = NULL;
         }
         siz = 0;
     }
@@ -196,7 +263,7 @@ public:
      * O(1) for average
      */
     bool contains(const T& elem) const {
-        int pos = key(elem) % length;
+        int pos = H::hashcode(elem) % length;
         node *p = array[pos];
         while (p->next != NULL && p->next->data != elem) p = p->next;
         if (p->next != NULL) return true;
@@ -214,25 +281,32 @@ public:
     /**
      * Returns an iterator over the elements in this set.
      */
-    Iterator iterator() {}
+    Iterator iterator() {
+        Iterator *tmp = new Iterator(this);
+        return *tmp;
+    }
 
     /**
      * Returns an const iterator over the elements in this set.
      */
-    ConstIterator constIterator() const {}
+    ConstIterator constIterator() const {
+        ConstIterator *tmp = new ConstIterator(this);
+        return *tmp;
+    }
 
     /**
      * Removes the specified element from this set if it is present.
      * O(1) for average
      */
     bool remove(const T& elem) {
-        int pos = key(elem) % length;
+        int pos = H::hashcode(elem) % length;
         node *p = array[pos];
         while (p->next != NULL && p->next->data != elem) p = p->next;
         if (p->next != NULL) {
             --siz;
             node *q = p->next;
             p->next = q->next;
+            if (q->next != NULL) q->next->prev = p;
             delete q;
             return true;
         }

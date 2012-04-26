@@ -17,7 +17,7 @@ template<class K, class V> class TreeMap {
 private:
 static const int MAXN = 1000000000;
     struct node{
-           Entry<K, V> data;
+        Entry<K, V> data;
         int aux;
         node *lf, *rh;
         node() {
@@ -161,7 +161,7 @@ public:
     };
 
     class Iterator {
-          TreeMap *parent;
+        TreeMap *parent;
         Entry<K, V> *value;
         bool flag;
     public:
@@ -179,7 +179,7 @@ public:
          * Amortized O(1).
          */
         bool hasNext() {
-             if (!flag) return true;
+            if (!flag) return true;
             if (value->key < parent->lastKey()) return true;
             return false;
         }
@@ -222,7 +222,7 @@ public:
          * @throw ElementNotExist
          */
         void remove() {
-             node *p = parent->getRoot();
+            node *p = parent->getRoot();
             node *tag = p;
             while (p->data.key != value->key) {
                 tag = p;
@@ -241,16 +241,16 @@ public:
             value = new Entry<K, V>(tag->data);
             parent->remove(tmp);
         }
-        
+
         ~Iterator() {
-                    delete value;
+            delete value;
         }
     };
 
     /**
      * Constructs an empty map
      */
-    TreeMap() { 
+    TreeMap() {
         Root = NULL;
         siz = 0;
     }
@@ -263,7 +263,7 @@ public:
         siz = 0;
         ConstIterator iter = c.constIterator();
              while (iter.hasNext())
-                   put(iter.next());              
+                   put(iter.next());
     }
 
     /**
@@ -272,7 +272,7 @@ public:
     ~TreeMap() {
                clear();
     }
-    
+
     void makeTree(node* &x, node* y){
         if (y == NULL) {
             x = NULL;
@@ -282,7 +282,7 @@ public:
         makeTree(x->lf, y->lf);
         makeTree(x->rh, y->rh);
     }
-    
+
     /**
      * Assignment operator
      */
@@ -310,7 +310,7 @@ public:
      */
     Iterator iterator() {
             Iterator *tmp = new Iterator(this);
-            return *tmp;         
+            return *tmp;
     }
 
     /**
@@ -319,7 +319,7 @@ public:
      */
     ConstIterator constIterator() const {
         ConstIterator *tmp = new ConstIterator(this);
-        return *tmp;                  
+        return *tmp;
     }
 
     /**
@@ -345,7 +345,7 @@ public:
         if (key < p->data.key) return contain(p->lf, key);
         else return contain(p->rh, key);
     }
-    
+
     /**
      * Returns true if this map contains a mapping for the specified key.
      * O(logn).
@@ -360,8 +360,8 @@ public:
      */
     bool containsValue(const V& value) const {
          ConstIterator iter = constIterator();
-         while (iter.hasNext()) 
-               if (iter.next().value == value) 
+         while (iter.hasNext())
+               if (iter.next().value == value)
                   return true;
          return false;
     }
@@ -395,7 +395,7 @@ public:
         if (key < p->data.key) return getValue(p->lf, key);
         else return getValue(p->rh, key);
     }
-    
+
     /**
      * Returns a reference to the value which the specified key is mapped
      * O(logn).
@@ -454,15 +454,15 @@ public:
                 Insert(Root, e);
                 return tmp;
     }
-    
+
     V put(const Entry<K, V>& e) {
-                V tmp;
-                if (contain(Root, e.key)) {
-                   tmp = get(e.key);
-                   Delete(Root, e.key);
-                }
-                Insert(Root, e);
-                return tmp;
+        V tmp;
+        if (contain(Root, e.key)) {
+            tmp = get(e.key);
+            Delete(Root, e.key);
+        }
+        Insert(Root, e);
+        return tmp;
     }
 
     /**
@@ -471,7 +471,7 @@ public:
      * @throw ElementNotExist
      */
     V remove(const K& key) {
-                   Delete(Root, key);
+        Delete(Root, key);
     }
 
     /**
@@ -481,7 +481,7 @@ public:
     int size() const {
         return siz;
     }
-    
+
     node* getRoot() const {
         return Root;
     }

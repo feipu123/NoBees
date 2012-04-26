@@ -11,9 +11,10 @@ class ArrayList {
 public:
     class ConstIterator {
         int position;
-    public:
         const ArrayList<E> *parent;
-        ConstIterator() {
+    public:
+        ConstIterator(ArrayList* const x) {
+            parent = x;
             position = -1;
         }
 
@@ -38,10 +39,11 @@ public:
 
     class Iterator {
         int position;
-    public:
         ArrayList<E> *parent;
-        Iterator() {
+    public:
+        Iterator(ArrayList* x) {
             position = -1;
+            parent = x;
         }
         /**
          * Returns true if the iteration has more elements.
@@ -146,18 +148,16 @@ public:
      * Returns an iterator over the elements in this list in proper sequence.
      */
     Iterator iterator() {
-        Iterator tmp;
-        tmp.parent = this;
-        return tmp;
+        Iterator *tmp = new Iterator(this);
+        return *tmp;
     }
 
     /**
      * Returns an CONST iterator over the elements in this list in proper sequence.
      */
     ConstIterator constIterator() const {
-        ConstIterator tmp;
-        tmp.parent = this;
-        return tmp;
+        ConstIterator *tmp = new ConstIterator(this);
+        return *tmp;
     }
 
     /**
