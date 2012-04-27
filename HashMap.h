@@ -35,17 +35,13 @@ class HashMap {
     struct node{
         Entry<K, V> data;
         node *next, *prev;
-        node() {
+        node() : data(K(), V()) {
             prev = next = NULL;
         }
-        node(const K& x, const V& y) {
-            data.key = x;
-            data.value = y;
+        node(const K& x, const V& y) : data(x, y) {
             prev = next = NULL;
         }
-        node(const Entry<K, V> &x) {
-            data.key = x.key;
-            data.value = x.value;
+        node(const Entry<K, V> &x) : data(x.key, x.value) {
             prev = next = NULL;
         }
     };
@@ -175,7 +171,7 @@ public:
         for (int i = 0; i < length; ++i) {
             array[i] = new node();
         }
-        HashMap::ConstIterator iter = c.constIterator();
+        ConstIterator iter = c.constIterator();
         while (iter.hasNext()) {
             Entry<K, V> tmp = iter.next();
             int pos = H::hashcode(tmp.key) % length;
@@ -287,7 +283,7 @@ public:
      * O(n)
      */
     bool containsValue(const V& value) const {
-        HashMap::ConstIterator iter = this->constIterator();
+        ConstIterator iter = this->constIterator();
         while (iter.hasNext()) if (iter.next().value == value) return true;
         return false;
     }

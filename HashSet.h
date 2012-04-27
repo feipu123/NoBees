@@ -168,7 +168,7 @@ public:
         for (int i = 0; i < length; ++i) {
             array[i] = new node();
         }
-        HashSet::ConstIterator iter = c.constIterator();
+        ConstIterator iter = c.constIterator();
         while (iter.hasNext()) {
             add(iter.next());
         }
