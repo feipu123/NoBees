@@ -20,23 +20,25 @@ private:
         E value;
         node *left, *right;
         int level;
-        node() {level = 1;}
-        node(E v):value(v) {level = 1;}
+        node() {level = 1;left=NULL;right=NULL;}
+        node(E v):value(v) {level = 1;left=NULL;right=NULL;}
     } ;
     node *root;
     int currentsize;
 public:
+
     class ConstIterator
     {
     private:
         const TreeSet *tree;
         node *position;
+        E a;
     public:
         ConstIterator(const TreeSet *t) {
             tree = t;
             position = NULL;
         }
-
+        
         node* findnext(node *t, E x) {
             if (t == NULL) return NULL;
             if (t->value > x) {
@@ -46,68 +48,9 @@ public:
             }
             else return findnext(t->right, x);
         }
-
+        
         node* findm() {
-            node *tmp = root;
-            while (tmp->left) tmp = tmp->left;
-            return tmp;
-        }
-        /**
-         * Returns true if the iteration has more elements.
-         * O(logn)
-         */
-         bool hasNext() {
-            if (tree->currentsize == 0) return false;
-            if (position == NULL) {
-                if (tree->root) return true;
-                else return false;
-            }
-            node *tmp = findnext(tree->root, position->value);
-            return tmp != NULL;
-        }
-
-        /**
-         * Returns a const reference to the next element in the iteration.
-         * O(logn)
-         * @throw ElementNotExist
-         */
-        const E& next() {
-            if (hasNext()) {
-                if (position == NULL) {
-                    position = findm;
-                    return position->value;
-                }
-                position = findnext(tree->root, position->value);
-                return position->value;
-            }
-            else throw ElementNotExist();
-        }
-    };
-
-    class Iterator
-    {
-    private:
-        node *position;
-        TreeSet *tree;
-        bool hasremoved;
-    public:
-        Iterator(TreeSet *t) {
-            tree = t;
-            position = NULL;
-        }
-
-        node* findnext(node *t, E x) {
-            if (t == NULL) return NULL;
-            if (t->value > x) {
-                node *tmp = findnext(t->left, x);
-                if (tmp != NULL) return (t->value < tmp->value ? t : tmp);
-                else return t;
-            }
-            else return findnext(t->right, x);
-        }
-
-        node* findm() {
-            node *tmp = root;
+            node *tmp = tree->root;
             while (tmp->left) tmp = tmp->left;
             return tmp;
         }
@@ -131,9 +74,70 @@ public:
          * @throw ElementNotExist
          */
         const E& next() {
-            if (hasNext()) {if (hasNext()) {
+            if (hasNext()) {
                 if (position == NULL) {
-                    position = findm;
+                    position = findm();
+                    return position->value;
+                }
+                position = findnext(tree->root, position->value);
+                return position->value;
+            }
+            else throw ElementNotExist();
+        }
+
+        
+    };
+    class Iterator
+    {
+    private:
+        node *position;
+        TreeSet *tree;
+        bool hasremoved;
+        E a;
+        node* b;
+    public:
+        Iterator(TreeSet *t) {
+            tree = t;
+            position = NULL;
+        }
+        node* findnext(node *t, E x) {
+            if (t == NULL) return NULL;
+            if (t->value > x) {
+                node *tmp = findnext(t->left, x);
+                if (tmp != NULL) return (t->value < tmp->value ? t : tmp);
+                else return t;
+            }
+            else return findnext(t->right, x);
+        }
+
+        node* findm() {
+            node *tmp = tree->root;
+            while (tmp->left) tmp = tmp->left;
+            return tmp;
+        }
+        /**
+         * Returns true if the iteration has more elements.
+         * O(logn)
+         */
+         bool hasNext() {
+            if (tree->currentsize == 0) return false;
+            if (position == NULL) {
+                if (tree->root) return true;
+                else return false;
+            }
+            node *tmp = findnext(tree->root, position->value);
+            return tmp != NULL;
+        }
+
+        /**
+         * Returns a const reference the next element in the iteration.
+         * O(logn)
+         * @throw ElementNotExist
+         */
+        const E& next() {
+            if (hasNext()) {
+                if (position == NULL) {
+                    position = findm();
                     return position->value;
                 }
                 position = findnext(tree->root, position->value);
@@ -173,44 +177,7 @@ public:
             }
         }
     };
-
-    /**
-     * Constructs a new, empty tree set, sorted according to the natural ordering of its elements.
-     */
-    TreeSet() {root = new node(),currentsize = 0; }
-
-    /**
-     * Constructs a set containing the elements of the specified collection, in
-     * the order they are returned by the collection's iterator.
-     */
-    template <class E2>
-    explicit TreeSet(const E2& x) {
-        root = new node(),currentsize = 0;
-        addAll(*this, x);
-    }
-
-    /**
-     * Destructor
-     */
-    ~TreeSet() {clear(); }
-
-    /**
-     * Assignment operator
-     */
-    TreeSet& operator=(const TreeSet& x) {
-        clear();
-        root = new node(),currentsize = 0;
-        addAll(*this, x);
-    }
-
-    /**
-     * Copy-constructor
-     */
-    TreeSet(const TreeSet& x) {
-        root = new node(),currentsize = 0;
-        addAll(*this, x);
-    }
-
+    
     /**
      * Returns an iterator over the elements in this set in proper sequence.
      */
@@ -226,7 +193,7 @@ public:
         ConstIterator *iter = new ConstIterator(this);
         return (*iter);
     }
-
+    
     void LL(node *&t) {
         if (t->left != NULL && t->left->level == t->level) {
             node *t1 = t->left;
@@ -254,7 +221,7 @@ public:
         LL(t);
         RR(t);
     }
-
+    
     void removet(node *t) {
         if (t != NULL) {
             if (t->left != NULL) removet(t->left);
@@ -262,7 +229,7 @@ public:
             delete t;
         }
     }
-
+    
     /**
      * Adds the specified element to this set if it is not already present.
      * Returns true if this set did not already contain the specified element.
@@ -273,15 +240,44 @@ public:
         else insert(e, root),currentsize++;
         return true;
     }
+    
+    /**
+     * Constructs a new, empty tree set, sorted according to the natural ordering of its elements.
+     */
+    TreeSet() {root = new node(),currentsize = 0; }
 
     /**
-     * Removes all of the elements from this set.
+     * Constructs a set containing the elements of the specified collection, in
+     * the order they are returned by the collection's iterator.
      */
-    void clear() {
-        if (root != NULL) removet(root);
-        root = NULL,currentsize = 0;
+    template <class E2>
+    explicit TreeSet(const E2& x) {
+        root = new node(),currentsize = 0;
+        addAll(*this, x);
+    }
+    
+    /**
+     * Destructor
+     */
+    ~TreeSet() {clear(); }
+
+    /**
+     * Assignment operator
+     */
+    TreeSet& operator=(const TreeSet& x) {
+        clear();
+        root = new node(),currentsize = 0;
+        addAll(*this, x);
     }
 
+    /**
+     * Copy-constructor
+     */
+    TreeSet(const TreeSet& x) {
+        root = new node(),currentsize = 0;
+        addAll(*this, x);
+    }
+    
     /**
      * Returns true if this set contains the specified element.
      * O(logn)
@@ -296,7 +292,7 @@ public:
     bool contains(const E& e) const {
         return find(e, root);
     }
-
+    
     /**
      * Returns a const reference to the first (lowest) element currently in this set.
      * O(logn)
@@ -326,7 +322,15 @@ public:
         while (tmp->right != NULL) tmp = tmp->right;
         return tmp->value;
     }
-
+    
+    /**
+     * Removes all of the elements from this set.
+     */
+    void clear() {
+        if (root != NULL) removet(root);
+        root = NULL,currentsize = 0;
+    }
+    
     /**
      * Removes the specified element from this set if it is present.
      * O(logn)
@@ -354,11 +358,7 @@ public:
         currentsize--;
         return true;
     }
-
-    /**
-     * Returns the number of elements in this set (its cardinality).
-     * O(1)
-     */
+    
     int size() const {return currentsize; }
 };
 #endif
