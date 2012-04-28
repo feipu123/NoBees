@@ -41,7 +41,7 @@ int main() {
         treeset_iter.next();
         treeset_iter.remove();
         cout << "remove the first element using Iterator::remove() : "; displayTreeSet(treeset_b);
-    
+    while(1);
     return 0;
 }
 

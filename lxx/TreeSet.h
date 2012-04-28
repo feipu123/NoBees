@@ -328,7 +328,7 @@ public:
      */
     void clear() {
         if (root != NULL) removet(root);
-        root = NULL,currentsize = 0;
+        root = new node(),currentsize = 0;
     }
     
     /**
