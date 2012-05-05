@@ -138,11 +138,82 @@ $$
  等等。
 故正八面体群$G_8$由24个旋转变换构成，下面证明$G_8$ 同构于$S_4$。
 
+首先对正八面体的八个面标号
 
+1:ABC; 2:ACD;		3:ADE;		4:AEB;
+5:FBC; 	6:FCD; 	7:FDE; 	8:FEB.
+
+$G_8$是$S_8$的子群. 考虑正八面体的如下四个对面组成的集合S：
+
+$A_1 = \{1, 7\},A_2 = \{2, 8\},A_3 = \{3, 5\},A_4 = \{4, 6\}.$
+
+根据旋转群的几何意义，知道G在S上有一个自然的群作用$*$：
+
+$\sigma *A_1 = \{\sigma(1), \sigma(7)\} \in S, \forall\sigma \in G$.
+
+显然此作用是可迁的,即轨道只有一个。由计数公式，对于每个$1\leqslant i \leqslant 4$有
+$$|Stab(A_i)|=\frac{|G|}{|G*A_i|}=\frac{24}{4}=6.$$
+此作用诱导出一个群同态
+$$\varphi:G\rightarrow T(S)=S_4.$$
+由于已经知道$|S_4|=|G|=24$，为了证明$\phi$是群同构映射，只需说明此作用忠实
+（即$\phi$是单射），亦即$$\bigcap_{x\in S}Stab(x)=\{e\}.$$
+
+事实上，$Stab(A_1)$由以下六个置换组成：
+$$(1),$$
+$$\sigma_P=\left(
+\begin{array}{cccccc}
+A&B&C&D&E&F\\
+B&C&A&E&F&D
+\end{array}
+\right)
+=(2,4,5)(3,8,6),$$
+$$\sigma_P^2=\left(
+\begin{array}{cccccc}
+A&B&C&D&E&F\\
+C&A&B&F&D&E
+\end{array}
+\right)
+=(2,5,4)(3,6,8),$$
+$$\sigma_Z=\left(
+\begin{array}{cccccc}
+A&B&C&D&E&F\\
+D&F&E&A&C&B
+\end{array}
+\right)
+=(1,7)(2,3)(4,6)(5,8),$$
+$$\sigma_U=\left(
+\begin{array}{cccccc}
+A&B&C&D&E&F\\
+B&C&A&E&F&D
+\end{array}
+\right)
+=(1,7)(2,8)(3,4)(5,6),$$
+$$\sigma_W=\left(
+\begin{array}{cccccc}
+A&B&C&D&E&F\\
+F&E&D&C&B&A
+\end{array}
+\right)
+=(1,7)(2,6)(3,5)(4,8)
+$$
+容易验证$\sigma_P\nsubseteq Stab(A_2),\sigma_P^2\nsubseteq Stab(A_2)$。
+
+$Stab(A_i)\ \{(1)\}$中余下的四个置换每一个都是四个不相交对换的乘积。而$S_8$中使得$gA_i=A_i, \forall 1\leqslant i\leqslant4$
+都成立的这样的置换只有一个，即
+$$(1,7)(2,8)(3,5)(4,6)\notin Stab(A_i).$$
+这说明了
+$$\bigcap_{A_i\in S}Stab(A_i)=\{(1)\}.$$
+
+从而$\varphi$是单射，从而是双射。
+
+{\bf 推论：}正八面体的每个面的中心恰好形成正六面体的顶点, 而正六面体的每个面的中心恰好形成正八面体的顶点, 故正六面体与正八面体是对偶图形。
+
+正八面体群$S_4$也是使正六面体对称的变换之集, 使正六面体对称的也只有$S_4$, 故$S_4$也是正六面体群。
 
 \begin{thebibliography}{90}
- \bibitem{} 陈馨璇，三维欧氏空间中有限旋转群的分类与构造，{\it 武汉师范学院学报，}({\bf1984})。
+ \bibitem{} 陈馨璇，三维欧氏空间中有限旋转群的分类与构造，{\it 武汉师范学院学报，}({\bf 1984})。
  \bibitem{} 武同锁，AbstractAlgebraNotes。
+ \bibitem{} Michael Artin，代数，{\it 机械工业出版社，}({\bf 2009})。
 \end{thebibliography}
 
 \end{CJK*}
