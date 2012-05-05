@@ -1,12 +1,15 @@
-\documentclass{article}
-\usepackage{CJK}
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,CJK,CCT}
 \usepackage[top=2.54cm, bottom=2.54cm, left=3.17cm, right=3.17cm]{geometry}%这是设置      %页面边距的，很容易理解，就是上边距2.54cm,下边距2.54cm，左边距3.17cm，右边距3.17cm
 \usepackage{graphicx}
 \DeclareGraphicsRule{.jpg}{eps}{.bb}{}
 \DeclareGraphicsRule{.png}{eps}{.bb}{}
+\def\ora{\overrightarrow}
 \begin{document}
-\begin{CJK*}{GBK}{song}
-\title{三线行列式\\}
+\begin{CJK*}{GBK}{com}
+\CJKtilde
+\CJKindent
+\title{旋转群}
 \author{2011级ACM班\\张方魁 陈志鹏}
 \maketitle
 \begin{abstract}
@@ -15,9 +18,10 @@
 
 讨论这个话题之前，让我们先来看看有哪些正多面体。
 
-{\bf命题1}：正多面体只能有5种，即用正三角形做面的正四面体、正八面体，正二十面体，以及用正方形做面的正六面体，用正五边形做面的正十二面体。
+{\bf 命题1：}正多面体只能有5种，即用正三角形做面的正四面体、正八面体，正二十面体，
+以及用正方形做面的正六面体，用正五边形做面的正十二面体。
 
-{\bf证明}：设顶点数为V，面数为F，棱数为E
+{\bf 证明：}设顶点数为V，面数为F，棱数为E
 
 设正多面体的每个面是正n边形，每个顶点有m条棱。棱数E应是面数F与n的积的一半（每两面共用一条棱），即
 
@@ -30,19 +34,20 @@ mV=2E
 \end{eqnarray}
 由(1)、(2)，得
 $$F=\frac{2E}{n}, V=\frac{2E}{m},$$
-代入欧拉公式$V+F-E=2$，有$2E/m+2E/n-E=2$
-
-整理后，得$1/m+1/n=1/2+1/E$.
-
-由于$E$是正整数，所以$1/E>0$。因此
+代入欧拉公式$V+F-E=2$，有
+$$\frac{2E}{m}+\frac{2E}{n}-E=2$$
+整理后，得
+$$\frac{1}{m}+\frac{1}{n}=\frac{1}{2}+\frac{1}{E}$$.
+由于$E$是正整数，所以$\frac{1}{E}>0$。因此
 \begin{eqnarray}
-1/m+1/n>1/2
+\frac{1}{m}+\frac{1}{n}>\frac{1}{2}
 \end{eqnarray}
-说明$m$,$n$不能同时大于$3$，否则$1/m+1/n<=1/2$，即(3)不成立。
+说明$m$,$n$不能同时大于$3$，否则$\frac{1}{m}+\frac{1}{n}\leqslant\frac{1}{2}$，即(3)不成立。
 
-另一方面，由于$m$和$n$的意义（正多面体一个顶点处的棱数与多边形的边数）知，$m≥3$且$n≥3$。因此$m$和$n$至少有一个等于$3$
+另一方面，由于$m$和$n$的意义（正多面体一个顶点处的棱数与多边形的边数）知，
+$m\geqslant3$且$n\geqslant3$。因此$m$和$n$至少有一个等于$3$
 
-当m=3时，因为$1/n>1/2-1/3=1/6$，$n$又是正整数，所以n只能是$3$，$4$，$5$
+当$m=3$时，因为$\frac{1}{n}>\frac{1}{2}-\frac{1}{3}=\frac{1}{6}$，$n$又是正整数，所以n只能是$3$，$4$，$5$
 
 同理$n=3$，$m$也只能是$3$，$4$，$5$
 
@@ -59,41 +64,80 @@ n&m&类型\\
 \hline
 \end{tabular*}
 $$
-由于上述5种多面体确实可以用几何方法作出，而不可能有其他种类的正多面体
+由于上述5种多面体确实可以用几何方法作出，而不可能有其他种类的正多面体。
 
-所以正多面体只有5种
-\begin{figure}
-\centering
+所以正多面体只有5种。
+
+\begin{center}
 \includegraphics{1.jpg}
-\end{figure}
-\begin{figure}
-\centering
 \includegraphics{2.jpg}
-\end{figure}
-\begin{figure}
-\centering
 \includegraphics{3.jpg}
-\end{figure}
-\begin{figure}
-\centering
 \includegraphics{4.jpg}
-\end{figure}
-\begin{figure}
-\centering
 \includegraphics{5.jpg}
-\end{figure}
-\begin{figure}
-\centering
 \includegraphics{6.jpg}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics{7.png}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics{8.png}
-\end{figure}
+\includegraphics{7.jpg}
+\end{center}
+
+
+{\bf 命题2：}正四面体群$G_4$是四次交错群$A_4$。
+
+{\bf 证明：}正四面体ABCD如图1，原点O是它的外接球的球心, 群$G_4$的所有旋转变换可以分为两类：
+
+(1)分别以$\ora{OA}$,$\ora{OB}$,$\ora{OC}$,$\ora{OD}$为旋转轴，
+旋转120度角的旋转变换$\sigma_A$，$\sigma_B$，$\sigma_C$，$\sigma_D$，于是可得如下9个旋转变换：
+$$\sigma_A = (B,C,D), \sigma_B = (A,D,C) ,\sigma_C = (A,B,D), \sigma_D = (A,C,B)$$
+$$\sigma_A^2 = (B,D,C),\sigma_B^2 = (A,C,D),\sigma_C^2 = (A,D,B), \sigma_D^2 = (A,B,C)$$
+$$\sigma_A^3=\sigma_B^3=\sigma_C^3=\sigma_D^3=(1)$$
+(2)	分别以棱的中点连线（有3对棱）$\ora{P'OP}$,$\ora{Q'OQ}$,$\ora{R'OR}$为旋转轴，
+旋转180度角的旋转变换$\sigma_P,\sigma_Q,\sigma_R$:
+$$\sigma_P=(A,B)(C,D),\sigma_Q=(A,C)(B,D),\sigma_R=(A,D)(B,C)$$
+故正四两体群 $G_4$有12个旋转变换, 恰是A,B,C,D四元素构成的四次交错群$A_4$。
+
+{\bf 命题3：}正八面体群$G_8$（或正六面体群$G_6$）同构于四次置换群$S_4$。
+
+{\bf 证明：}正八面体ABCDEF如图2，原点O是它外接球的球心。群$G_8$的所有旋转变换可分成三类：
+
+（1）分别以顶点连线$\ora{AOF}$,$\ora{BOD}$,$\ora{COE}$为旋转轴，
+旋转90度角的旋转变换$\sigma_A$，$\sigma_B$，$\sigma_C$，于是得如下10个旋转变换：
+$$\sigma_A,\sigma_B,\sigma_C,$$
+$$\sigma_A^2,\sigma_B^2,\sigma_C^2,$$
+$$\sigma_A^3,\sigma_B^3,\sigma_C^3,$$
+$$\sigma_A^4=\sigma_B^4=\sigma_C^4=(1)$$
+其中
+$$
+\sigma_A=\left(
+\begin{array}{cccccc}
+A&B&C&D&E&F\\
+A&C&D&E&B&F
+\end{array}\right)
+$$
+等等。
+
+（2）分别以面的中心连线（有4个对面）$\ora{P'OP}$,$\ora{Q'OQ}$,$\ora{R'OR}$,$\ora{S'OS}$为旋转轴，
+旋转120度角的旋转变换$\sigma_P,\sigma_Q,\sigma_R,\sigma_S$,于是得到如下8个旋转变换：
+$$\sigma_P,\sigma_Q,\sigma_R,\sigma_S$$
+$$\sigma_P^2,\sigma_Q^2,\sigma_R^2,\sigma_S^2,$$
+其中，
+$$
+\sigma_P=\left(\begin{array}{cccccc}
+A&B&C&D&E&F\\
+B&C&A&E&F&D
+\end{array}\right)
+$$
+等等。
+
+（3）分别以棱的中点连线（有6对棱）$\ora{X'OX}$,$\ora{Y'OY}$,$\ora{Z'OZ}$, $\ora{U'OU}$,$\ora{V'OV}$,$\ora{W'OW}$为旋转轴，
+旋转180度角的旋转变换$\sigma_X, \sigma_Y, \sigma_Z, \sigma_U, \sigma_V, \sigma_W$:
+
+其中，
+$$\sigma_X=\left(\begin{array}{cccccc}
+A&B&C&D&E&F\\
+E&F&B&A&D&C
+\end{array}\right)
+$$
+ 等等。
+故正八面体群$G_8$由24个旋转变换构成，下面证明$G_8$ 同构于$S_4$。
+
 
 
 \begin{thebibliography}{90}
@@ -103,7 +147,4 @@ $$
 
 \end{CJK*}
 \end{document}
-
-
-
 
